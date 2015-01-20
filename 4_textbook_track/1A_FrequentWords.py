@@ -29,12 +29,3 @@ kmers = count_mer(text, k)
 max_count = max(kmers.values())
 answer = [key for key, val in kmers.items() if val == max_count]
 for a in answer: print (a)
-
-        for y in range(len(Text)-k-1):
-                if Text[y:y+k] == mer:
-                        kmers[mer] += 1
-
-# Find the max number of occurances and the corresponding k-mer(s)
-max_count = max(kmers.values())
-answer = [key for key, val in kmers.items() if val == max_count]
-for a in answer: print (a)
