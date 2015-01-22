@@ -4,6 +4,7 @@
 # Given: A string Genome, and integers k, L, and t.
 # Return: All distinct k-mers forming (L, t)-clumps in Genome.
 
+<<<<<<< HEAD
 from collections import defaultdict
 
 # 'Pattern' and 'Genome' are seperated by a line break
@@ -53,3 +54,14 @@ def find_clumps(gen, k, L, t):
 # Find clump
 for clump in find_clumps(genome, k, L, t):
     print clump
+=======
+Genome = 'CGGACTCGACAGATGTGAAGAAATGTGAAGACTGAGTGAAGAGAAGAGGAAACACGACACGACATTGCGACATAATGTACGAATGTAATGTGCCTATGGC'
+k = 5 # length of k-mer to look for
+L = 75 # length of interval on the genome to search
+T = 4  # minimum amount of time the k-mer appears on the interval, L
+
+# Make a dictionary of all k-mers and the number of occurances of each
+kmers = {}
+for i in range(len(Genome)-L+1):
+        print (Genome[x:x+L])
+>>>>>>> origin/master
