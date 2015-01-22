@@ -1,0 +1,36 @@
+#!/usr/bin/python
+
+# Find the most frequent k-mers with mismatches in a string.
+# Given: A string genome as well as integers k and d.
+# Return: All most frequent k-mers with up to d mismatches in genome.
+
+from collections import defaultdict
+
+# Split the genome into substrings of length, k, starting on intervals starting from 0 to k.
+def count_mer(gen, k):
+    
+    kmer_list = list()
+    kmer_counts = defaultdict(int)
+
+    # genome can be split into k reading frames,
+    # identify each k-mer in a given frame
+    for i in range(k):  
+        frame = gen[i:]
+        kmer_list += [frame[i:i+k] for i in range(0, len(frame), k)]
+
+    # count the number of occurances of each k-mer in the genome
+    for mer in kmer_list:
+        kmer_counts[mer] += 1
+
+    return kmer_counts
+
+# Read file
+with open('rosalind_1g.txt', 'r') as in_file:
+        text = in_file.read().split('\n')
+        genome = text[0]
+        val = text[1].split(' ')
+        k = int(val[0])
+        d = int(val[1])
+
+# Find the max number of occurances and the corresponding k-mer(s)
+print count_mer(genome, k)
