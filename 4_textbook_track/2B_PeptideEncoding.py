@@ -13,47 +13,64 @@ def getCodonTable():
     bases = ['T','C','A','G']
     codons = [a+b+c for a in bases for b in bases for c in bases]
     codon_table = dict(zip(codons, aa))
-
+    
     return codon_table
 
-def getRevComp(seq):
+def getRevComp(dna):
     ntDict = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
-    revSeq = seq[::-1]
+    revSeq = dna[::-1]
     revComp = ''
     for nt in revSeq:
         revComp += ntDict[nt]
 
     return revComp
 
-def getEncodeSeq(seq, pep, codons):
+def getEncodeSeq(dna, match, codons):
+    rcDna = getRevComp(dna)
+    peptides = []
     encodes = []
-    
-    for i in range(2):
-        translation = ''
-        encodeSeq = ''
+
+    # Translate forward and reverse strands
+    for seq in [dna, rcDna]:
         
-        for j in range(i, len(seq), 3):
-            codon = seq[j:j+3]
+        for i in range(3):
+            translation = ''
             
-            if len(codon) < 3 or codons[codon] == '*':
-                break
-            else:
-                translation += codons[codon]
-                encodeSeq += codon
+            for j in range(i, len(seq), 3):
+                codon = seq[j:j+3]
 
-        if pep in translation:
-            encodes.append(encodeSeq)
+                #if len(codon) < 3 or codons[codon] == '*':
+                if len(codon) < 3:
+                    break  
+                else:
+                    translation += codons[codon]
 
+            peptides.append(translation)
+    
+    # Look matching sequences in each strand
+    for x in range(3):
+        fPep = peptides[x]
+        rPep = peptides[x+3]
+
+        for ind1, aa1 in enumerate(fPep):
+            if fPep[ind1 : ind1+len(match)] == match:
+                y = (ind1 * 3) + x
+                frag = dna[y : y+len(match)*3]
+                encodes.append(frag)
+
+        for ind2, aa2 in enumerate(rPep):
+            if rPep[ind2 : ind2 + len(match)] == match:
+                y = len(dna) - (ind2*3 + len(match)*3 - 1 + x + 1)
+                frag = dna[y : y + len(match)*3]
+                encodes.append(frag)
+            
     return(encodes)
-            
 
 with open('rosalind_2b.txt', 'r') as infile:
     text = infile.read().split('\n')
     sequence = text[0]
     peptide = text[1]
 
-revSequence = getRevComp(sequence)
 codons = getCodonTable()
-
 answer = getEncodeSeq(sequence, peptide, codons)
 for a in answer: print(a)
