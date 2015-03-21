@@ -11,30 +11,20 @@ N-glycosylation motif is denoted by: N{P}[ST]{P}, where [ST]
 means "either S or T" and {P} means "any except P"
 '''
 
-from urllib2 import urlopen
+import urllib.request
 import re
 
-def parseFasta(file_name, ids):
-    ''' Reads a text file containing 1 or more fasta sequences,
-        returns a dictionary of all the seperate sequences '''
-    heads = []
-    seqs = {}
+def parseFasta(fasta_list):
+    ''' Takes a dictionary of UniProt IDs w/ associated
+        data in FASTA format, and returns a new dictionary
+        of IDs w/ corresponding DNA sequences '''
+    sequences = {}
 
-    with open(file_name, 'r') as f:
-        for num, line in enumerate(f):
-            if '>' in line:
-                heads.append(num)
-    heads.append(sum(1 for line in open(file_name)))
+    for f in fasta_list:
+        seq = ''.join(fasta_list[f].strip().split('\n')[1:])
+        sequences[f] = seq
 
-    f = open(file_name, 'r')
-    lines = f.readlines()
-    for i in range(len(heads)-1):
-        h = ids[i]
-        #h = lines[heads[i]].replace('\n', '')
-        l = lines[heads[i]+1:heads[i+1]]
-        seqs[h] = ''.join(l).replace('\n', '')
-
-    return seqs
+    return(sequences)
 
 
 def findMotifs(seq_list, pattern):
@@ -62,18 +52,17 @@ def main():
     
     pattern = '^N[A-O,Q-Z](S|T)[A-O,Q-Z]'
     
-    with open('rosalind_mprt.txt', 'r') as infile:
+    with open('problem_datasets/rosalind_mprt.txt', 'r') as infile:
         ids = infile.read().strip().split('\n')
-    '''
-    with open('rosalind_mprt_out.txt', 'w') as outfile:
-        for i in ids:
-            site = 'http://www.uniprot.org/uniprot/' + i + '.fasta'
-            html = urlopen(site).read()
-            outfile.write(html)
 
-        sequences = parseFasta(outfile)
-    '''
-    sequences = parseFasta('rosalind_mprt_out.txt', ids)
+    fastas = {}    
+    for i in ids:
+        url = 'http://www.uniprot.org/uniprot/' + i + '.fasta'
+        html = urllib.request.urlopen(url).read()
+        fastas[i] = html.decode('ascii')
+
+    sequences = parseFasta(fastas)
+    
     for key, val in findMotifs(sequences, pattern):
         print(key + '\n' + val)
 
