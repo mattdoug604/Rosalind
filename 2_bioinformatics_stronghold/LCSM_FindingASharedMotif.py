@@ -1,5 +1,14 @@
 #!/usr/bin/python
 
+'''
+Rosalind: Bioinformatics Stronghold
+Problem: Finding a Shared Motif
+URL: http://rosalind.info/problems/lcsm/
+
+Given: A collection of k (k <= 100) DNA strings of length at most 1 kbp each in FASTA format.
+Return: A longest common substring of the collection. (If multiple solutions exist, you may return any single solution.)
+'''
+
 from rosalind_functions import parseFasta
 
 def longestMotif(seq_list):
@@ -26,8 +35,7 @@ def longestMotif(seq_list):
             
 
 def main():
-    ''' Read a collection of DNA strings in FASTA format '''
-    sequences = list(parseFasta('rosalind_lcsm.txt').values())
+    sequences = list(parseFasta('problem_datasets/rosalind_lcsm.txt').values())
 
     answer = longestMotif(sequences)
     print(answer)

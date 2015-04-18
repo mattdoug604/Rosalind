@@ -1,41 +1,48 @@
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 
-# For a collection of strings and a positive integer k,
-# the overlap graph for the strings is a directed graph O(k) in which each string is represented by a node,
-# and string s is connected to string t with a directed edge when there is a length k suffix of s that
-# matches a length k prefix of t, as long as s≠t; we demand s≠t to prevent directed loops in
-# the overlap graph (although directed cycles may be present).
+'''
+Rosalind: Bioinformatics Stronghold
+Problem: Overlap Graphs
+URL: http://rosalind.info/problems/grph/
 
-# Given: A collection of DNA strings in FASTA format having total length at most 10 kbp.
-# Return: The adjacency list corresponding to O(3). You may return edges in any order.
+Given: A collection of DNA strings in FASTA format having total length at most 10 kbp.
+Return: The adjacency list corresponding to O3. You may return edges in any order.
+'''
 
-def ParseFasta(file_name):
-    heads = []
+def parseFasta(path):
+    headers = []
     seqs = {}
 
-    with open(file_name, 'r') as f:
+    with open(path, 'r') as f:
         for num, line in enumerate(f):
             if '>' in line:
-                heads.append(num)
-    heads.append(sum(1 for line in open(file_name)))
+                headers.append(num)
+    headers.append(sum(1 for line in open(path)))
 
-    f = open(file_name, 'r')
-    lines = f.readlines()
-    for i in range(len(heads)-1):
-        h = lines[heads[i]].replace('\n', '')
-        l = lines[heads[i]+1:heads[i+1]]
-        seqs[h[1:]] = ''.join(l).replace('\n', '')
+    with open(path, 'r') as f:
+        lines = f.readlines()
+        for i in range(len(headers)-1):
+            h = lines[headers[i]][1:].replace('\n', '')
+            l = lines[headers[i]+1:headers[i+1]]
+            seqs[h] = ''.join(l).replace('\n', '')
 
-    return seqs
+    return(seqs)
 
-infile = "rosalind_grph.txt"
-dataset = ParseFasta(infile)
+def overlapSeqs(sequences):
+    for head1, seq1 in sequences.iteritems():
+        suffix = seq1[-3:]
+        for head2, seq2 in sequences.iteritems():
+            prefix = seq2[:3]
+            if seq1 <> seq2:
+                if suffix == prefix:
+                    yield(' '.join([head1, head2]))
 
-for seq in dataset:
-    suf = dataset[seq][-3:]
-    for seq2 in dataset:
-        pre = dataset[seq2][:3]
-        if seq <> seq2:
-            if suf == pre:
-                print seq, seq2
+def main():
+    dataset = parseFasta("problem_datasets/rosalind_grph.txt")
+    
+    with open('output/rosalind_grph_out.txt', 'w') as outfile:
+        for line in overlapSeqs(dataset):
+            outfile.write(line + '\n')
+
+if __name__ == '__main__':
+    main()

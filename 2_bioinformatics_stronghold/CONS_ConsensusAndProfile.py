@@ -1,76 +1,88 @@
 #!/usr/bin/python
-# Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp) in FASTA format.
-# Return: A consensus string and profile matrix for the collection. (If several possible consensus strings exist, then you may return any one of them.)
+
+'''
+Rosalind: Bioinformatics Stronghold
+Problem: Consensus and Profile
+URL: http://rosalind.info/problems/cons/
+
+Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp) in FASTA format.
+Return: A consensus string and profile matrix for the collection. (If several possible consensus strings exist, then you may return any one of them.)
+'''
 
 import re
 
-# Read FASTA formatted lines into seperate strings
-seqs = ""
-dna = open("rosalind_cons.txt", "r")
-for line in dna:
-    if not re.search(r'^>.+$\n', line):
-        seqs += line.strip()
-    else:
-        seqs += "\n"
-dna.close()
-seqs = seqs.lstrip().split('\n') # lstrip() removes leading newline, spaces, etc.
+def parseFasta(path):
+    ''' Read a single file containing multiple
+        FASTA sequences, extract only the DNA
+        sequences, and split them into seperate
+        strings.
+    '''
+    seqs = ''
+    with open(path, 'r') as fasta:
+        for line in fasta:
+            if not re.search(r'^>.+$\n', line):
+                seqs += line.strip()
+            else:
+                seqs += '\n'
+    
+    seqs = seqs.lstrip().split('\n')
+    return(seqs)
+    
+def profileMatrix(seqs):
+    ''' Generate a profile matrix from a list of
+        DNA sequences. Assumes all the sequences
+        are of equal length.
+    '''
+    length = len(seqs[0])
+    matrix =[[0 for x in range(4)] for y in range(length)]
+    
+    for i in range(length):
+        for string in seqs:
+            if string[i].upper() == 'A':
+                matrix[i][0] += 1
+            elif string[i].upper() == 'C':
+                matrix[i][1] += 1
+            elif string[i].upper() == 'G':
+                matrix[i][2] += 1
+            elif string[i].upper() == 'T':
+                matrix[i][3] += 1
 
-# Establish a profile matrix
-matrix = [[0 for x in xrange(len(seqs[0]))] for y in xrange(len(seqs))]
-x = 0
-for i in seqs:
-    for j in i:
-        matrix[x].remove(0)
-        matrix[x].append(j)
-    x += 1
+    return(matrix)
 
-# Print matrix (optional)
-s = [[str(e) for e in row] for row in matrix]
-lens = [max(map(len, col)) for col in zip(*s)]
-fmt = ' '.join('{{:{}}}'.format(x) for x in lens)
-table = [fmt.format(*row) for row in s]
-print '\n'.join(table), '\n'
+def consensusSeq(profile):
+    ''' Determine the consensus sequence from a
+        given profile matrix.
+    '''
+    consensus = ''
 
-# Count nt occurences at each position
-a_count = [0 for x in xrange(len(seqs[0]))]
-c_count = [0 for x in xrange(len(seqs[0]))]
-g_count = [0 for x in xrange(len(seqs[0]))]
-t_count = [0 for x in xrange(len(seqs[0]))]
+    letter = ['A', 'C', 'G', 'T']
+    for i in range(len(profile)):
+        nt = profile[i].index(max(profile[i]))
+        consensus += letter[nt]
 
-for x in range(len(matrix)):
-    for y in range(len(seqs[0])):
-        if "a" in matrix[x][y].lower():
-            a_count[y] += 1
-        elif "c" in matrix[x][y].lower():
-            c_count[y] += 1
-        elif "g" in matrix[x][y].lower():
-            g_count[y] += 1
-        elif "t" in matrix[x][y].lower():
-            t_count[y] += 1
+    return(consensus)
 
-# Determine the consensus sequence
-cons = []
-for i in range(len(seqs[0])):
-    count = []
-    count.append(a_count[i])
-    count.append(c_count[i])
-    count.append(g_count[i])
-    count.append(t_count[i])
+def formatProfile(profile):
+    ''' A generator that outputs a given profile
+        matrix in a readable format.
+    '''
+    prefix = ['A', 'C', 'G', 'T']
+    for i in range(4):
+        line = prefix[i] + ': '
+        for j in range(len(profile)):
+            line += str(profile[j][i]) + ' '
 
-    if count.index(max(count)) == 0:
-        cons.append("A")
-    elif count.index(max(count)) == 1:
-        cons.append("C")
-    elif count.index(max(count)) == 2:
-        cons.append("G")
-    elif count.index(max(count)) == 3:
-        cons.append("T")
-    else:
-        cons.append("?")
-        
-# Print results
-print (''.join(map(str, cons)))
-print "A:", (' '.join(map(str, a_count)))
-print "C:", (' '.join(map(str, c_count)))
-print "G:", (' '.join(map(str, g_count)))
-print "T:", (' '.join(map(str, t_count)))
+        yield(line)
+
+def main():
+    sequences = parseFasta('problem_datasets/rosalind_cons.txt')
+    profile = profileMatrix(sequences)
+    consensus = consensusSeq(profile)
+
+    with open('output/rosalind_cons_out.txt', 'w') as outfile:
+        outfile.write(consensus + '\n')
+        for line in formatProfile(profile):
+            outfile.write(line + '\n')
+
+if __name__ == '__main__':
+    main()

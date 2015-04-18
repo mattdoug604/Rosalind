@@ -1,22 +1,21 @@
 #!/usr/bin/python
-# Given: A DNA string s of length at most 1000 nt.
-# Return: Four integers (separated by spaces) counting the respective number of times that the symbols 'A', 'C', 'G', and 'T' occur in s.
 
-dna = open("rosalind_dna.txt")
-s = dna.read()
-a = 0
-c = 0
-g = 0
-t = 0
+'''
+Rosalind: Bioinformatics Stronghold
+Problem: Counting DNA Nucleotides
+URL: http://rosalind.info/problems/dna/
 
-for nt in list(s):
-    if "a" in nt.lower():
-        a += 1
-    elif "c" in nt.lower():
-        c += 1
-    elif "g" in nt.lower():
-        g += 1
-    elif "t" in nt.lower():
-        t += 1
+Given: A DNA string t having length at most 1000 nt.
+Return: The transcribed RNA string of t.
+'''
 
-print a, c, g, t
+def main():
+    with open('problem_datasets/rosalind_dna.txt', 'r') as infile:
+        dna = infile.read()
+
+    counts = map(dna.count, ['A', 'C', 'G', 'T'])
+
+    print(' '.join(map(str, counts)))
+
+if __name__ == '__main__':
+    main()

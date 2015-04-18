@@ -1,25 +1,22 @@
 #!/usr/bin/python
-# PPER_PartialPermutations.py
 
 '''
-Given: Positive integers n and k such that 100 >= n >= 0 and 10 >= k >= 0.
-Return: The total number of partial permutations P(n,k), modulo 1,000,000.
+Rosalind: Bioinformatics Stronghold
+Problem: Calculating Protein Mass
+URL: http://rosalind.info/problems/prtm/
+
+Given: A protein string P of length at most 1000 aa.
+Return: The total weight of P. Consult the monoisotopic mass table.
 '''
 
-import operator
-from itertools import permutations
-from collections import Counter
-from math import factorial
+def countPermutations(n, k):
+    count = 1
+    for i in range(n, n-k, -1):
+        count *= i
 
-def numPermutations(l):
-    num = factorial(len(numbers))
-    mults = Counter(numbers).values()
-    den = reduce(operator.mul, (factorial(v) for v in mults), 1)
-    counts = (num / den) % 1000000
-    return(counts)
+    print(count % 1000000)
 
-n = 21
-k = 7
-
-numbers = [x for x in range(1, n+1)]
-print(numPermutations(numbers))
+if __name__ == '__main__':
+    n = 90
+    k = 8
+    countPermutations(n, k)
