@@ -12,30 +12,20 @@ Return: For each protein possessing the N-glycosylation motif, output its given 
 from urllib2 import urlopen
 import re
 
-def parseFasta(file_name, ids):
-    ''' Reads a text file containing 1 or more fasta sequences,
-        returns a dictionary of all the seperate sequences '''
-    heads = []
-    seqs = {}
-
-    with open(file_name, 'r') as f:
-        for num, line in enumerate(f):
-            if '>' in line:
-                heads.append(num)
-    heads.append(sum(1 for line in open(file_name)))
-
-    f = open(file_name, 'r')
-    lines = f.readlines()
-    for i in range(len(heads)-1):
-        h = ids[i]
-        #h = lines[heads[i]].replace('\n', '')
-        l = lines[heads[i]+1:heads[i+1]]
-        seqs[h] = ''.join(l).replace('\n', '')
-
-    return seqs
-
+def parseSequence(fasta):
+    ''' Takes a FASTA formated sequence retrieved from uniprot and
+        returns only the protein sequence.
+    '''
+    seq = re.sub('^\>(.*)\n', '', fasta, 1)
+    seq = seq.replace('\n', '')
+    return(seq)
 
 def findMotifs(seq_list, pattern):
+    ''' Idetnifies the position(s) of a given motif in each of the
+        protein sequences. Returns a dicitonary containing the IDs and
+        corresponding motif locations. Sequences with no found motifs 
+        are ommitted.
+    '''
     pattern = re.compile(pattern)
     results = {}
 
@@ -54,26 +44,25 @@ def findMotifs(seq_list, pattern):
     return(sorted(results.items()))
 
 def main():
-    ''' Reads a text file of UniProt access IDs (seperated by newlines),
+    ''' Reads a text file of UniProt access IDs (seperated by new-lines),
         retrieves the protein sequences from UniProt, and identifies any
-        N-glycoslyation motifs '''
-    
+        N-glycoslyation motifs
+    '''
     pattern = '^N[A-O,Q-Z](S|T)[A-O,Q-Z]'
     
-    with open('rosalind_mprt.txt', 'r') as infile:
+    with open('problem_datasets/rosalind_mprt.txt', 'r') as infile:
         ids = infile.read().strip().split('\n')
-    '''
-    with open('rosalind_mprt_out.txt', 'w') as outfile:
-        for i in ids:
-            site = 'http://www.uniprot.org/uniprot/' + i + '.fasta'
-            html = urlopen(site).read()
-            outfile.write(html)
 
-        sequences = parseFasta(outfile)
-    '''
-    sequences = parseFasta('rosalind_mprt_out.txt', ids)
-    for key, val in findMotifs(sequences, pattern):
-        print(key + '\n' + val)
+    fastas = {}
+    for i in ids:
+        site = 'http://www.uniprot.org/uniprot/' + i + '.fasta'
+        html = urlopen(site).read()
+        seq = parseSequence(html)
+        fastas[i] = seq
 
+    with open('output/rosalind_mprt_out.txt', 'w') as outfile:
+        for key, val in findMotifs(fastas, pattern):
+            outfile.write(key + '\n' + val + '\n')
+    
 if __name__ == '__main__':
     main()
