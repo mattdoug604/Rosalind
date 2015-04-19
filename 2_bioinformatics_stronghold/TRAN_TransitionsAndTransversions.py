@@ -1,7 +1,10 @@
 #!/usr/bin/python
-# TRAN_TransitionsAndTransversions.py
 
 '''
+Rosalind: Bioinformatics Stronghold
+Problem: Transitions and Transversions
+URL: http://rosalind.info/problems/tran/
+
 Given: Two DNA strings s1 and s2 of equal length (at most 1 kbp).
 Return: The transition/transversion ratio R(s1,s2).
 '''

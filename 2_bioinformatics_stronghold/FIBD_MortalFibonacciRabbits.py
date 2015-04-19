@@ -1,10 +1,12 @@
 #!/usr/bin/python
-# FIBD_MortalFibonacciRabbits.py
 
 '''
+Rosalind: Bioinformatics Stronghold
+Problem: Mortal Fibonacci Rabbits
+URL: http://rosalind.info/problems/gc/
+
 Given: Positive integers n <= 100 and m <= 20.
-Return: The total number of pairs of rabbits that will remain after the
-    n-th month if all rabbits live for m months.
+Return: The total number of pairs of rabbits that will remain after the n-th month if all rabbits live for m months.
 '''
 
 def rabbits(months, life):
@@ -19,7 +21,7 @@ def rabbits(months, life):
                 ''' rabbits aging '''
                 new_rabbits[j+1] = rabbits[j]
             else:
-                ''' kill of old rabbits '''
+                ''' kill off old rabbits '''
                 rabbits[j] = 0
 
         rabbits = new_rabbits
@@ -30,8 +32,9 @@ def main():
     with open('problem_datasets/rosalind_fibd.txt', 'r') as infile:
         n, m = [int(i) for i in infile.read().strip().split(' ')]
 
-    answer = rabbits(n, m)
-    print(answer)
+    with open('output/rosalind_fibd_out.txt', 'w') as outfile:
+        answer = rabbits(n, m)
+        outfile.write(str(answer))
 
 if __name__ == '__main__':
     main()

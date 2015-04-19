@@ -1,21 +1,24 @@
 #!/usr/bin/python
-# Given: A DNA string s of length at most 1000 bp.
-# Return: The reverse complement t of s.
 
-dna = open("rosalind_revc.txt", "r")
-s = dna.read()
-t = []
+'''
+Rosalind: Bioinformatics Stronghold
+Problem: Complementing a Strand of DNA
+URL: http://rosalind.info/problems/revc/
 
-for nt in list(s):
-    if nt in "A":
-        t.append("T")
-    elif nt in "T":
-        t.append("A")
-    elif nt in "C":
-        t.append("G")
-    elif nt in "G":
-        t.append("C")
+Given: A DNA string s of length at most 1000 bp.
+Return: The reverse complement sc of s.
+'''
 
-t.reverse()
-t = ''.join(t)
-print t
+def main():
+    with open('problem_datasets/rosalind_revc.txt', 'r') as infile:
+        seq = infile.read().strip()
+
+    seq_dict = { 'A':'T', 'T':'A', 'G':'C', 'C':'G' }
+    revc = ''.join([seq_dict[base] for base in reversed(seq)])
+
+    with open('output/rosalind_revc_out.txt', 'w') as outfile:
+        print(revc)
+        outfile.write(revc)
+
+if __name__ == '__main__':
+    main()

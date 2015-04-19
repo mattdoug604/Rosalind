@@ -1,7 +1,10 @@
 #!/usr/bin/python
-# SIGN_EnumeratingOrientedGeneOrderings.py
 
 '''
+Rosalind: Bioinformatics Stronghold
+Problem: Enumerating Oriented Gene Orderings 
+URL: http://rosalind.info/problems/sign/
+
 Given: A positive integer n <= 6.
 Return: The total number of signed permutations of length n, followed by a list of all such permutations (you may list the signed permutations in any order).
 '''
@@ -31,7 +34,7 @@ def getPerms(n):
 def main(n):
     count, perms = getPerms(n)
 
-    with open('rosalind_sign_out.txt', 'w') as outfile:
+    with open('output/rosalind_sign_out.txt', 'w') as outfile:
         outfile.write(str(count))
         outfile.write('\n')
         for p in perms:
