@@ -3,29 +3,22 @@
 ''' This file contains a bunch of functions that I've been using in many of the
     Rosalind problems.
 '''
-import re
 
 def parseFasta(path):
-    ''' Reads a text file containing one or more FASTA sequences and seperates
-        them into a dictionary of sequence headers and corresponding sequences.
+    ''' Reads a text file containing one or more FASTA sequences and returns a
+        dictionary of ids and corresponding sequences.
     '''
-    headers = []
-    seqs = {}
-
+    fastas = {}
+    
     with open(path, 'r') as f:
-        for num, line in enumerate(f):
-            if '>' in line:
-                headers.append(num)
-    headers.append(sum(1 for line in open(path)))
+        for line in f.readlines():
+            if line.startswith('>'):
+                head = line[1:].strip()
+                fastas[head] = ''
+            else:
+                fastas[head] += line.strip()
 
-    with open(path, 'r') as f:
-        lines = f.readlines()
-        for i in range(len(headers)-1):
-            h = lines[headers[i]][1:].replace('\n', '')
-            l = lines[headers[i]+1:headers[i+1]]
-            seqs[h] = ''.join(l).replace('\n', '')
-
-    return(seqs)
+    return(fastas)
 
 def codonTable(seq_type='dna'):
     ''' Builds a dictionary of codons and corresponding amino acids '''
