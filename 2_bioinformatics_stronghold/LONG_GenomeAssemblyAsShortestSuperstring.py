@@ -9,57 +9,69 @@ Given: At most 50 DNA strings whose length does not exceed 1 kbp in FASTA format
 Return: A shortest superstring containing all the given strings (thus corresponding to a reconstructed chromosome).
 '''
 
+#from rosalind_problems import parseFasta
 import re
 
-def ParseFasta(file_name):
-    heads = []
-    seqs = {}
+def parseFasta(path):
+    ''' Reads a text file containing one or more FASTA sequences and returns a
+        dictionary of ids and corresponding sequences.
+    '''
+    fastas = {}
+    
+    with open(path, 'r') as f:
+        for line in f.readlines():
+            if line.startswith('>'):
+                head = line[1:].strip()
+                fastas[head] = ''
+            else:
+                fastas[head] += line.strip()
 
-    with open(file_name, 'r') as f:
-        for num, line in enumerate(f):
-            if '>' in line:
-                heads.append(num)
-    heads.append(sum(1 for line in open(file_name)))
+    return(fastas)
 
-    f = open(file_name, 'r')
-    lines = f.readlines()
-    for i in range(len(heads)-1):
-        h = lines[heads[i]].replace('\n', '')
-        l = lines[heads[i]+1:heads[i+1]]
-        seqs[h[1:]] = ''.join(l).replace('\n', '')
+def matchSeq(seq, seq_list):
+    ''' Starting with a length 1 less than the total length of a given sequence,
+        look for iteratively smaller areas of overlap with the other sequences
+        (down to just over half the length of the sequence). Stops at the first
+        found case of overlap and returns a superstring made by combining the
+        two sequences.
+    '''    
+    half = int(len(seq)/2)
+    for i in range(len(seq)-1, half, -1):
+        overlap = seq[len(seq)-i:]
 
-    return seqs
+        for seq2 in seq_list:
+            if seq2 != seq:
+                if seq2[:i] == overlap:
+                    return(seq[:len(seq)-i] + seq2)
 
-infile = "rosalind_long_test.txt"
-dataset = ParseFasta(infile).values()
+def assemble(seq_list):
+    ''' Gets a list of superstrings returned by taking two sequences and looking
+        for overlaps.
+    '''
+    new_list = []
+    for seq in seq_list:
+        match = matchSeq(seq, seq_list)
+        if match != None:
+            new_list.append(match)
 
-def FindOverlaps(sequences):
-    overlaps = []
-    for frag in sequences:                              # first fragment to compare
-        temp = []
-        for j in range(len(frag)/2+1, len(frag)+1):     # j = overlap size
-            for k in range(len(frag)-j+1):              # k = starting point
-                over = frag[k:k+j]
-                for frag2 in sequences:                 # compare against every other sample
-                    if frag <> frag2:                   # don't compare against self
-                        match = re.search(over, frag2)
-                        if match:
-                            start = match.span()[0]
-                            end = match.span()[1]
-                            if start <= 1:
-                                overlaps.append(frag[:k]+frag2[start:])
-                                #print frag, frag2, '->', over, '@', 'if', 'k=',k, 'j=',j, '(', start, ',', end, ')\t', frag[:k]+frag2[start:]
-                            else:
-                                overlaps.append(frag2[:start]+frag[k:])
-                                #print frag, frag2, '->', over, '@', 'else', 'k=',k, 'j=',j, '(', start, ',', end, ')\t', frag2[:start]+frag[k:]
-        #print ''
-        overlaps = list(set(overlaps))
-    #print '----------------'
-    return overlaps
+    return(new_list)
 
-contigs = FindOverlaps(dataset)
-contigs2 = FindOverlaps(contigs)
-print max(contigs2, key=len)
+def getContig(seq_list):
+    ''' Iteratively create overlapping superstrings until only one is left-
+        The shortest contig.
+    '''
+    while len(seq_list) > 1:
+        seq_list = assemble(seq_list)
 
-#ATTAGACCTGCCGGAATAC
-#ATTAGACCTGCCGGAATAC
+    return(seq_list[0])
+    
+def main(): 
+    seqs = list(parseFasta('problem_datasets/rosalind_long.txt').values())
+
+    with open('output/rosalind_long_out.txt', 'w') as f:
+        answer = getContig(seqs)
+        f.write(answer)
+        print('Shortest superstring is %i nucleotides long.' % len(answer))
+
+if __name__ == '__main__':
+    main()
