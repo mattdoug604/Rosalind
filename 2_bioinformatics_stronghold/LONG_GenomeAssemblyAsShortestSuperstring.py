@@ -9,24 +9,7 @@ Given: At most 50 DNA strings whose length does not exceed 1 kbp in FASTA format
 Return: A shortest superstring containing all the given strings (thus corresponding to a reconstructed chromosome).
 '''
 
-#from rosalind_problems import parseFasta
-import re
-
-def parseFasta(path):
-    ''' Reads a text file containing one or more FASTA sequences and returns a
-        dictionary of ids and corresponding sequences.
-    '''
-    fastas = {}
-    
-    with open(path, 'r') as f:
-        for line in f.readlines():
-            if line.startswith('>'):
-                head = line[1:].strip()
-                fastas[head] = ''
-            else:
-                fastas[head] += line.strip()
-
-    return(fastas)
+from rosalind_functions import parseFasta
 
 def matchSeq(seq, seq_list):
     ''' Starting with a length 1 less than the total length of a given sequence,
