@@ -9,7 +9,7 @@ Given: A collection of n trees (n <= 40) in Newick format, with each tree contai
 Return: A collection of n positive integers, for which the kth integer represents the distance between xk and yk in Tk.
 '''
 
-def find_LCA(t, a, b):
+def find_lca(t, a, b):
     '''  Find the lowest common ancestor of both nodes being compared. Returns a partially complete
         list (unless the LCA is the root of the tree) of each level of the tree that contains the LCA, and
         the level of the tree containing the LCA.
@@ -62,12 +62,12 @@ def distance_to_lca(lca, node):
     return(dist)
 
 
-def find_distance(t):
+def distance_between_nodes(t):
     ''' Finds the pairwise distance between two nodes in a rooted tree. '''
     tree = t[0]
     a, b = t[1].split(' ')
     
-    subtrees, lca = find_LCA(tree, a, b)
+    subtrees, lca = find_lca(tree, a, b)
     dist = 2 + distance_to_lca(subtrees[lca:], a) + distance_to_lca(subtrees[lca:], b)
     
     return(dist)
@@ -79,7 +79,7 @@ def main():
 
     answer = []
     for t in trees:
-        answer.append(find_distance(t))
+        answer.append(distance_between_nodes(t))
 
     print(' '.join(map(str, answer)))
 
