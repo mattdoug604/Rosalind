@@ -10,6 +10,10 @@ Return: A collection of n positive integers, for which the kth integer represent
 '''
 
 def find_LCA(t, a, b):
+    '''  Find the lowest common ancestor of both nodes being compared. Returns a partially complete
+        list (unless the LCA is the root of the tree) of each level of the tree that contains the LCA, and
+        the level of the tree containing the LCA.
+    '''
     level = 0
     pos = []
     subtrees = []
@@ -28,22 +32,21 @@ def find_LCA(t, a, b):
             subtrees[level-1].append(sub)
             level -= 1
             
-            #check if subtree contains both nodes
             if a in sub and b in sub:
                return(subtrees, level)
 
     return(subtrees, level)
 
-def distance_to_lca(subtrees, lca, node):
+
+def distance_to_lca(lca, node):
+    ''' Returns the distance from a given node to the LCA. '''
     binary = False
+    binary_weight = lambda binary: 1 if binary else 2
     
-    # for each level in the tree...
-    for i in range(lca, len(subtrees)):
+    for i in range(len(lca)):
         includes_node = False
-
-        # for each node (and children) in that level...
-        for sub in subtrees[i]:
-
+        
+        for sub in lca[i]:
             if ',' in sub:
                 binary = True
 
@@ -52,49 +55,23 @@ def distance_to_lca(subtrees, lca, node):
                 break
 
         if includes_node == False:
-            if binary == True:
-                dist = i - lca - 1
-            else:
-                dist = i - lca - 2
-                
+            dist = i - binary_weight(binary)
             return(dist)
 
-    if binary == True:
-        dist = len(subtrees) - lca - 1
-    else:
-        dist = len(subtrees) - lca - 2
-        
+    dist = len(lca) - binary_weight(binary)
     return(dist)
-            
+
 
 def find_distance(t):
+    ''' Finds the pairwise distance between two nodes in a rooted tree. '''
     tree = t[0]
     a, b = t[1].split(' ')
     
     subtrees, lca = find_LCA(tree, a, b)
-    dist = 2 + distance_to_lca(subtrees, lca, a) + distance_to_lca(subtrees, lca, b)
+    dist = 2 + distance_to_lca(subtrees[lca:], a) + distance_to_lca(subtrees[lca:], b)
     
     return(dist)
     
-
-def check_answer(ans_a, file):
-    from rosalind_functions import check_nwck
-    
-    ''' Optional: check answers '''
-    mismatches = []
-    
-    ans_b = check_nwck(file)
-    for i in range(len(ans_a)):
-        if ans_a[i] != ans_b[i]:
-            mismatches.append(i)
-
-    if len(mismatches) <= 0:
-        print('no mismatches!\n', ' '.join(map(str, ans_a)), sep='')
-    else:
-        print('mismatches at: ',
-              ' '.join(map(str, mismatches)), '\n',
-              ' '.join(map(str, ans_a)),  '\n',
-              ' '.join(map(str, ans_b)),  sep='')
 
 def main():
     with open('problem_datasets/rosalind_nwck.txt' ,'r') as infile:
@@ -104,7 +81,6 @@ def main():
     for t in trees:
         answer.append(find_distance(t))
 
-    #check_answer(answer, 'problem_datasets/rosalind_nwck.txt')
     print(' '.join(map(str, answer)))
 
 if __name__ == '__main__':
