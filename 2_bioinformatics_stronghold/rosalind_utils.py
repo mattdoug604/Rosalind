@@ -32,29 +32,3 @@ def codonTable(seq_type='dna'):
     codon_table = dict(zip(codons, amino_acids))
 
     return(codon_table)
-
-
-def check_nwck(file):
-    from io import StringIO
-    from Bio import Phylo
-    import networkx
-
-    answers = []
-    
-    with open(file, 'r') as f:
-        lines = map(lambda l: l.strip(), f.readlines())
-        lines = [line for line in lines if line]
-
-    for i in range(int(len(lines)/2)):
-        handle = StringIO(lines[2*i])
-        tree = Phylo.read(handle, "newick")
-        names = lines[2*i+1].split()
-
-        t =  Phylo.to_networkx(tree)
-
-        na = [node for node in t.nodes() if node.name == names[0]][0]
-        nb = [node for node in t.nodes() if node.name == names[1]][0]
-
-        answers.append(len(networkx.shortest_path(t, na, nb))-1)
-
-    return(answers)
