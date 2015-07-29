@@ -39,23 +39,7 @@ GAGGA->GATGA
 TTTCC->TTTCA
 '''
 
-#from rosalind_functions import parseFasta
-
-def parseFasta(path):
-    ''' Reads a text file containing one or more FASTA sequences and returns a
-        dictionary of ids and corresponding sequences.
-    '''
-    fastas = {}
-
-    with open(path, 'r') as f:
-        for line in f.readlines():
-            if line.startswith('>'):
-                head = line[1:].strip()
-                fastas[head] = ''
-            else:
-                fastas[head] += line.strip()
-
-    return(fastas)
+from rosalind_utils import parseFasta
 
 
 def rev_comp(string):
