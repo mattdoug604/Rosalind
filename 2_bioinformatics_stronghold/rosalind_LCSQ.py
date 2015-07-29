@@ -20,23 +20,8 @@ EXAMPLE OUTPUT:
 AACTGG
 '''
 
-#from rosalind_functions import parseFasta
+from rosalind_utils import parseFasta
 from itertools import combinations
-
-def parseFasta(path):
-    ''' Reads a text file containing one or more FASTA sequences and returns a
-        dictionary of ids and corresponding sequences.
-    '''
-    fastas = []
-
-    with open(path, 'r') as f:
-        for line in f.readlines():
-            if line.startswith('>'):
-                fastas.append('')
-            else:
-                fastas[-1] += line.strip()
-
-    return(fastas)
 
 
 def len_table(s, t, m, n):
@@ -75,7 +60,7 @@ def longest_sub(s, t):
     
         
 def main():
-    strings = parseFasta('problem_datasets/rosalind_lcsq.txt')
+    strings = list(parseFasta('problem_datasets/rosalind_lcsq.txt').values())
     seq = longest_sub(strings[0], strings[1])
 
     with open('output/rosalind_lcsq_out.txt', 'w') as outfile:
