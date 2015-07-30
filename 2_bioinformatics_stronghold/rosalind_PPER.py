@@ -2,11 +2,11 @@
 
 '''
 Rosalind: Bioinformatics Stronghold
-Problem: Calculating Protein Mass
-URL: http://rosalind.info/problems/prtm/
+Problem: Partial Permutations
+URL: http://rosalind.info/problems/pper/
 
-Given: A protein string P of length at most 1000 aa.
-Return: The total weight of P. Consult the monoisotopic mass table.
+Given: Positive integers n and k such that 100>=n>0 and 10>=k>0.
+Return: The total number of partial permutations P(n,k), modulo 1,000,000.
 '''
 
 def countPermutations(n, k):
