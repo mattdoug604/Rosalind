@@ -21,8 +21,6 @@ AACTGG
 '''
 
 from rosalind_utils import parseFasta
-from itertools import combinations
-
 
 def len_table(s, t, m, n):
     l = [[[] for x in range(n+1)] for y in range(m+1)]
