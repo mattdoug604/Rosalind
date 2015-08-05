@@ -85,12 +85,10 @@ def distance_between_nodes(t):
     ''' Finds the pairwise distance between two nodes in a rooted tree. '''
     tree = t[0]
     a, b = t[1].split(' ')
-    #print(a, '->', b,)
     
     subtrees, lvl = find_lca(tree, a, b)
     dist = distance_to_lca(subtrees[lvl:], a) + distance_to_lca(subtrees[lvl:], b)
     
-    #print()
     return(dist)
     
 
@@ -101,15 +99,9 @@ def main():
     answer = []
     for t in trees:
         answer.append(distance_between_nodes(t))
-    #answer.append(distance_between_nodes(trees[2]))
 
     print(' '.join(map(str, answer)))
 
+
 if __name__ == '__main__':
     main()
-
-'''
-1412 650 1513 417 1787 454 852 1433 414 1461 850 1047 334 919 823 572 663 929
-866 344 1176 1499 584 1023 776 261 606 813 1123 400 781 735 1235 718 617 1175
-1097 263
-'''
