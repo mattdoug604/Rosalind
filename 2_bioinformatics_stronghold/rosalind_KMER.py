@@ -11,7 +11,8 @@ Return: The 4-mer composition of s.
 
 from itertools import product
 
-def countMers(seq, k):
+
+def count_mers(seq, k):
     ''' Generate a dictionary of all possible k-mers, then iterate throught the
         sequence counting each k-mer present.
     '''
@@ -22,9 +23,10 @@ def countMers(seq, k):
 
     return(mer_dict)
 
+
 def composition(seq, k):
     ''' Count, sort, and arrange k-mer counts into a readable array. '''
-    mer_dict = countMers(seq, k)
+    mer_dict = count_mers(seq, k)
 
     array = []
     for i in sorted(mer_dict):
@@ -32,6 +34,7 @@ def composition(seq, k):
 
     array = ' '.join([str(i) for i in array])
     return(array)
+
 
 def main():
     k = 4
@@ -41,6 +44,7 @@ def main():
 
     with open('output/rosalind_kmer_out.txt', 'w') as outfile:
         outfile.write(composition(seq, k))
+
     
 if __name__ == '__main__':
     main()
