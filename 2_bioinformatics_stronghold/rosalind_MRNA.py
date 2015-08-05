@@ -29,8 +29,7 @@ UGA Stop   CGA R      AGA R      GGA G
 UGG W      CGG R      AGG R      GGG G
 '''
 
-def main():
-    count = 1
+def count_mRNA(seq):
     codons = {'I':3, 'L':6, 'V':4, 'F':2,
               'M':1, 'C':2, 'A':4, 'G':4, 
               'P':4, 'T':4, 'S':6, 'Y':2, 
@@ -38,14 +37,23 @@ def main():
               'E':2, 'D':2, 'K':2, 'R':6,
               '*':3 }
 
+    if seq[-1] != '*':
+        seq += '*'
+        
+    count = 1
+    for s in seq:
+        count *= codons[s]
+
+    return(count)
+
+
+def main():
     with open('problem_datasets/rosalind_mrna.txt', 'r') as infile:
         seq = infile.read().strip()
 
-    seq += '*'
-    for aa in seq:
-        count *= codons[aa]
+    answer = count_mRNA(seq)
+    print(answer % 1000000)
 
-    print(count % 1000000)
 
 if __name__ == '__main__':
     main()
