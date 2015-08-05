@@ -3,7 +3,7 @@
 '''
 Rosalind: Bioinformatics Stronghold
 Problem: Mortal Fibonacci Rabbits
-URL: http://rosalind.info/problems/gc/
+URL: http://rosalind.info/problems/fibd/
 
 Given: Positive integers n <= 100 and m <= 20.
 Return: The total number of pairs of rabbits that will remain after the n-th month if all rabbits live for m months.
@@ -18,11 +18,9 @@ def rabbits(months, life):
         
         for j in range(len(rabbits)):
             if j < len(rabbits)-1:
-                ''' rabbits aging '''
-                new_rabbits[j+1] = rabbits[j]
+                new_rabbits[j+1] = rabbits[j]   # rabbits aging
             else:
-                ''' kill off old rabbits '''
-                rabbits[j] = 0
+                rabbits[j] = 0                  # kill off old rabits
 
         rabbits = new_rabbits
 
@@ -34,6 +32,7 @@ def main():
 
     with open('output/rosalind_fibd_out.txt', 'w') as outfile:
         answer = rabbits(n, m)
+        print(answer)
         outfile.write(str(answer))
 
 if __name__ == '__main__':
