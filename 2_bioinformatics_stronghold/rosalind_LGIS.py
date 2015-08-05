@@ -17,10 +17,8 @@ def longest_seq(n, seq, op='>'):
     ''' Find the longest subsequence (longest increasing subsequence by default)
         or a given sequence.
     '''
-    # contains the max length of sub seq. ending at array[i]
-    q = [0] * n
-    # contains predecessor of the sub seq. ending at array[i]
-    p = [-1] * n
+    q = [0] * n     # contains the max length of sub seq. ending at array[i]
+    p = [-1] * n    # contains predecessor of the sub seq. ending at array[i]
 
     for i in range(n):
         maxLen = 0
@@ -51,9 +49,10 @@ def main():
         n = int(infile.readline())
         perm = list(map(int, infile.readline().split(' ')))
 
+    lgis = ' '.join(map(str, longest_seq(n, perm, '>')))
+    lgds = ' '.join(map(str, longest_seq(n, perm, '<')))
+        
     with open('output/rosalind_lgis_out.txt', 'w') as outfile:
-        lgis = ' '.join(map(str, longest_seq(n, perm, '>')))
-        lgds = ' '.join(map(str, longest_seq(n, perm, '<')))
         outfile.write(lgis + '\n' + lgds)
 
 if __name__ == '__main__':
