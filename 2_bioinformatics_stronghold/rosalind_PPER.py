@@ -16,6 +16,7 @@ def countPermutations(n, k):
 
     print(count % 1000000)
 
+
 if __name__ == '__main__':
     n = 90
     k = 8
