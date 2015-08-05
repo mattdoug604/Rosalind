@@ -20,14 +20,17 @@ def binomial(k, n):
 
     return(total)
 
+
 def prob(k, n):
     return(binomial(n, 2**k) * 0.25**n * 0.75**(2**k - n))
+
 
 def getProb(k, n):
     ''' The probability that N AaBb organisms belong to the k-th generation is
         1 minus the sum of the probability that they don't.
     '''
     return(1 - sum(prob(k, i) for i in range(n)))
+
 
 def main():
     ''' Read a text file containing two integers, k and n, respectively.
@@ -37,6 +40,7 @@ def main():
         k, n = map(int, infile.read().strip().split(' '))
 
     print('%.3f' % getProb(k, n))
+
 
 if __name__ == '__main__':
     main()
