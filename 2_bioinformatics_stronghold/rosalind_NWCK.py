@@ -83,5 +83,6 @@ def main():
 
     print(' '.join(map(str, answer)))
 
+
 if __name__ == '__main__':
     main()
