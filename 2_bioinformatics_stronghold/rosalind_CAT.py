@@ -24,26 +24,22 @@ def count_matchings(i, j):
         and 'C' as 'G'.
     ''' 
     if pairs[i][j] != -1:
-        print('cond #1', i, j)
         return(pairs[i][j])
 
     sub = s[i:j+1]
     
     result = 0
     if i > j:
-        print('cond #2', i, j)
         result = 1
     elif j == 1 and match[s[i] == s[j]]:
-        print('cond #3', i, j)
         result = 1
     else:
-        print('cond #4', i, j)
         result = sum([(count_matchings(i+1, k-1) * count_matchings(k+1, j))
                       for k in range(i+1, j+1, 2)
                       if match[s[i]] == s[k]])
 
-    print('-> cond #5', i, j)
     pairs[i][j] = result
+    
     return(result)
 
     
