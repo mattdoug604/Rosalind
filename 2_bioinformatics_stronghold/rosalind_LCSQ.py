@@ -20,7 +20,8 @@ EXAMPLE OUTPUT:
 AACTGG
 '''
 
-from rosalind_utils import parseFasta
+from rosalind_utils import parse_fasta
+
 
 def len_table(s, t, m, n):
     l = [[[] for x in range(n+1)] for y in range(m+1)]
@@ -58,7 +59,7 @@ def longest_sub(s, t):
     
         
 def main():
-    strings = list(parseFasta('problem_datasets/rosalind_lcsq.txt').values())
+    strings = list(parse_fasta('problem_datasets/rosalind_lcsq.txt').values())
     seq = longest_sub(strings[0], strings[1])
 
     with open('output/rosalind_lcsq_out.txt', 'w') as outfile:
