@@ -11,6 +11,7 @@ Return: The total number of permutations of length n, followed by a list of all 
 
 import itertools
 
+
 def main():
     with open('problem_datasets/rosalind_perm.txt', 'r') as infile:
         n = int(infile.read().strip())
@@ -22,6 +23,7 @@ def main():
         outfile.write(str(len(perms))+'\n')
         for i in perms:
             outfile.write(' '.join(i)+'\n')
+
 
 if __name__ == '__main__':
     main()
