@@ -9,9 +9,9 @@ Given: A collection of k (k <= 100) DNA strings of length at most 1 kbp each in 
 Return: A longest common substring of the collection. (If multiple solutions exist, you may return any single solution.)
 '''
 
-from rosalind_functions import parseFasta
+from rosalind_utils import parse_fasta
 
-def longestMotif(seq_list):
+def longest_motif(seq_list):
     ''' Finds the longest common substring (motif) from all the sequences.
         Note: the script only returns the *first* motif it finds '''
     first_seq = min(seq_list, key=len)
@@ -35,9 +35,9 @@ def longestMotif(seq_list):
             
 
 def main():
-    sequences = list(parseFasta('problem_datasets/rosalind_lcsm.txt').values())
+    sequences = list(parse_fasta('problem_datasets/rosalind_lcsm.txt').values())
 
-    answer = longestMotif(sequences)
+    answer = longest_motif(sequences)
     print(answer)
 
 if __name__ == '__main__':
