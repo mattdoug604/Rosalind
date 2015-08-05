@@ -36,6 +36,7 @@ def split_pair(pair):
     
     return(p1, p2)
 
+
 def breakpoint(p):
     ''' Returns a list of elements in the given permutation where a breakpoint
         occurs.
@@ -48,6 +49,7 @@ def breakpoint(p):
     
     return(bp)
 
+
 def printRound(p, a, b):
     ''' Optional: format and print the current reversal. '''
     if 10 in p[a:b]:
@@ -56,6 +58,7 @@ def printRound(p, a, b):
         x = 2
     print(p, ' - ', '(', a, ',', b-1, ')', sep='')
     print(' ', ' '*(a*3), '-'*((b-a)*3-x), sep='')
+
 
 def reversal_dist(p1, p2):
     ''' Determine the minimum reversal distance for a pair of permutations by
@@ -119,18 +122,17 @@ def reversal_dist(p1, p2):
 
         perm_list = new_perms
 
+
 def main():
-    ''' Read the input .txt file. '''
     with open('problem_datasets/rosalind_rear.txt', 'r') as infile:
         permutations = [x.split('\n') for x in infile.read().strip().split('\n\n')]
         permutations = [split_pair(pair) for pair in permutations]
 
-    ''' Get the reversal distances. '''
     counts = [min(reversal_dist(pair[0], pair[1]),
                   reversal_dist(pair[1], pair[0])) for pair in permutations]
 
-    ''' Print the answer. '''
     print(' '.join(map(str, counts)))
+
 
 if __name__ == '__main__':
     main()
