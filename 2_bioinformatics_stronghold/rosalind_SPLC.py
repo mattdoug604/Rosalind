@@ -9,11 +9,12 @@ Given: A DNA string s (of length at most 1 kbp) and a collection of substrings o
 Return: A protein string resulting from transcribing and translating the exons of s. (Note: Only one solution will exist for the dataset provided.)
 '''
 
-from rosalind_functions import parseFasta, codonTable
+from rosalind_utils import parse_fasta, codon_table
+
 
 def translate(string):
     ''' rosalind problems sometimes have 'rna' sequences with thymine in them '''
-    codons = codonTable()
+    codons = codon_table()
     peptide = ''
     
     ''' translate the rna sequence '''
@@ -29,21 +30,25 @@ def translate(string):
     else:
         return('No exon found.')
 
-def spliceRNA(rna, introns):
+
+def splice_RNA(rna, introns):
     for i in introns:
         rna = rna.replace(i, '')
         
     return(rna)
 
-def main():
-    sequences = parseFasta('problem_datasets/rosalind_splc.txt')
-    rna = max(sequences.values(), key=len)
-    introns = [i for i in sequences.values() if i != rna]
 
-    spliced = spliceRNA(rna, introns)
+def main():
+    sequences = list(parse_fasta('problem_datasets/rosalind_splc.txt').values())
+    rna = max(sequences, key=len)
+    introns = [i for i in sequences if i != rna]
+
+    spliced = splice_RNA(rna, introns)
     peptide = translate(spliced)
+
     with open('output/rosalind_splc_out.txt', 'w') as outfile:
         outfile.write(peptide)
+
 
 if __name__ == '__main__':
     main()

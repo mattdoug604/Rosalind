@@ -72,11 +72,10 @@ def main():
         
         for i in format_answer(root):
             answer = ' '.join(map(str, i))
-            outfile.write(answer)
-            outfile.write('\n')
+            outfile.write(answer + '\n')
             line_count += 1
 
-        print(line_count, 'lines written.')
+        print('The adjacency list is', line_count, 'lines long.')
     
 
 if __name__ == '__main__':

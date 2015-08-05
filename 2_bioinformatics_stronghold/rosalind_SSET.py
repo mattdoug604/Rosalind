@@ -17,15 +17,11 @@ EXAMPLE OUTPUT:
 8
 '''
 
-def subsets(n):
-    return(2**n)
-
-
 def main():
     with open('problem_datasets/rosalind_sset.txt', 'r') as infile:
         n = int(infile.readline().strip())
 
-    answer = subsets(n) % 1000000
+    answer = 2**n % 1000000
     print(answer)
 
 

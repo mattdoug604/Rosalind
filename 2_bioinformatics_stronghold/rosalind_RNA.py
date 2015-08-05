@@ -18,5 +18,6 @@ def transcribe():
     with open('output/rosalind_rna_out.txt', 'w') as outfile:
         outfile.write(rna)
 
+
 if __name__ == '__main__':
     transcribe()

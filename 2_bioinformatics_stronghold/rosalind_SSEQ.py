@@ -9,6 +9,9 @@ Given: Two DNA strings s and t (each of length at most 1 kbp) in FASTA format.
 Return: One collection of indices of s in which the symbols of t appear as a subsequence of s. If multiple solutions exist, you may return any one.
 '''
 
+from rosalind_utils import parse_fasta
+
+
 def findSubSeq(s, t):
     ''' Finds the indices of the symbols in 't' that appear as a subsequence
         of 's'. The symbols in 't' are a subsequence if the appear in the same
@@ -28,24 +31,17 @@ def findSubSeq(s, t):
             
     return(index)   
 
+
 def main():
     ''' The input file for this problem contains two FASTA sequences, which can
         be split into seperate sequences based on the position of the header
         lines.
     '''
-    with open('problem_datasets/rosalind_sseq.txt', 'r') as infile:
-        lines = infile.readlines()[1:]
-
-    for i, line in enumerate(lines):
-        if line.startswith('>'):
-            header = i
-            break
-
-    s = ''.join(lines[:header]).replace('\n', '')
-    t = ''.join(lines[header+1:]).replace('\n', '')
+    s, t = list(parse_fasta('problem_datasets/rosalind_sseq.txt').values())[:2]
 
     pos = findSubSeq(s, t)
     print(' '.join(pos))
+
 
 if __name__ == '__main__':
     main()

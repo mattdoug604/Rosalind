@@ -11,7 +11,8 @@ Return: The total number of signed permutations of length n, followed by a list 
 
 import itertools
 
-def getPerms(n):
+
+def get_perms(n):
     nums = [i for i in range(1, n+1)]
     start_perms = list(itertools.permutations(nums, n))
     new_perms = list()
@@ -29,18 +30,23 @@ def getPerms(n):
                 new_perms.append(temp)
 
     new_perms = [' '.join(map(str, x)) for x in new_perms]
+
     return(len(new_perms), new_perms)
 
+
 def main(n):
-    count, perms = getPerms(n)
+    with open('problem_datasets/rosalind_sign.txt', 'r') as infile:
+        n = int(infile.read().strip())
+
+    count, perms = get_perms(n)
 
     with open('output/rosalind_sign_out.txt', 'w') as outfile:
-        outfile.write(str(count))
-        outfile.write('\n')
+        outfile.write(str(count) + '\n')
+        print(count, 'signed permutations.')
         for p in perms:
-            outfile.write(p)
-            outfile.write('\n')
-    
+            outfile.write(p + '\n')
+
+  
 if __name__ == '__main__':
     n = 5
     main(n)

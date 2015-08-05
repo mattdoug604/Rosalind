@@ -34,6 +34,7 @@ def breakpoint(p):
     
     return(bp)
 
+
 def printRound(p, a, b):
     ''' Optional: format and print the current reversal. '''
     if 10 in p[a:b]:
@@ -42,6 +43,7 @@ def printRound(p, a, b):
         x = 2
     print(p, ' - ', '(', a, ',', b-1, ')', sep='')
     print(' ', ' '*(a*3), '-'*((b-a)*3-x), sep='')
+
 
 def reversal_dist(p1, p2):
     ''' Determine the minimum reversal distance for a pair of permutations by
@@ -107,6 +109,7 @@ def reversal_dist(p1, p2):
 
         count += 1
 
+
 def checkAnswer(to_match, to_reverse, revs):
     ''' Optional: check the reversal list to make sure it ends up with the
         correct permutation.
@@ -125,14 +128,13 @@ def checkAnswer(to_match, to_reverse, revs):
     else:
         print(temp, '<-- Incorrect Match!\n')
         return(False)
+
     
 def main():
     ''' Read the input .txt file. '''
     with open('problem_datasets/rosalind_sort.txt', 'r') as infile:
         pair = infile.read().strip().split('\n')
         permA, permB = [list(map(int, p.split(' '))) for p in pair]
-
-    print('A: ', permA, '\nB: ', permB, '\n',  sep='')
 
     ''' Get the reversal distances. '''
     perm, count, revs = reversal_dist(permA, permB)
@@ -143,6 +145,7 @@ def main():
     print(count)
     for i in range(len(revs), 0, -2):
         print(revs[i-2], revs[i-1])
+
 
 if __name__ == '__main__':
     main()

@@ -11,6 +11,7 @@ Return: The minimum number of edges that can be added to the graph to produce a 
 
 def countEdges(n, adj_list):
     return(n - len(adj_list) - 1)
+
     
 def main(): 
     with open('problem_datasets/rosalind_tree.txt', 'r') as infile:
@@ -18,6 +19,7 @@ def main():
         adj_list = infile.readlines()
             
     print(countEdges(n, adj_list))
+
 
 if __name__ == '__main__':
     main()

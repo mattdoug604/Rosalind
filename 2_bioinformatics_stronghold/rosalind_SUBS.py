@@ -20,5 +20,6 @@ def main():
 
     print(' '.join(map(str, pos)))
 
+
 if __name__ == '__main__':
     main()
