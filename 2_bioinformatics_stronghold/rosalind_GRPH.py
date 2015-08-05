@@ -9,40 +9,25 @@ Given: A collection of DNA strings in FASTA format having total length at most 1
 Return: The adjacency list corresponding to O3. You may return edges in any order.
 '''
 
-def parseFasta(path):
-    headers = []
-    seqs = {}
+from rosalind_utils import parse_fasta
 
-    with open(path, 'r') as f:
-        for num, line in enumerate(f):
-            if '>' in line:
-                headers.append(num)
-    headers.append(sum(1 for line in open(path)))
-
-    with open(path, 'r') as f:
-        lines = f.readlines()
-        for i in range(len(headers)-1):
-            h = lines[headers[i]][1:].replace('\n', '')
-            l = lines[headers[i]+1:headers[i+1]]
-            seqs[h] = ''.join(l).replace('\n', '')
-
-    return(seqs)
-
-def overlapSeqs(sequences):
-    for head1, seq1 in sequences.iteritems():
+def overlap_seqs(sequences):
+    for head1, seq1 in sequences.items():
         suffix = seq1[-3:]
-        for head2, seq2 in sequences.iteritems():
+        for head2, seq2 in sequences.items():
             prefix = seq2[:3]
-            if seq1 <> seq2:
+            if seq1 != seq2:
                 if suffix == prefix:
                     yield(' '.join([head1, head2]))
 
+
 def main():
-    dataset = parseFasta("problem_datasets/rosalind_grph.txt")
+    dataset = parse_fasta("problem_datasets/rosalind_grph.txt")
     
     with open('output/rosalind_grph_out.txt', 'w') as outfile:
-        for line in overlapSeqs(dataset):
+        for line in overlap_seqs(dataset):
             outfile.write(line + '\n')
+
 
 if __name__ == '__main__':
     main()
