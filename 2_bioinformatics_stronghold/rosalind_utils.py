@@ -1,10 +1,10 @@
 #!/usr/bin/python
 
-''' This file contains a bunch of functions that I've been using in many of the
-    Rosalind problems.
+''' This file contains a collection of functions that I've been using repeatedly
+    in the Rosalind problems.
 '''
 
-def parseFasta(path):
+def parse_fasta(path):
     ''' Reads a text file containing one or more FASTA sequences and returns a
         dictionary of ids and corresponding sequences.
     '''
@@ -21,13 +21,13 @@ def parseFasta(path):
     return(fastas)
 
 
-def codonTable(seq_type='dna'):
+def codon_table(base_type='T'):
     ''' Builds a dictionary of codons and corresponding amino acids '''
-    bases = ["T", "C", "A", "G"]
-    if seq_type == 'rna':
+    bases = ['T', 'C', 'A', 'G']
+    if base_type == 'U':
         bases[0] = 'U'
     
-    amino_acids = "FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG"
+    amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'
     codons = [a+b+c for a in bases for b in bases for c in bases]
     codon_table = dict(zip(codons, amino_acids))
 
