@@ -21,6 +21,7 @@ EXAMPLE OUTPUT:
 def count_bases(s, a, b):
     a_count = s.count(a)
     b_count = s.count(b)
+    
     return(max(a_count, b_count), min(a_count, b_count))
 
 
@@ -46,12 +47,14 @@ def max_matches(s):
 
     return(matches)
 
+
 def main():
     with open('problem_datasets/rosalind_mmch.txt', 'r') as infile:
         next(infile)
         s = infile.read().replace('\n', '')
 
     print(max_matches(s))
+
 
 if __name__ == '__main__':
     main()
