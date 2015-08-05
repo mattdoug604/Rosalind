@@ -9,7 +9,8 @@ Given: At most 50 DNA strings whose length does not exceed 1 kbp in FASTA format
 Return: A shortest superstring containing all the given strings (thus corresponding to a reconstructed chromosome).
 '''
 
-from rosalind_functions import parseFasta
+from rosalind_utils import parse_fasta
+
 
 def matchSeq(seq, seq_list):
     ''' Starting with a length 1 less than the total length of a given sequence,
@@ -27,6 +28,7 @@ def matchSeq(seq, seq_list):
                 if seq2[:i] == overlap:
                     return(seq[:len(seq)-i] + seq2)
 
+
 def assemble(seq_list):
     ''' Gets a list of superstrings returned by taking two sequences and looking
         for overlaps.
@@ -39,22 +41,25 @@ def assemble(seq_list):
 
     return(new_list)
 
+
 def getContig(seq_list):
-    ''' Iteratively create overlapping superstrings until only one is left-
-        The shortest contig.
+    ''' Iteratively create overlapping superstrings until only one is left (i.e.
+        the shortest contig).
     '''
     while len(seq_list) > 1:
         seq_list = assemble(seq_list)
 
     return(seq_list[0])
+
     
 def main(): 
-    seqs = list(parseFasta('problem_datasets/rosalind_long.txt').values())
-
+    seqs = list(parse_fasta('problem_datasets/rosalind_long.txt').values())
+    answer = getContig(seqs)
+    print('Shortest superstring is %i nucleotides long.' % len(answer))
+    
     with open('output/rosalind_long_out.txt', 'w') as f:
-        answer = getContig(seqs)
         f.write(answer)
-        print('Shortest superstring is %i nucleotides long.' % len(answer))
+
 
 if __name__ == '__main__':
     main()
