@@ -11,28 +11,35 @@ Return: An array B having the same length as A in which B[k] represents the comm
 
 import math
 
+def prob(seq, gc):
+    p = []
+    
+    for i in range(len(gc)):
+        percent = 1
+        prob_gc = gc[i]/2
+        prob_at = (1-gc[i])/2
+        
+        for j in range(len(seq)):
+            nt = seq[j]
+            if nt == 'G' or nt == 'C':
+                percent = percent*prob_gc
+            elif nt == 'A' or nt == 'T':
+                percent = percent*prob_at
+
+        percent = math.log10(percent)
+        p.append('%.3f' % percent)
+
+    return(p)
+
+    
 def main():
     with open('problem_datasets/rosalind_prob.txt', 'r') as infile:
         seq, gc = infile.read().strip().split('\n')
         gc = [float(x) for x in gc.split(' ')]
 
-    answer = []
-    for i in range(len(gc)):
-        percent = 1
-        probGC = gc[i]/2
-        probAT = (1-gc[i])/2
-        
-        for j in range(len(seq)):
-            nt = seq[j]
-            if nt == 'C' or nt == 'G':
-                percent = percent*probGC
-            elif nt == 'A' or nt == 'T':
-                percent = percent*probAT
-
-        percent = math.log10(percent)
-        answer.append('%.3f' % percent)
-
+    answer = prob(seq, gc)
     print(' '.join(answer))
+
 
 if __name__ == '__main__':
     main()
