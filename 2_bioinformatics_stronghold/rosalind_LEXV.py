@@ -21,6 +21,7 @@ NA NAD NAN NAA A AD ADD ADN ADA AN AND ANN ANA AA AAD AAN AAA
 
 from itertools import product
 
+
 def generate_strings(alpha, n):
     strings = []
     for i in range(1, n+1):
@@ -40,9 +41,7 @@ def main():
     
     with open('output/rosalind_lexv_out.txt', 'w') as outfile:
         for s in strings:
-            outfile.write(s)
-            outfile.write('\n')
-            #print(s)
+            outfile.write(s + '\n')
 
 
 if __name__ == '__main__':
