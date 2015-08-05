@@ -27,23 +27,12 @@ EXAMPLE OUTPUT:
 0.10000 0.30000 0.20000 0.00000
 '''
 
-def parse_fasta(path):
-    ''' Reads a text file containing one or more FASTA sequences and returns a
-    list of the sequences.
-    '''
-    with open(path, 'r') as f:
-        strings = []
-        
-        for line in f.readlines():
-            if line.startswith('>'):
-                strings.append('')
-            else:
-                strings[-1] += line.strip()
-            
-    return(strings)
+from rosalind_utils import parse_fasta
+
 
 def calc_distance(s1, s2):
     dist = sum(1 if s1[i] != s2[i] else 0 for i in range(len(s1))) / len(s1)
+
     return(dist)
 
 
@@ -59,11 +48,12 @@ def distance_matrix(strings):
 
 
 def main():
-    strings = parse_fasta('problem_datasets/rosalind_pdst.txt')
+    strings = list(parse_fasta('problem_datasets/rosalind_pdst.txt').values())
     matrix = distance_matrix(strings)
 
-    for x in matrix:
-        print(' '.join(map(str, x)))
+    with open('output/rosalind_pdst_out.txt', 'w') as outfile:
+        for x in matrix:
+            outfile.write(' '.join(map(str, x))+'\n')
     
 
 if __name__ == '__main__':
