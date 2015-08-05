@@ -39,7 +39,7 @@ GAGGA->GATGA
 TTTCC->TTTCA
 '''
 
-from rosalind_utils import parseFasta
+from rosalind_utils import parse_fasta
 
 
 def rev_comp(string):
@@ -110,15 +110,14 @@ def error_correct(string_list):
 
 
 def main():
-    strings = list(parseFasta('problem_datasets/rosalind_corr.txt').values())
+    strings = list(parse_fasta('problem_datasets/rosalind_corr.txt').values())
     strings += [rev_comp(i) for i in strings]
 
     corr = error_correct(strings)
 
     with open('output/rosalind_corr_out.txt', 'w') as outfile:
         for i in corr:
-            outfile.write('->'.join(i))
-            outfile.write('\n')
+            outfile.write('->'.join(i) + '\n')
 
 
 if __name__ == '__main__':
