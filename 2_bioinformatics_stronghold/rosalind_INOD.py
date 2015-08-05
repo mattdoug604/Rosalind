@@ -16,9 +16,8 @@ Rooted vs Unrooted:
 (picture the root of a tree and it's two edges combining into a single edge).
 '''
 
-def main(n):
-    print(n-2)
-
 if __name__ == '__main__':
     n = 6584
-    main(n)
+
+    ans = n-2
+    print(ans)
