@@ -20,5 +20,6 @@ def main():
 
     print h_dist
 
+
 if __name__ =='__main__':
     main()
