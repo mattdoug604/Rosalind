@@ -17,18 +17,15 @@ EXAMPLE OUTPUT:
 8
 '''
 
-from math import factorial
-
-def binomial(n):
-    f = factorial
-    return(sum(f(n) // (f(k) * f(n-k)) for k in range(n+1)))
+def subsets(n):
+    return(2**n)
 
 
 def main():
     with open('problem_datasets/rosalind_sset.txt', 'r') as infile:
         n = int(infile.readline().strip())
 
-    answer = int(binomial(n)) % 1000000
+    answer = subsets(n) % 1000000
     print(answer)
 
 
