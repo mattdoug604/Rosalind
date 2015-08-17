@@ -104,3 +104,13 @@ def rev_comp(seq):
 
     return(''.join([seq_dict[base] for base in reversed(seq)]))
 
+
+def scoring_matrix(path):
+    ''' Read a text file of a scoring matrix and return a list of scores. The
+        first element in the list is the amino acids.
+    '''
+    with open(path, 'r') as f:
+        lines = f.read().strip().split('\n')
+
+    scores = [lines[0].split()] + [l[1:].split() for l in lines[1:]]
+    return(scores)
