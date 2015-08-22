@@ -19,27 +19,21 @@ MEANLYPRTEINSTRING
 PLEASANTLYEINSTEIN
 
 EXAMPLE OUTPUT:
+(note: this is correct, but different than Rosalind sample output):
 23
-LYPRTEINSTRIN
-LYEINSTEIN
+MEANLYPRTEINSTRIN
+LEASANTLYEINSTEIN
 '''
 
 from rosalind_utils import parse_fasta, scoring_matrix, print_matrix
 
-def get_score(scores, a, b, gap):
+def get_score(scores, a, b):
     ''' Return the score from the scoring matrix. '''
-    if a == '-' or b == '-':
-        return(gap)
-    else:
-        x = scores[0].index(a)
-        y = scores[0].index(b)
-        cost = int(scores[x+1][y])
+    x = scores[0].index(a)
+    y = scores[0].index(b)
+    cost = int(scores[x+1][y])
 
     return(cost)
-
-
-def substrings(s, t):
-    return()
 
     
 def alignment_score(s, t, matrix, gap):
@@ -49,76 +43,63 @@ def alignment_score(s, t, matrix, gap):
 
     # Initialize the matrices with zeros.
     d = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
-    backtrack = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
-    
+    traceback = [[3 for j in range(len(t)+1)] for i in range(len(s)+1)]
+
+    best = 0
+    best_pos = (0, 0)
+
+    # Fill in the Score and Traceback matrices.
     for i in range(1, len(s)+1):
-        d[i][0] = i * gap
-    for j in range(1, len(t)+1):
-        d[0][j] = j * gap
+        for j in range(1, len(t)+1):
+            cost = [ d[i-1][j-1] + get_score(matrix, s[i-1], t[j-1]),
+                     d[i-1][j] + gap,
+                     d[i][j-1] + gap,
+                     0 ]
+            d[i][j] = max(cost)
+            traceback[i][j] = cost.index(d[i][j])
 
-    # Initialize the maximum alignment score as an arbitarily small value.
-    max_score = -9999
-    r, u = ('', '')
-    best_b = backtrack
-    best_d = d
+            if d[i][j] >= best:
+                best = d[i][j]
+                best_pos = (i, j)
 
-    # Fill in the Similarity and Backtrack matrices.
-    for sub in substrings(s, t):
-        b = backtrack
-        for i in range(1, len(s)+1):
-            for j in range(1, len(t)+1):
-                cost = [ 0,
-                         d[i-1][j-1] + get_score(matrix, sub[0][i-1], sub[1][j-1], gap),
-                         d[i-1][j] + gap,
-                         d[i][j-1] + gap ]
-                d[i][j] = max(cost)
-                b[i][j] = cost.index(d[i][j])
-
-        # The max possible score is found at the bottom-right corner of the matrix
-        score = d[-1][-1]
-        if score > max_score:
-            max_score = score
-            r = sub[0]
-            u = sub[1]
-            best_b = b
-            best_d = d
-
-    #print_matrix(best_d, r, u)
-    
-    # Initialize the aligned strings as the input strings.
-    r_align, u_align = r, u
+    # Optional: Print the score and traceback matrices.
+    #print_matrix(d, s, t)
+    #print()
+    #print_matrix(traceback, s, t)
+    #print()
 
     # Initialize the values of i,j
-    i, j = len(r), len(u)
+    i, j = best_pos
 
+    # Initialize the aligned strings as the input strings.
+    r, u = s[:i], t[:j]
+    
     # Backtrack to the edge of the matrix starting at the bottom right.
-    while i>0 and j>0:
-        if backtrack[i][j] == 1: # an insertion
-            i -= 1
-            u_align = u_align[:j] + '-' + u_align[j:]
-        elif backtrack[i][j] == 2: # a deletion
-            j -= 1
-            r_align = r_align[:i] + '-' + r_align[i:]
-        else: # a match
+    while traceback[i][j] != 3 and i*j != 0:
+        if traceback[i][j] == 0: # a match
             i -= 1
             j -= 1
+        elif traceback[i][j] == 1: # an insertion
+            i -= 1
+        elif traceback[i][j] == 2: # a deletion
+            j -= 1
 
-    # Prepend insertions/deletions if necessary.
-    for dash in range(i):
-        u_align = u_align[:0] + '-' + u_align[0:]
-    for dash in range(j):
-        r_align = r_align[:0] + '-' + r_align[0:]
+    r = r[i:]
+    u = u[j:]
 
-    return(str(max_score), r_align, u_align)
+    return(str(best), r, u)
 
 
 def main():
     s, t = parse_fasta('problem_datasets/rosalind_loca.txt', True)
-    score_matrix = scoring_matrix('data/PAM250.txt')
+    scores = scoring_matrix('data/PAM250.txt')
+    alignment = alignment_score(s, t, scores, -5)
 
-    alignment = alignment_score(s, t, score_matrix, -5)
-    print('\n'.join(alignment))
-        
+    with open('output/rosalind_loca_out.txt', 'w') as outfile:
+        outfile.write('\n'.join(alignment))
+
+    print('\n'.join((alignment[0], alignment[1][:77]+'...', alignment[2][:77]+'...')))
+
 
 if __name__ == '__main__':
     main()
