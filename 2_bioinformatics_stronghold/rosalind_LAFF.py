@@ -41,87 +41,72 @@ def alignment_score(s, t, scores, gap, gap_e):
     ''' Returns two matrices of the edit distance and edit alignment between
         strings s and t.
     '''
-
-    # Initialize the matrices. 
-    Sx = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
-    Sy = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
-    Sm = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
-
-    traceX = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
-    traceY = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
-    traceM = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
     
-    best = -9999
-    best_pos = (0, 0, 0)
+    # Initialize the matrices (short).
+    Sx = [0 for i in range(len(t)+1)]
+    Sy = [0 for j in range(len(t)+1)]
+    Sm = [0 for i in range(len(t)+1)]
+    traceback = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
+    
+    best = -1
+    best_pos = (0, 0)
 
     # Fill in the Score and Traceback matrices.
     for i in range(1, len(s)+1):
+        new_x = [0 for i in range(len(t)+1)]
+        new_y = [0 for i in range(len(t)+1)]
+        new_m = [0 for i in range(len(t)+1)]
+        
         for j in range(1, len(t)+1):
-            costX = [Sm[i-1][j] + gap,
-                     Sx[i-1][j] + gap_e]
-            Sx[i][j] = max(costX)
-            traceX[i][j] = costX.index(Sx[i][j])
-            
-            costY = [Sm[i][j-1] + gap,
-                     Sy[i][j-1] + gap_e]
-            Sy[i][j] = max(costY)
-            traceY[i][j] = costY.index(Sy[i][j])
+            new_x[j] = max([Sm[j] + gap,
+                            Sx[j] + gap_e])
+            new_y[j] = max([new_m[j-1] + gap,
+                         new_y[j-1] + gap_e])
+            costM = [Sm[j-1] + get_score(scores, s[i-1], t[j-1]),
+                     new_x[j],
+                     new_y[j],
+                     0]
+            new_m[j] = max(costM)
+            traceback[i][j] = costM.index(new_m[j])
 
-            costM = [Sm[i-1][j-1] + get_score(scores, s[i-1], t[j-1]),
-                     Sx[i][j],
-                     Sy[i][j]]
-            Sm[i][j] = max(costM)
-            traceM[i][j] = costM.index(Sm[i][j])
+            if new_m[j] > best:
+                best = new_m[j]
+                best_pos = i, j
 
-            new = Sx[i][j], Sy[i][j], Sm[i][j]
-            best_new = max(new)
-            if best_new >= best:
-                best = best_new
-                best_pos = (new.index(best), i, j)
-
+        Sx = new_x
+        Sy = new_y
+        Sm = new_m
+    
     # Initialize the values of i,j
-    lvl, i, j = best_pos
-
+    i, j = best_pos
+    
     # Initialize the aligned strings as the input strings.
     r, u = s[:i], t[:j]
-    
+
     # Traceback to build alignment.
-    while i>0 and j>0:
-        if lvl == 0:
-            if traceX[i][j] == 0:
-                lvl = 2
+    while traceback[i][j] != 3 and i*j != 0:
+        if traceback[i][j] == 0:
             i -= 1
-
-        elif lvl == 1:
-            if traceY[i][j] == 0:
-                lvl = 2
             j -= 1
-
-        elif lvl == 2:
-            if traceM[i][j] == 1:
-                lvl = 0
-            elif traceM[i][j] == 2:
-                lvl = 1
-            else:
-                i -= 1
-                j -= 1
-
+        elif traceback[i][j] == 1:
+            i -= 1
+        elif traceback[i][j] == 2:
+            j -= 1
+   
     r = r[i:]
     u = u[j:]
-
+    
     return(str(best), r, u)
 
 
 def main():
     s, t = parse_fasta('problem_datasets/rosalind_laff.txt', True)
-    print(len(s), len(t))
-    #s, t = ('PLEASANTLY', 'MEANLY')
     scores = scoring_matrix('data/BLOSUM62.txt')
-    
+
     alignment = alignment_score(s, t, scores, -11, -1)
-    #print('\n'.join(alignment))
+    print('Maximum alignment score =', alignment[0])
     with open('output/rosalind_laff_out.txt', 'w') as outfile:
-        outfile.print('\n'.join(alignment))
+        outfile.write('\n'.join(alignment))
 
 
 if __name__ == '__main__':
