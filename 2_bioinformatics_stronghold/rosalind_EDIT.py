@@ -5,7 +5,8 @@ Rosalind: Bioinformatics Stronghold
 Problem: Edit Distance
 URL: http://rosalind.info/problems/edit/
 
-Given: Two protein strings s and t in FASTA format (each of length at most 1000 aa).
+Given: Two protein strings s and t in FASTA format (each of length at most 1000
+aa).
 Return: The edit distance dE(s,t).
 '''
 
@@ -36,56 +37,44 @@ EXAMPLE OUTPUT:
 5
 '''
 
-from rosalind_utils import parseFasta
-
-def print_matrix(matrix, s, t):
-    ''' Optional: Write out the distance matrix. '''
-    print('Writing table...')
-    with open('output/rosalind_edit_out.txt', 'w') as f:
-        header = '     ' + ' '.join(t)
-        f.write(header)
-        f.write('\n')
-        for x, m in enumerate(matrix):
-            if x > 0:
-                line = s[x-1] +' [' + ' '.join(map(str, m)) + ']'
-            else:
-                line = '  [' + ' '.join(map(str, m)) + ']'
-            f.write(line)
-            f.write('\n')
-
+from rosalind_utils import parse_fasta
     
-def edit_dist(strings):
+def edit_dist(s, t):
     ''' Takes two DNA strings, of lengths m and n, and returns the edit distance
         between them. This is accomplished by building a matrix, l, that holds
         the distances between all prefixes of the 1st string and all prefixes of
         the 2nd. The edit distance is then the value of l[m, n].
     '''
-    s, t = (strings[0], strings[1])
-    m, n = (len(s), len(t))
-    l = [[0 for x in range(n+1)] for y in range(m+1)]
+    m, n = len(s), len(t)
+    
+    # Initialize the distance matrix.
+    d = [[0 for j in range(n+1)] for i in range(m+1)]
 
+    # Each cell in the first row and column recieves a gap penalty (-1).
     for i in range(1, m+1):
-        l[i][0] = i
-
+        d[i][0] = i
     for j in range(1, n+1):
-        l[0][j] = j
-        
+        d[0][j] = j
+
+    # Fill in the distance matrix.
     for j in range(1, n+1):
         for i in range(1, m+1):
             if s[i-1] == t[j-1]:
-                l[i][j] = l[i-1][j-1]
+                d[i][j] = d[i-1][j-1]           # a match
             else:
-                l[i][j] = min(l[i-1][j] + 1,   #a deletion
-                              l[i][j-1] + 1,   #an insertion
-                              l[i-1][j-1] + 1) #a substitution 
+                d[i][j] = min(d[i-1][j] + 1,    # a deletion
+                              d[i][j-1] + 1,    # an insertion
+                              d[i-1][j-1] + 1)  # a substitution 
 
-    #print_matrix(l, s, t)
-    return(l[m][n])
+    # The edit distance is the last cell of the distance matrix.
+    edit_dist = d[m][n]
+    
+    return edit_dist
 
 
 def main():
-    strings = list(parseFasta('problem_datasets/rosalind_edit.txt').values())
-    print(edit_dist(strings))
+    s, t = parse_fasta('problem_datasets/rosalind_edit.txt', True)
+    print(edit_dist(s, t))
     
 
 if __name__ == '__main__':

@@ -26,21 +26,9 @@ LEAS
 MEAN
 '''
 
-from rosalind_utils import parse_fasta, scoring_matrix
-
-def get_score(scores, a, b):
-    ''' Return the score from the scoring matrix. '''
-    x = scores[0].index(a)
-    y = scores[0].index(b)
-    cost = int(scores[x+1][y])
-
-    return(cost)
-
+from rosalind_utils import parse_fasta, BLOSUM62, match_score
     
-def alignment_score(s, t, scores, gap, gap_e):
-    ''' Returns two matrices of the edit distance and edit alignment between
-        strings s and t.
-    '''
+def local_align_with_affine(s, t, scores, gap, gap_e):
     
     # Initialize the matrices (short).
     Sx = [0 for i in range(len(t)+1)]
@@ -58,11 +46,9 @@ def alignment_score(s, t, scores, gap, gap_e):
         new_m = [0 for i in range(len(t)+1)]
         
         for j in range(1, len(t)+1):
-            new_x[j] = max([Sm[j] + gap,
-                            Sx[j] + gap_e])
-            new_y[j] = max([new_m[j-1] + gap,
-                         new_y[j-1] + gap_e])
-            costM = [Sm[j-1] + get_score(scores, s[i-1], t[j-1]),
+            new_x[j] = max([Sm[j] + gap, Sx[j] + gap_e])
+            new_y[j] = max([new_m[j-1] + gap, new_y[j-1] + gap_e])
+            costM = [Sm[j-1] + match_score(scores, s[i-1], t[j-1]),
                      new_x[j],
                      new_y[j],
                      0]
@@ -77,7 +63,7 @@ def alignment_score(s, t, scores, gap, gap_e):
         Sy = new_y
         Sm = new_m
     
-    # Initialize the values of i,j
+    # Initialize the values of i, j
     i, j = best_pos
     
     # Initialize the aligned strings as the input strings.
@@ -101,12 +87,12 @@ def alignment_score(s, t, scores, gap, gap_e):
 
 def main():
     s, t = parse_fasta('problem_datasets/rosalind_laff.txt', True)
-    scores = scoring_matrix('data/BLOSUM62.txt')
-
-    alignment = alignment_score(s, t, scores, -11, -1)
-    print('Maximum alignment score =', alignment[0])
+    alignment = local_align_with_affine(s, t, BLOSUM62(), -11, -1)
+    
     with open('output/rosalind_laff_out.txt', 'w') as outfile:
         outfile.write('\n'.join(alignment))
+
+    print('Maximum alignment score =', alignment[0])
 
 
 if __name__ == '__main__':

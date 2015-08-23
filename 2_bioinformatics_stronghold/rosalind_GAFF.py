@@ -5,11 +5,13 @@ Rosalind: Bioinformatics Stronghold
 Problem: Global Alignment with Scoring Matrix and Affine Gap Penalty
 URL: http://rosalind.info/problems/gaff/
 
-Given: Two protein strings s and t in FASTA format (each of length at most 100 aa).
-Return: The maximum alignment score between s and t, followed by two augmented strings s′ and t′ representing an optimal alignment of s and t. Use
-    The BLOSUM62 scoring matrix.
-    Gap opening penalty equal to 11.
-    Gap extension penalty equal to 1.
+Given: Two protein strings s and t in FASTA format (each of length at most 100
+aa).
+Return: The maximum alignment score between s and t, followed by two augmented
+strings s′ and t′ representing an optimal alignment of s and t. Use:
+    - The BLOSUM62 scoring matrix.
+    - Gap opening penalty equal to 11.
+    - Gap extension penalty equal to 1.
 '''
 
 '''
@@ -25,31 +27,9 @@ PRT---EINS
 PRTWPSEIN-
 '''
 
-from rosalind_utils import parse_fasta
+from rosalind_utils import parse_fasta, BLOSUM62, match_score
 
-def scoring_matrix(path):
-    ''' Format a mutli-line text file containing substitution scores
-        into a dictonary.
-    '''
-    with open(path, 'r') as f:
-        lines = f.read().strip().split('\n')
-
-    costs = {}
-    for i in lines:
-        l = i.split(' ')
-        costs[' '.join(l[:2])] = l[2]
-
-    return(costs)
-
-
-def get_score(scores, a, b):
-    ''' Retrieve the score from the scoring matrix. '''
-    key = ' '.join((a, b))
-    cost = scores[key]
-    return(int(cost))
-
-
-def alignment_score(s, t, scores, gap, gap_e):
+def global_align_with_affine(s, t, scores, gap, gap_e):
     ''' Returns two matrices of the edit distance and edit alignment between
         strings s and t.
     '''
@@ -76,7 +56,7 @@ def alignment_score(s, t, scores, gap, gap_e):
         X[0][j] = -9999
         Y[0][j] = -9999
 
-    # Build the matrices.
+    # Fill in the matrices.
     for i in range(1, len(s)+1):
         for j in range(1, len(t)+1):
             costX = [M[i-1][j] + gap,
@@ -89,19 +69,19 @@ def alignment_score(s, t, scores, gap, gap_e):
             Y[i][j] = max(costY)
             traceY[i][j] = costY.index(Y[i][j])
 
-            costM = [M[i-1][j-1] + get_score(scores, s[i-1], t[j-1]),
+            costM = [M[i-1][j-1] + match_score(scores, s[i-1], t[j-1]),
                      X[i][j],
                      Y[i][j]]
             M[i][j] = max(costM)
             traceM[i][j] = costM.index(M[i][j])
             
-    # The max possible score is found at the bottom-right of the matrix
+    # The max possible score is found at the bottom-right of the match matrix
     max_score = M[-1][-1]
 
     # Initialize the aligned strings as the input strings.
     s_align, t_align = s, t
 
-    # Get the backtrack starting position, i.e. the greatest value.
+    # Get the traceback starting position, i.e. the greatest value.
     scores = [X[i][j], Y[i][j], M[i][j]]
     max_score = max(scores)
     traceback = scores.index(max_score)
@@ -143,12 +123,12 @@ def alignment_score(s, t, scores, gap, gap_e):
 
 def main():
     s, t = parse_fasta('problem_datasets/rosalind_gaff.txt', True)
-    scores = scoring_matrix('data/BLOSUM62.txt')
-
-    answer = alignment_score(s, t, scores, -11, -1)
+    alignment = global_align_with_affine(s, t, BLOSUM62(), -11, -1)
+    
     with open('output/rosalind_gaff_out.txt', 'w') as f:
-        f.write('\n'.join(answer))
-        print('\n'.join(answer))
+        f.write('\n'.join(alignment))
+
+    print('Maximum alignment score =', alignment[0])
     
 
 if __name__ == '__main__':
