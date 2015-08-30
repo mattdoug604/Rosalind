@@ -1,0 +1,4 @@
+>Rosalind_92
+AACGTA
+>Rosalind_47
+ACACCTA

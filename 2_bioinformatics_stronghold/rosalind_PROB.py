@@ -9,7 +9,7 @@ Given: A DNA string s of length at most 100 bp and an array A containing at most
 Return: An array B having the same length as A in which B[k] represents the common logarithm of the probability that a random string constructed with the GC-content found in A[k] will match s exactly.
 '''
 
-import math
+from math import log
 
 def prob(seq, gc):
     p = []
@@ -26,7 +26,7 @@ def prob(seq, gc):
             elif nt == 'A' or nt == 'T':
                 percent = percent*prob_at
 
-        percent = math.log10(percent)
+        percent = log10(percent)
         p.append('%.3f' % percent)
 
     return(p)
@@ -37,7 +37,7 @@ def main():
         seq, gc = infile.read().strip().split('\n')
         gc = [float(x) for x in gc.split(' ')]
 
-    answer = prob(seq, gc)
+    answer = gc_p(seq, gc)
     print(' '.join(answer))
 
 

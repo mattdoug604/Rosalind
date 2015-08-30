@@ -146,3 +146,4 @@ def print_matrix(matrix, y, x):
         for j in range(len(matrix[i])):
             line += ' '*(spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
         print(line)
+    print()
