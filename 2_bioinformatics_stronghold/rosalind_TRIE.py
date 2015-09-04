@@ -28,7 +28,6 @@ EXAMPLE OUTPUT:
 '''
 
 class Node:
-    
     mark_overall = 0
     
     def __init__(self):
@@ -46,11 +45,11 @@ def make_list(strings):
     for x, s in enumerate(strings, 1):
         current = root
         for c in s:
-            if not c in current.s:
+            if c not in current.s:
                 current.s[c] = Node()
             current = current.s[c]
 
-    return(root)
+    return root
 
 
 def format_answer(root, answer=[]):
@@ -58,7 +57,7 @@ def format_answer(root, answer=[]):
         answer.append((root.mark, root.s[x].mark, x))
         format_answer(root.s[x], answer)
 
-    return(answer)
+    return answer
 
 
 def main():
@@ -75,7 +74,7 @@ def main():
             outfile.write(answer + '\n')
             line_count += 1
 
-        print('The adjacency list is', line_count, 'lines long.')
+    print('The adjacency list is', line_count, 'lines long.')
     
 
 if __name__ == '__main__':
