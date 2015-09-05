@@ -33,7 +33,7 @@ def parse_fasta(path, no_id=False):
 ### ----------- TABLES ---------- ###
 #####################################
     
-def aa_mass():
+def aa_mass(aa):
     ''' Returns a dictonary of monoisotopic amino acid masses. '''
     mass_table = { 'A':71.03711,
                    'C':103.00919,
@@ -56,7 +56,7 @@ def aa_mass():
                    'W':186.07931,
                    'Y':163.06333 }
 
-    return(mass_table)
+    return(mass_table[aa])
 
 
 def codon_table(seq_type='rna'):
@@ -117,33 +117,45 @@ def match_score(scoring_matrix, a, b):
     return(cost)
 
 
-def print_matrix(matrix, y, x):
+def print_matrix(matrix, y=None, x=None):
     ''' Print out the given 2D matrix with axis labels. Matrix rows must be the
         same length.
     '''
+    # If axis labels aren't specified...
+    #if len(y) < len(matrix)-1:
+    #    y = y + ' '*(len(matrix)-len(y)-1)
+    
     # Determine the spacing between columns.
-    spacing = [0 for i in range(len(matrix[0]))]
+    spacing = [0 for i in range(len(matrix[0])+1)]
     for i in range(len(matrix[0])):
         max_l = 0
         for j in range(len(matrix)):
             l = len(str(matrix[j][i]))
             if l > max_l:
                 max_l = l
-                spacing[i] = max_l
+                spacing[i+1] = max_l
 
     # Print the x-axis.
-    x = ' ' + x
-    spacing = [len(max(y, key=len))] + spacing
-    x_axis = ' '*spacing[0]
-    for i, ch in enumerate(x):
-        x_axis += ' '*spacing[i+1] + ch
-    print(x_axis)
+    if x is not None:
+        x = ' ' + x
+        spacing[0] = len(max(y, key=len))
+        x_axis = ' '*spacing[0]
+        for i, ch in enumerate(x):
+            x_axis += ' '*spacing[i+1] + ch
+        print(x_axis)
 
     # Print each row of the matrix with y-label.
-    y = ' ' + y
+    if y is not None:
+        y = ' ' + y
+        
     for i in range(len(matrix)):
-        line = y[i]
-        for j in range(len(matrix[i])):
-            line += ' '*(spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
+        if y is not None:
+            line = y[i]
+            for j in range(len(matrix[i])):
+                line += ' '*(spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
+        else:
+            line = ''
+            for j in range(len(matrix[i])):
+                line += ' '*(spacing[j]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
+
         print(line)
-    print()
