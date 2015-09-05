@@ -50,7 +50,7 @@ def longest_substring(s, k, edges):
         if i not in child:
             leaves.append(i)
 
-    # Annotate the levels of the tree.
+    # Annotate the levels of the tree (i.e. distance from root).
     p = [root]
     lvl = 1
     while True:

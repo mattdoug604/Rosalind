@@ -20,8 +20,7 @@ EXAMPLE OUTPUT:
 AACTGG
 '''
 
-from rosalind_utils import parse_fasta
-
+from rosalind_utils import parse_fasta, print_matrix
 
 def len_table(s, t, m, n):
     l = [[[] for x in range(n+1)] for y in range(m+1)]
@@ -35,13 +34,16 @@ def len_table(s, t, m, n):
             else:
                 l[i][j] = max(l[i-1][j], l[i][j-1])
 
-    return(l, l[m][n])
+    print('The longest common subsequence is', l[m][n], 'bases long.')
+    print_matrix(l, s, t)
+    
+    return(l)
 
 
 def longest_sub(s, t):
     i = len(s)
     j = len(t)
-    table, max_l = len_table(s, t, len(s), len(t))
+    table= len_table(s, t, len(s), len(t))
     seq = ''
 
     while i>0 and j>0:
@@ -54,12 +56,12 @@ def longest_sub(s, t):
         else:
             j -= 1
 
-    print('The longest common subsequence is', max_l, 'bases long.')
     return(''.join(seq[::-1]))
     
         
 def main():
     strings = list(parse_fasta('problem_datasets/rosalind_lcsq.txt').values())
+    strings = ('AACCTTGG', 'ACACTGTGA')
     seq = longest_sub(strings[0], strings[1])
 
     with open('output/rosalind_lcsq_out.txt', 'w') as outfile:

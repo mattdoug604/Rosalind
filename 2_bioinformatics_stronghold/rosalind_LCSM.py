@@ -13,7 +13,8 @@ from rosalind_utils import parse_fasta
 
 def longest_motif(seq_list):
     ''' Finds the longest common substring (motif) from all the sequences.
-        Note: the script only returns the *first* motif it finds '''
+        Note: the script only returns the *first* motif it finds
+    '''
     first_seq = min(seq_list, key=len)
     k = len(first_seq)
     
