@@ -33,9 +33,9 @@ def gc_p(seq, gc):
     for j in range(len(seq)):
         nt = seq[j]
         if nt == 'G' or nt == 'C':
-            percent = percent*prob_gc
+            percent = percent * prob_gc
         elif nt == 'A' or nt == 'T':
-            percent = percent*prob_at
+            percent = percent * prob_at
 
     return(percent)
 

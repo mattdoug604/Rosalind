@@ -52,11 +52,11 @@ def global_align(s, t, matrix, gap):
                            Y[i][j]])
     
     # The max possible score is found at the bottom-right corner of the matrix.
-    return(M[-1][-1])
+    return M[-1][-1]
 
 
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_gcon.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_gcon.txt')
     max_score = global_align(s, t, BLOSUM62(), -5)
     
     print(max_score)

@@ -44,15 +44,14 @@ def count_mRNA(seq):
     for s in seq:
         count *= codons[s]
 
-    return(count)
+    return count
 
 
 def main():
     with open('problem_datasets/rosalind_mrna.txt', 'r') as infile:
         seq = infile.read().strip()
 
-    answer = count_mRNA(seq)
-    print(answer % 1000000)
+    print(count_mRNA(seq) % 1000000)
 
 
 if __name__ == '__main__':

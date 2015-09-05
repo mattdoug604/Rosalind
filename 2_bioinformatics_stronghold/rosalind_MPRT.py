@@ -6,12 +6,13 @@ Problem: Finding a Protein Motif
 URL: http://rosalind.info/problems/mprt/
 
 Given: At most 15 UniProt Protein Database access IDs.
-Return: For each protein possessing the N-glycosylation motif, output its given access ID followed by a list of locations in the protein string where the motif can be found.
+Return: For each protein possessing the N-glycosylation motif, output its given
+access ID followed by a list of locations in the protein string where the motif
+can be found.
 '''
 
 from urllib.request import urlopen
 import re
-
 
 def parse_seq(fasta):
     ''' Takes a FASTA formated sequence retrieved from uniprot and returns only
@@ -19,7 +20,8 @@ def parse_seq(fasta):
     '''
     seq = re.sub('^\>(.*)\n', '', fasta, 1)
     seq = seq.replace('\n', '')
-    return(seq)
+
+    return seq
 
 
 def find_motifs(seq_list, pattern='^N[A-O,Q-Z](S|T)[A-O,Q-Z]'):
@@ -42,7 +44,7 @@ def find_motifs(seq_list, pattern='^N[A-O,Q-Z](S|T)[A-O,Q-Z]'):
         if len(index) != 0:
             results[name] = ' '.join(index)
 
-    return(sorted(results.items()))
+    return sorted(results.items())
 
 
 def main():

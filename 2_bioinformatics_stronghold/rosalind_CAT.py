@@ -5,8 +5,11 @@ Rosalind: Bioinformatics Stronghold
 Problem: Catalan Numbers and RNA Secondary Structures 
 URL: http://rosalind.info/problems/cat/
 
-Given: An RNA string s having the same number of occurrences of 'A' as 'U' and the same number of occurrences of 'C' as 'G'. The length of the string is at most 300 bp.
-Return: The total number of noncrossing perfect matchings of basepair edges in the bonding graph of s, modulo 1,000,000.
+Given: An RNA string s having the same number of occurrences of 'A' as 'U' and
+the same number of occurrences of 'C' as 'G'. The length of the string is at
+most 300 bp.
+Return: The total number of noncrossing perfect matchings of basepair edges in
+the bonding graph of s, modulo 1,000,000.
 '''
 
 '''
@@ -19,10 +22,9 @@ EXAMPLE OUTPUT:
 '''
 
 def count_matchings(i, j):
-    ''' Calculate the total number of noncrossing basepairs, modulo a million,
-        for a string of DNA with the same number of occurances of 'A' as 'T'
-        and 'C' as 'G'.
-    ''' 
+    ''' Calculate the total number of noncrossing basepairs for a string of DNA
+        with the same number of occurances of 'A' as 'T' and 'C' as 'G'.
+    '''
     if pairs[i][j] != -1:
         return(pairs[i][j])
 
@@ -40,19 +42,16 @@ def count_matchings(i, j):
 
     pairs[i][j] = result
     
-    return(result)
+    return result
 
-    
+
 if __name__ == '__main__':
     with open('problem_datasets/rosalind_cat.txt', 'r') as infile:
         next(infile)
         s = infile.read().replace('\n', '')
-        
-    s = 'AUCGAU'
-    pairs = [[-1 for x in range(len(s)+1)] for y in range(len(s)+1)]
+
     match = {'A':'U','U':'A', 'C':'G', 'G':'C'}
+    pairs = [[-1 for x in range(len(s)+1)] for y in range(len(s)+1)]
     
     print(count_matchings(0, len(s)-1) % 1000000)
-
-    for p in pairs:
-        print(p)
+    

@@ -5,7 +5,8 @@ Rosalind: Bioinformatics Stronghold
 Problem: Reversal Distance
 URL: http://rosalind.info/problems/rear/
 
-Given: A collection of at most 5 pairs of permutations, all of which have length 10.
+Given: A collection of at most 5 pairs of permutations, all of which have length
+10.
 Return: The reversal distance between each permutation pair.
 '''
 
@@ -34,7 +35,7 @@ def split_pair(pair):
     ''' Convert two permutations strings to two lists of integers. '''
     p1, p2 = [list(map(int, p.split(' '))) for p in pair]
     
-    return(p1, p2)
+    return p1, p2
 
 
 def breakpoint(p):
@@ -42,12 +43,11 @@ def breakpoint(p):
         occurs.
     '''
     bp = []
-    
     for i in range(1, len(p)):
         if abs(p[i] - p[i-1]) > 1:
             bp.append(i)
     
-    return(bp)
+    return bp
 
 
 def printRound(p, a, b):
@@ -56,6 +56,7 @@ def printRound(p, a, b):
         x = 1
     else:
         x = 2
+        
     print(p, ' - ', '(', a, ',', b-1, ')', sep='')
     print(' ', ' '*(a*3), '-'*((b-a)*3-x), sep='')
 
@@ -84,7 +85,7 @@ def reversal_dist(p1, p2):
     '''
     count = 0
     while count < len(p_start)+1:
-        print('Round #%i' % int(count+1))
+        #print('Round #%i' % int(count+1))
         new_perms = []
 
         count += 1
@@ -108,16 +109,16 @@ def reversal_dist(p1, p2):
                             others.
                         '''
                         if bp_new == 0:
-                            print('breakpoints = %i' % bp_new)
-                            printRound(p_new, a, b)
-                            return(count)
+                            #print('breakpoints = %i' % bp_new)
+                            #printRound(p_new, a, b)
+                            return count
                         elif bp_new < bp_min:
-                            print('breakpoints = %i' % bp_new)
-                            printRound(p_new, a, b)
+                            #print('breakpoints = %i' % bp_new)
+                            #printRound(p_new, a, b)
                             bp_min = bp_new
                             new_perms = [p_new]
                         elif bp_new == bp_min:
-                            printRound(p_new, a, b)
+                            #printRound(p_new, a, b)
                             new_perms.append(p_new)
 
         perm_list = new_perms

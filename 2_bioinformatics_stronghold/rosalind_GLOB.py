@@ -27,7 +27,6 @@ EXAMPLE OUTPUT:
 from rosalind_utils import parse_fasta, BLOSUM62, match_score
 
 def global_align(s, t, scores, gap):
-    
     # Initialize the similarity matrix.
     S = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
 
@@ -45,11 +44,11 @@ def global_align(s, t, scores, gap):
                             S[i][j-1] + gap ])
 
     # The max possible score is the last cell of the similarity matrix.
-    return(S[-1][-1])
+    return S[-1][-1]
 
    
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_glob.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_glob.txt')
     max_score = global_align(s, t, BLOSUM62(), -5)
     
     print(max_score)

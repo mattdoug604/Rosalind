@@ -5,8 +5,13 @@ Rosalind: Bioinformatics Stronghold
 Problem: Independent Alleles
 URL: http://rosalind.info/problems/lia/
 
-Given: Two positive integers k (k <= 7) and N (N <= 2k). In this problem, we begin with Tom, who in the 0th generation has genotype Aa Bb. Tom has two children in the 1st generation, each of whom has two children, and so on. Each organism always mates with an organism having genotype Aa Bb.
-Return: The probability that at least N Aa Bb organisms will belong to the k-th generation of Tom's family tree (don't count the Aa Bb mates at each level). Assume that Mendel's second law holds for the factors.
+Given: Two positive integers k (k <= 7) and N (N <= 2k). In this problem, we
+begin with Tom, who in the 0th generation has genotype Aa Bb. Tom has two
+children in the 1st generation, each of whom has two children, and so on. Each
+organism always mates with an organism having genotype Aa Bb.
+Return: The probability that at least N Aa Bb organisms will belong to the k-th
+generation of Tom's family tree (don't count the Aa Bb mates at each level).
+Assume that Mendel's second law holds for the factors.
 '''
 
 def binomial(k, n):
@@ -18,18 +23,18 @@ def binomial(k, n):
         total *= (n - (k - i))
         total /= i
 
-    return(total)
+    return total
 
 
 def prob(k, n):
-    return(binomial(n, 2**k) * 0.25**n * 0.75**(2**k - n))
+    return binomial(n, 2**k) * 0.25**n * 0.75**(2**k - n)
 
 
 def getProb(k, n):
     ''' The probability that N AaBb organisms belong to the k-th generation is
         1 minus the sum of the probability that they don't.
     '''
-    return(1 - sum(prob(k, i) for i in range(n)))
+    return 1 - sum(prob(k, i) for i in range(n))
 
 
 def main():

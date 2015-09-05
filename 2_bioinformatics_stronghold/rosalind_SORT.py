@@ -7,8 +7,8 @@ URL: http://rosalind.info/problems/sort/
 
 Given: Two permutations π and γ, each of length 10.
 Return: The reversal distance drev(π,γ), followed by a collection of reversals
-    sorting π into γ. If multiple collections of such reversals exist, you may
-    return any one.
+sorting π into γ. If multiple collections of such reversals exist, you may
+return any one.
 '''
 
 '''
@@ -32,7 +32,7 @@ def breakpoint(p):
         if abs(p[i] - p[i-1]) > 1:
             bp.append(i)
     
-    return(bp)
+    return bp
 
 
 def printRound(p, a, b):
@@ -41,6 +41,7 @@ def printRound(p, a, b):
         x = 1
     else:
         x = 2
+        
     print(p, ' - ', '(', a, ',', b-1, ')', sep='')
     print(' ', ' '*(a*3), '-'*((b-a)*3-x), sep='')
 
@@ -52,23 +53,22 @@ def reversal_dist(p1, p2):
         one solution, it just returns the first one.
     '''
     
-    ''' Perform a quick check to see if the pair is already the same. '''
+    # Perform a quick check to see if the pair is already the same.
     if p1 == p2:
-        return(0)
+        return 0
 
-    ''' Prepend 0 and append len(permutation)+1 to determine if endpoints are
-        correct. '''
+    # Prepend 0 and append len(permutation)+1 to determine if endpoints are
+    # correct.
     p_start = [0] + [p1.index(x)+1 for x in p2] + [len(p1)+1]
     
-    ''' Set the starting conditions. '''
+    # Set the starting conditions.
     count = 0
     reversal_list = [[[p_start, count]]]
     bp_min = len(breakpoint(p_start))
 
-    ''' The maximum required number of reversals to solve this is
-        len(permutation) + 1, so loop until we hit that mark, or solve the
-        problem.
-    '''
+    # The maximum required number of reversals to solve this is
+    # len(permutation) + 1, so loop until we hit that mark, or solve the
+    # problem.
     while count < len(p_start)+1:
         reversal_list.append([])
         new_reversals = []
@@ -78,7 +78,7 @@ def reversal_dist(p1, p2):
             revs = perm_item[2:]
             bp = breakpoint(perm)
 
-            ''' Reverse each pair of breakpoints '''
+            # Reverse each pair of breakpoints.
             for i in range(len(bp)):
                 for j in range(i+1, len(bp)):
                     a = bp[i]
@@ -93,13 +93,11 @@ def reversal_dist(p1, p2):
                         else:
                             revs = [a,b-1]
 
-                        ''' Problem solved when no breakpoints remain. The
-                            reversal(s) with the least breakpoints is/are the
-                            best choice in this case, so we can throw out the
-                            others.
-                        '''
+                        # Problem solved when no breakpoints remain. The
+                        # reversal(s) with the least breakpoints is/are the best
+                        # choice in this case, so we can throw out the others.
                         if bp_new == 0:
-                            return(p_new, count+1, revs)
+                            return p_new, count+1, revs
                         elif bp_new < bp_min:
                             bp_min = bp_new
                             reversal_list[count+1] = []
@@ -111,8 +109,8 @@ def reversal_dist(p1, p2):
 
 
 def checkAnswer(to_match, to_reverse, revs):
-    ''' Optional: check the reversal list to make sure it ends up with the
-        correct permutation.
+    ''' Go through the reversals in the list to see if the permutations end up
+        the same (i.e. make sure the answer if correct).
     '''
     temp = to_reverse
     for i in range(0, len(revs), 2):
@@ -124,24 +122,23 @@ def checkAnswer(to_match, to_reverse, revs):
 
     if temp == to_match:
         print(temp, '<-- Correct Match!\n')
-        return(True)
     else:
         print(temp, '<-- Incorrect Match!\n')
-        return(False)
 
     
 def main():
-    ''' Read the input .txt file. '''
+    # Read the input .txt file.
     with open('problem_datasets/rosalind_sort.txt', 'r') as infile:
         pair = infile.read().strip().split('\n')
         permA, permB = [list(map(int, p.split(' '))) for p in pair]
 
-    ''' Get the reversal distances. '''
+    # Get the reversal distances.
     perm, count, revs = reversal_dist(permA, permB)
-    
+
+    # Optional: check make sure the revesals end up with the correct permutations.
     #checkAnswer(permA, permB, revs)
 
-    ''' Print the answer. '''
+    # Print the answer.
     print(count)
     for i in range(len(revs), 0, -2):
         print(revs[i-2], revs[i-1])

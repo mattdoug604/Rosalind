@@ -6,13 +6,13 @@ Problem: Finding a Spliced Motif
 URL: http://rosalind.info/problems/sseq/
 
 Given: Two DNA strings s and t (each of length at most 1 kbp) in FASTA format.
-Return: One collection of indices of s in which the symbols of t appear as a subsequence of s. If multiple solutions exist, you may return any one.
+Return: One collection of indices of s in which the symbols of t appear as a
+subsequence of s. If multiple solutions exist, you may return any one.
 '''
 
 from rosalind_utils import parse_fasta
 
-
-def findSubSeq(s, t):
+def find_subsequence(s, t):
     ''' Finds the indices of the symbols in 't' that appear as a subsequence
         of 's'. The symbols in 't' are a subsequence if the appear in the same
         order within 's'.
@@ -29,7 +29,7 @@ def findSubSeq(s, t):
             else:
                 break
             
-    return(index)   
+    return index   
 
 
 def main():
@@ -37,9 +37,9 @@ def main():
         be split into seperate sequences based on the position of the header
         lines.
     '''
-    s, t = list(parse_fasta('problem_datasets/rosalind_sseq.txt').values())[:2]
+    s, t = parse_fasta('problem_datasets/rosalind_sseq.txt')
 
-    pos = findSubSeq(s, t)
+    pos = find_subsequence(s, t)
     print(' '.join(pos))
 
 

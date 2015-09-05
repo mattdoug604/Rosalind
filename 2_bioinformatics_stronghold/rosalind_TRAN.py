@@ -11,7 +11,6 @@ Return: The transition/transversion ratio R(s1,s2).
 
 from rosalind_utils import parse_fasta
 
-
 def pointMutations(s1, s2):
     transitions = 0
     transversions = 0
@@ -30,14 +29,13 @@ def pointMutations(s1, s2):
                 transversions += 1
     
     if transversions != 0:
-        return(transitions/transversions)
+        return transitions/transversions
 
 
 def main():
-    s1, s2 = list(parse_fasta('problem_datasets/rosalind_tran.txt').values())[:2]
+    s1, s2 = parse_fasta('problem_datasets/rosalind_tran.txt')
     
-    answer = pointMutations(s1, s2)
-    print(answer)
+    print(pointMutations(s1, s2))
 
 
 if __name__ == '__main__':

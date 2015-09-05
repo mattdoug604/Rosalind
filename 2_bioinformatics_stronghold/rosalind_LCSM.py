@@ -5,8 +5,10 @@ Rosalind: Bioinformatics Stronghold
 Problem: Finding a Shared Motif
 URL: http://rosalind.info/problems/lcsm/
 
-Given: A collection of k (k <= 100) DNA strings of length at most 1 kbp each in FASTA format.
-Return: A longest common substring of the collection. (If multiple solutions exist, you may return any single solution.)
+Given: A collection of k (k <= 100) DNA strings of length at most 1 kbp each in
+FASTA format.
+Return: A longest common substring of the collection. (If multiple solutions
+exist, you may return any single solution.)
 '''
 
 from rosalind_utils import parse_fasta
@@ -21,25 +23,28 @@ def longest_motif(seq_list):
     for i in range(k, 1, -1):
         for j in range(k-i+1):
             motif = first_seq[j:j+i]
-            found = 1
+            found = True
             
             for seq in seq_list:
                 s = seq.find(motif)
                 if s == -1:
-                    found = 0
+                    found = False
                     break
 
-            if found == 1:
-                return(motif)
-
-    return('no common substring found')
+            if found == True:
+                return motif
             
 
 def main():
-    sequences = list(parse_fasta('problem_datasets/rosalind_lcsm.txt').values())
+    sequences = parse_fasta('problem_datasets/rosalind_lcsm.txt')
 
     answer = longest_motif(sequences)
-    print(answer)
+    
+    if answer != None:
+        print(answer)
+    else:
+        print('No common substring found.')
+
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-''' This file contains a collection of functions that I've been using repeatedly
+''' This file contains a collection of functions that I've been using frequently
     in the Rosalind problems.
 '''
 
@@ -8,7 +8,7 @@
 ### ---------- FILE I/O --------- ###
 #####################################
 
-def parse_fasta(path, no_id=False):
+def parse_fasta(path, no_id=True):
     ''' Read in a Fasta file. If no_id is set to false, return a dictonary of
         sequences with associated headers; else return a list of sequences only.
     '''
@@ -23,10 +23,13 @@ def parse_fasta(path, no_id=False):
             else:
                 seqs[-1] += line.strip()
 
-    if no_id == False:
-        return(dict(zip(ids, seqs)))
+    if no_id == True:
+        if len(seqs) > 1:
+            return seqs
+        else:
+            return seqs[0]
     else:
-        return(seqs)
+        return dict(zip(ids, seqs))
 
 
 #####################################
@@ -34,7 +37,7 @@ def parse_fasta(path, no_id=False):
 #####################################
     
 def aa_mass(aa):
-    ''' Returns a dictonary of monoisotopic amino acid masses. '''
+    ''' Returns the monoisotopic mass of a given amino acid. '''
     mass_table = { 'A':71.03711,
                    'C':103.00919,
                    'D':115.02694,
@@ -56,7 +59,7 @@ def aa_mass(aa):
                    'W':186.07931,
                    'Y':163.06333 }
 
-    return(mass_table[aa])
+    return mass_table[aa]
 
 
 def codon_table(seq_type='rna'):
@@ -67,7 +70,7 @@ def codon_table(seq_type='rna'):
     codons = [a+b+c for a in bases for b in bases for c in bases]
     codon_table = dict(zip(codons, amino_acids))
 
-    return(codon_table)
+    return codon_table
 
 
 #####################################
@@ -81,7 +84,7 @@ def reverse_complement(seq):
     else:
         seq_dict = { 'A':'T', 'T':'A', 'G':'C', 'C':'G' }
 
-    return(''.join([seq_dict[base] for base in reversed(seq)]))
+    return ''.join([seq_dict[base] for base in reversed(seq)])
 
 
 #####################################
@@ -89,11 +92,11 @@ def reverse_complement(seq):
 #####################################
 
 def BLOSUM62():
-    return(scoring_matrix('data/blosum62.txt'))
+    return scoring_matrix('data/blosum62.txt')
 
 
 def PAM250():
-    return(scoring_matrix('data/pam250.txt'))
+    return scoring_matrix('data/pam250.txt')
 
     
 def scoring_matrix(path):
@@ -105,7 +108,7 @@ def scoring_matrix(path):
 
     scores = [lines[0].split()] + [l[1:].split() for l in lines[1:]]
 
-    return(scores)
+    return scores
 
 
 def match_score(scoring_matrix, a, b):
@@ -114,7 +117,7 @@ def match_score(scoring_matrix, a, b):
     y = scoring_matrix[0].index(b)
     cost = int(scoring_matrix[x+1][y])
 
-    return(cost)
+    return cost
 
 
 def print_matrix(matrix, y=None, x=None):

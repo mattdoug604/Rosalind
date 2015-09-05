@@ -21,7 +21,7 @@ EXAMPLE OUTPUT:
 3
 '''
 
-from rosalind_utils import parse_fasta, print_matrix
+from rosalind_utils import parse_fasta
 
 def max_global_align_gaps(s, t, m=1, d=-1, g=-1):
     
@@ -41,15 +41,14 @@ def max_global_align_gaps(s, t, m=1, d=-1, g=-1):
                       S[i-1][j] + g,
                       S[i][j-1] + g]
             S[i][j] = max(scores)
-
-    print_matrix(S, s, t)
-
+    
     # The max possible score is the last cell of the similarity matrix.
-    return(S[-1][-1])
+    return S[-1][-1]
 
    
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_mgap.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_mgap.txt')
+
     print(max_global_align_gaps(s, t))
         
 

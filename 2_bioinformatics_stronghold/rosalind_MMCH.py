@@ -6,7 +6,8 @@ Problem: Maximum Matchings and RNA Secondary Structures
 URL: http://rosalind.info/problems/mmch/
 
 Given: An RNA string s of length at most 100.
-Return: The total possible number of maximum matchings of basepair edges in the bonding graph of s.
+Return: The total possible number of maximum matchings of basepair edges in the
+bonding graph of s.
 '''
 
 '''
@@ -18,11 +19,12 @@ EXAMPLE OUTPUT:
 6
 '''
 
+from rosalind_utils import parse_fasta
+
 def count_bases(s, a, b):
-    a_count = s.count(a)
-    b_count = s.count(b)
+    a_count, b_count = map(s.count, [a, b])
     
-    return(max(a_count, b_count), min(a_count, b_count))
+    return max(a_count, b_count), min(a_count, b_count)
 
 
 def count_permutations(n, k):
@@ -33,7 +35,7 @@ def count_permutations(n, k):
     for i in range(n, n-k, -1):
         count *= i
 
-    return(count)
+    return count
 
 
 def max_matches(s):
@@ -42,16 +44,13 @@ def max_matches(s):
     '''
     n1, k1 = count_bases(s, 'A', 'U')
     n2, k2 = count_bases(s, 'C', 'G')
-
     matches = count_permutations(n1, k1) * count_permutations(n2, k2)
 
-    return(matches)
+    return matches
 
 
 def main():
-    with open('problem_datasets/rosalind_mmch.txt', 'r') as infile:
-        next(infile)
-        s = infile.read().replace('\n', '')
+    s = parse_fasta('problem_datasets/rosalind_mmch.txt')
 
     print(max_matches(s))
 

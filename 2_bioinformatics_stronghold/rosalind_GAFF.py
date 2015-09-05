@@ -33,7 +33,6 @@ def global_align_with_affine(s, t, scores, gap, gap_e):
     ''' Returns two matrices of the edit distance and edit alignment between
         strings s and t.
     '''
-
     # Initialize the three score matrices...
     M = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)] # a (mis)match
     X = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)] # a gap in X
@@ -118,11 +117,11 @@ def global_align_with_affine(s, t, scores, gap, gap_e):
     for remaining in range(j):
         s_align = s_align[:0] + '-' + s_align[0:]
 
-    return(str(max_score), s_align, t_align)
+    return str(max_score), s_align, t_align
 
 
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_gaff.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_gaff.txt')
     alignment = global_align_with_affine(s, t, BLOSUM62(), -11, -1)
     
     with open('output/rosalind_gaff_out.txt', 'w') as f:

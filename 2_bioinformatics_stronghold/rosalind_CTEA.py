@@ -65,7 +65,7 @@ def count_alignments(s, t):
 
 def main():
     # Read in the two input strings.
-    s, t = parse_fasta('problem_datasets/rosalind_ctea.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_ctea.txt')
 
     # Print the number of optimal alignments (modulo 2^27 - 1).
     print(count_alignments(s, t))

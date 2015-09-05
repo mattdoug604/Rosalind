@@ -13,17 +13,16 @@ def rev_comp(seq):
     seq_dict = { 'A':'T', 'T':'A', 'G':'C', 'C':'G' }
     revc = ''.join([seq_dict[base] for base in reversed(seq)])
 
-    return(revc)
+    return revc
 
 
 def main():
     with open('problem_datasets/rosalind_revc.txt', 'r') as infile:
-        seq = infile.read().strip()
+        seq = ''.join(infile.read().strip())
 
     answer = rev_comp(seq)
 
     with open('output/rosalind_revc_out.txt', 'w') as outfile:
-        #print(answer)
         outfile.write(answer)
 
 

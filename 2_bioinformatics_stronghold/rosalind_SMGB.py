@@ -29,7 +29,6 @@ CAGCA-CTTGGATTCTCGG
 from rosalind_utils import parse_fasta
 
 def semiglobal_align(s, t):
-    
     # Initialize the distance and traceback matrices with zeros.
     d = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
     traceback = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
@@ -83,11 +82,11 @@ def semiglobal_align(s, t):
     for dash in range(j):
         s_align = s_align[:0] + '-' + s_align[0:]
 
-    return(str(max_score), s_align, t_align)
+    return str(max_score), s_align, t_align
 
    
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_smgb.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_smgb.txt')
     alignment = semiglobal_align(s, t)
 
     with open('output/rosalind_smgb_out.txt', 'w') as outfile:

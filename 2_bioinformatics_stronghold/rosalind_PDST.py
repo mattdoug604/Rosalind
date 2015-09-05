@@ -5,8 +5,10 @@ Rosalind: Bioinformatics Stronghold
 Problem: Creating a Distance Matrix
 URL: http://rosalind.info/problems/pdst/
 
-Given: A collection of n (n <= 10) DNA strings s1,…,sn of equal length (at most 1 kbp). Strings are given in FASTA format.
-Return: The matrix D corresponding to the p-distance dp on the given strings. As always, note that your answer is allowed an absolute error of 0.001.
+Given: A collection of n (n <= 10) DNA strings s1,…,sn of equal length (at most
+1 kbp). Strings are given in FASTA format.
+Return: The matrix D corresponding to the p-distance dp on the given strings. As
+always, note that your answer is allowed an absolute error of 0.001.
 '''
 
 '''
@@ -29,31 +31,30 @@ EXAMPLE OUTPUT:
 
 from rosalind_utils import parse_fasta
 
-
 def calc_distance(s1, s2):
     dist = sum(1 if s1[i] != s2[i] else 0 for i in range(len(s1))) / len(s1)
 
-    return(dist)
+    return dist
 
 
 def distance_matrix(strings):
-    matrix = [[float(0) for i in range(len(strings))] for j in range(len(strings))]
+    matrix = [[0 for i in range(len(strings))] for j in range(len(strings))]
 
     for x in range(len(strings)):
         for y in range(len(strings)):
             dist = float("{0:.5f}".format(calc_distance(strings[x], strings[y])))
             matrix[x][y] = dist
             
-    return(matrix)
+    return matrix
 
 
 def main():
-    strings = list(parse_fasta('problem_datasets/rosalind_pdst.txt').values())
+    strings = parse_fasta('problem_datasets/rosalind_pdst.txt')
     matrix = distance_matrix(strings)
 
     with open('output/rosalind_pdst_out.txt', 'w') as outfile:
-        for x in matrix:
-            outfile.write(' '.join(map(str, x))+'\n')
+        for line in matrix:
+            outfile.write(' '.join(map(str, line))+'\n')
     
 
 if __name__ == '__main__':

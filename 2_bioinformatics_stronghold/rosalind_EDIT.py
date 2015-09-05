@@ -43,7 +43,7 @@ def edit_dist(s, t):
     ''' Takes two DNA strings, of lengths m and n, and returns the edit distance
         between them. This is accomplished by building a matrix, l, that holds
         the distances between all prefixes of the 1st string and all prefixes of
-        the 2nd. The edit distance is then the value of l[m, n].
+        the 2nd. The final edit distance is then the value at l[m, n].
     '''
     m, n = len(s), len(t)
     
@@ -73,7 +73,8 @@ def edit_dist(s, t):
 
 
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_edit.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_edit.txt')
+    
     print(edit_dist(s, t))
     
 

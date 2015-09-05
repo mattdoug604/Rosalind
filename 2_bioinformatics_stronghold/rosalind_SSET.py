@@ -17,13 +17,8 @@ EXAMPLE OUTPUT:
 8
 '''
 
-def main():
-    with open('problem_datasets/rosalind_sset.txt', 'r') as infile:
-        n = int(infile.readline().strip())
-
-    answer = 2**n % 1000000
-    print(answer)
-
-
 if __name__ == '__main__':
-    main()
+    with open('problem_datasets/rosalind_sset.txt', 'r') as infile:
+        n = int(infile.read())
+
+    print(2**n % 1000000)

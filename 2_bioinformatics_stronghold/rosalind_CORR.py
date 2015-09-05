@@ -5,11 +5,19 @@ Rosalind: Bioinformatics Stronghold
 Problem: Error Correction in Reads
 URL: http://rosalind.info/problems/corr/
 
-Given: A collection of up to 1000 reads of equal length (at most 50 bp) in FASTA format. Some of these reads were generated with a single-nucleotide error. For each read s in the dataset, one of the following applies:
-    - s was correctly sequenced and appears in the dataset at least twice (possibly as a reverse complement);
-    - s is incorrect, it appears in the dataset exactly once, and its Hamming distance is 1 with respect to exactly one correct read in the dataset (or its reverse complement).
+Given: A collection of up to 1000 reads of equal length (at most 50 bp) in FASTA
+format. Some of these reads were generated with a single-nucleotide error. For
+each read s in the dataset, one of the following applies:
 
-Return: A list of all corrections in the form "[old read]->[new read]". (Each correction must be a single symbol substitution, and you may return the corrections in any order.)
+    - s was correctly sequenced and appears in the dataset at least twice
+      (possibly as a reverse complement);
+    - s is incorrect, it appears in the dataset exactly once, and its Hamming
+      distance is 1 with respect to exactly one correct read in the dataset (or
+      its reverse complement).
+
+Return: A list of all corrections in the form "[old read]->[new read]". (Each
+correction must be a single symbol substitution, and you may return the 
+corrections in any order.)
 '''
 
 '''
@@ -40,15 +48,16 @@ TTTCC->TTTCA
 '''
 
 from rosalind_utils import parse_fasta
+from rosalind_utils import reverse_complement as rev_comp
 
-
+'''
 def rev_comp(string):
-    ''' Return the reverse complement of a given DNA string. '''
+    ''' '''Return the reverse complement of a given DNA string. ''''''
     rev = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
     rev_string = ''.join([rev[i] for i in string[::-1]])
 
-    return(rev_string)
-
+    return rev_string
+'''
 
 def hamm_dist(a, b, limit=1):
     ''' Calculate the Hamming distance of two DNA strings. For this problem we
@@ -62,7 +71,7 @@ def hamm_dist(a, b, limit=1):
         if hamm > limit:
             return(hamm)
 
-    return(hamm)
+    return hamm
 
 def count_apperances(string_list):
     ''' Count how many times a given DNA string occurs in a list. If the reverse
@@ -81,7 +90,7 @@ def count_apperances(string_list):
                 str_count[i] = 1
                 str_count[rev_comp(i)] = 1
 
-    return(str_count)
+    return str_count
 
 
 def error_correct(string_list):
@@ -106,15 +115,15 @@ def error_correct(string_list):
             if hamm_dist(i, j) < 2:
                 corrections.append([i, j])
 
-    return(corrections)
+    return corrections
 
 
 def main():
-    strings = list(parse_fasta('problem_datasets/rosalind_corr.txt').values())
+    strings = parse_fasta('problem_datasets/rosalind_corr.txt')
     strings += [rev_comp(i) for i in strings]
 
     corr = error_correct(strings)
-
+    
     with open('output/rosalind_corr_out.txt', 'w') as outfile:
         for i in corr:
             outfile.write('->'.join(i) + '\n')

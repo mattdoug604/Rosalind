@@ -27,7 +27,6 @@ PR-TTEIN
 from rosalind_utils import parse_fasta
 
 def edit_dist_with_align(s, t):
-    
     # Initialize the distance and traceback matrices with zeros.
     d = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
     traceback = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
@@ -77,7 +76,7 @@ def edit_dist_with_align(s, t):
 
    
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_edta.txt', 'seq')
+    s, t = parse_fasta('problem_datasets/rosalind_edta.txt')
     aligned = edit_dist_with_align(s, t)
 
     with open('output/rosalind_edta_out.txt', 'w') as outfile:

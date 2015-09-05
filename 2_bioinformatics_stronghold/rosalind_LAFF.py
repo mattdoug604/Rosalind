@@ -5,11 +5,16 @@ Rosalind: Bioinformatics Stronghold
 Problem: Local Alignment with Affine Gap Penalty
 URL: http://rosalind.info/problems/laff/
 
-Given: Two protein strings s and t in FASTA format (each having length at most 10,000 aa).
-Return: The maximum local alignment score of s and t, followed by substrings r and u of s and t, respectively, that correspond to the optimal local alignment of s and t. Use:
-    The BLOSUM62 scoring matrix.
-    Gap opening penalty equal to 11.
-    Gap extension penalty equal to 1.
+Given: Two protein strings s and t in FASTA format (each having length at most
+10,000 aa).
+Return: The maximum local alignment score of s and t, followed by substrings r
+and u of s and t, respectively, that correspond to the optimal local alignment
+of s and t. Use:
+
+    - The BLOSUM62 scoring matrix.
+    - Gap opening penalty equal to 11.
+    - Gap extension penalty equal to 1.
+    
 If multiple solutions exist, then you may output any one.
 '''
 
@@ -29,11 +34,12 @@ MEAN
 from rosalind_utils import parse_fasta, BLOSUM62, match_score
     
 def local_align_with_affine(s, t, scores, gap, gap_e):
-    
-    # Initialize the matrices (short).
+    # Initialize the arrays that will contain the previous round of scores.
     Sx = [0 for i in range(len(t)+1)]
     Sy = [0 for j in range(len(t)+1)]
     Sm = [0 for i in range(len(t)+1)]
+    
+    # Initialize the traceback matrix.
     traceback = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
     
     best = -1
@@ -82,11 +88,11 @@ def local_align_with_affine(s, t, scores, gap, gap_e):
     r = r[i:]
     u = u[j:]
     
-    return(str(best), r, u)
+    return str(best), r, u
 
 
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_laff.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_laff.txt')
     alignment = local_align_with_affine(s, t, BLOSUM62(), -11, -1)
     
     with open('output/rosalind_laff_out.txt', 'w') as outfile:

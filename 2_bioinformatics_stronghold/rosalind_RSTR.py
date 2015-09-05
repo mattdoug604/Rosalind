@@ -36,7 +36,7 @@ def prob(n, gc, seq):
 
     percent = 1 - (1 - percent) ** n
     
-    return(percent)
+    return percent
 
     
 def main():
@@ -47,6 +47,7 @@ def main():
         x = float(x)
 
     print('%.3f' % prob(n, x, s))
+
 
 if __name__ == '__main__':
     main()

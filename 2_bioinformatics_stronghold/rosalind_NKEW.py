@@ -5,8 +5,11 @@ Rosalind: Bioinformatics Stronghold
 Problem: Newick Format with Edge Weights
 URL: http://rosalind.info/problems/nkew/
 
-Given: A collection of n weighted trees (n <= 40) in Newick format, with each tree containing at most 200 nodes; each tree Tk is followed by a pair of nodes xk and yk in Tk.
-Return: A collection of n numbers, for which the kth number represents the distance between xk and yk in Tk.
+Given: A collection of n weighted trees (n <= 40) in Newick format, with each
+tree containing at most 200 nodes; each tree Tk is followed by a pair of nodes
+xk and yk in Tk.
+Return: A collection of n numbers, for which the kth number represents the
+distance between xk and yk in Tk.
 '''
 
 '''
@@ -29,7 +32,7 @@ def parse_dist_value(sub_string):
         else:
             break
 
-    return(int(dist))
+    return int(dist)
 
 
 def find_lca(t, a, b):
@@ -62,7 +65,7 @@ def find_lca(t, a, b):
             if a in sub and b in sub:
                 return(subtrees, level)              
 
-    return(subtrees, level)
+    return subtrees, level
 
 
 def distance_to_lca(lca, node):
@@ -78,7 +81,7 @@ def distance_to_lca(lca, node):
             if node in branch:
                 dist += int(branch.split('..')[1])
     
-    return(dist)
+    return dist
 
 
 def distance_between_nodes(t):
@@ -89,7 +92,7 @@ def distance_between_nodes(t):
     subtrees, lvl = find_lca(tree, a, b)
     dist = distance_to_lca(subtrees[lvl:], a) + distance_to_lca(subtrees[lvl:], b)
     
-    return(dist)
+    return dist
     
 
 def main():

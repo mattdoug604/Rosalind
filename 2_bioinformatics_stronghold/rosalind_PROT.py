@@ -5,15 +5,15 @@ Rosalind: Bioinformatics Stronghold
 Problem: Translating RNA into Protein
 URL: http://rosalind.info/problems/prot/
 
-Given: An RNA string s corresponding to a strand of mRNA (of length at most 10 kbp).
+Given: An RNA string s corresponding to a strand of mRNA (of length at most
+10kbp).
 Return: The protein string encoded by s.
 '''
 
 from rosalind_utils import codon_table
 
-
 def translate(rna):
-    table = codon_table('U')
+    table = codon_table('rna')
     peptide = ''
     
     for nt in range(0, len(rna), 3):
@@ -24,7 +24,7 @@ def translate(rna):
         else:
             break
 
-    return(peptide)
+    return peptide
 
         
 def main():

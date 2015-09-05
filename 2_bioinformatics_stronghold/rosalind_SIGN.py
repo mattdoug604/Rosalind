@@ -6,7 +6,8 @@ Problem: Enumerating Oriented Gene Orderings
 URL: http://rosalind.info/problems/sign/
 
 Given: A positive integer n <= 6.
-Return: The total number of signed permutations of length n, followed by a list of all such permutations (you may list the signed permutations in any order).
+Return: The total number of signed permutations of length n, followed by a list
+of all such permutations (you may list the signed permutations in any order).
 '''
 
 import itertools
@@ -31,10 +32,10 @@ def get_perms(n):
 
     new_perms = [' '.join(map(str, x)) for x in new_perms]
 
-    return(len(new_perms), new_perms)
+    return len(new_perms), new_perms
 
 
-def main(n):
+def main():
     with open('problem_datasets/rosalind_sign.txt', 'r') as infile:
         n = int(infile.read().strip())
 
@@ -42,11 +43,10 @@ def main(n):
 
     with open('output/rosalind_sign_out.txt', 'w') as outfile:
         outfile.write(str(count) + '\n')
-        print(count, 'signed permutations.')
-        for p in perms:
-            outfile.write(p + '\n')
+        outfile.write('\n'.join(perms))
+
+    print(count, 'signed permutations.')
 
   
 if __name__ == '__main__':
-    n = 5
-    main(n)
+    main()

@@ -5,8 +5,12 @@ Rosalind: Bioinformatics Stronghold
 Problem: Mendel's First Law
 URL: http://rosalind.info/problems/iprb/
 
-Given: Three positive integers k, m, and n, representing a population containing k+m+n organisms: k individuals are homozygous dominant for a factor, m are heterozygous, and n are homozygous recessive.
-Return: The probability that two randomly selected mating organisms will produce an individual possessing a dominant allele (and thus displaying the dominant phenotype). Assume that any two organisms can mate.
+Given: Three positive integers k, m, and n, representing a population containing
+k+m+n organisms: k individuals are homozygous dominant for a factor, m are
+heterozygous, and n are homozygous recessive.
+Return: The probability that two randomly selected mating organisms will produce
+an individual possessing a dominant allele (and thus displaying the dominant
+phenotype). Assume that any two organisms can mate.
 '''
 
 def prob(k, m, n):
@@ -23,7 +27,7 @@ def prob(k, m, n):
 
     p = 1 - (c1 + c2 + c3 + c4)
 
-    return(p)
+    return p
 
 
 def main():

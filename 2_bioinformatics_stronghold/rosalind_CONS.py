@@ -5,13 +5,13 @@ Rosalind: Bioinformatics Stronghold
 Problem: Consensus and Profile
 URL: http://rosalind.info/problems/cons/
 
-Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp) in FASTA format.
-Return: A consensus string and profile matrix for the collection. (If several possible consensus strings exist, then you may return any one of them.)
+Given: A collection of at most 10 DNA strings of equal length (at most 1 kbp) in
+FASTA format.
+Return: A consensus string and profile matrix for the collection. (If several
+possible consensus strings exist, then you may return any one of them.)
 '''
 
 from rosalind_utils import parse_fasta
-import re
-
     
 def profile_matrix(seqs):
     ''' Generate a profile matrix from a list of DNA sequences. Assumes all the
@@ -26,7 +26,7 @@ def profile_matrix(seqs):
             s = string[i]
             matrix[i][letters[s]] += 1
 
-    return(matrix)
+    return matrix
 
 
 def consensus_seq(profile):
@@ -38,7 +38,7 @@ def consensus_seq(profile):
         nt = profile[i].index(max(profile[i]))
         consensus += letter[nt]
 
-    return(consensus)
+    return consensus
 
 
 def format_profile(profile):
@@ -50,11 +50,11 @@ def format_profile(profile):
         for j in range(len(profile)):
             line += str(profile[j][i]) + ' '
 
-        yield(line)
+        yield line
 
 
 def main():
-    sequences = list(parse_fasta('problem_datasets/rosalind_cons.txt').values())
+    sequences = parse_fasta('problem_datasets/rosalind_cons.txt')
     profile = profile_matrix(sequences)
     consensus = consensus_seq(profile)
 

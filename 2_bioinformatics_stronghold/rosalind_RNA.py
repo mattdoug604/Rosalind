@@ -11,9 +11,9 @@ Return: The transcribed RNA string of t.
 
 def transcribe():
     with open('problem_datasets/rosalind_rna.txt', 'r') as infile:
-        dna = infile.read().strip()
+        dna = ''.join(infile.read().strip())
 
-    rna = dna.replace("T", "U")
+    rna = dna.replace('T', 'U')
     
     with open('output/rosalind_rna_out.txt', 'w') as outfile:
         outfile.write(rna)

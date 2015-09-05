@@ -76,11 +76,11 @@ def alignment_score(s, t, scores, gap):
     r = r[i:]
     u = u[j:]
 
-    return(str(best), r, u)
+    return str(best), r, u
 
 
 def main():
-    s, t = parse_fasta('problem_datasets/rosalind_loca.txt', True)
+    s, t = parse_fasta('problem_datasets/rosalind_loca.txt')
     alignment = alignment_score(s, t, PAM250(), -5)
 
     with open('output/rosalind_loca_out.txt', 'w') as outfile:

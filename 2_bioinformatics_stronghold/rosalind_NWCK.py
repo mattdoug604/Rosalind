@@ -5,8 +5,11 @@ Rosalind: Bioinformatics Stronghold
 Problem: Distances in Trees
 URL: http://rosalind.info/problems/nwck/
 
-Given: A collection of n trees (n <= 40) in Newick format, with each tree containing at most 200 nodes; each tree Tk is followed by a pair of nodes xk and yk in Tk.
-Return: A collection of n positive integers, for which the kth integer represents the distance between xk and yk in Tk.
+Given: A collection of n trees (n <= 40) in Newick format, with each tree
+containing at most 200 nodes; each tree Tk is followed by a pair of nodes xk and
+yk in Tk.
+Return: A collection of n positive integers, for which the kth integer
+represents the distance between xk and yk in Tk.
 '''
 
 def find_lca(t, a, b):
@@ -35,7 +38,7 @@ def find_lca(t, a, b):
             if a in sub and b in sub:
                return(subtrees, level)
 
-    return(subtrees, level)
+    return subtrees, level
 
 
 def distance_to_lca(lca, node):
@@ -59,7 +62,8 @@ def distance_to_lca(lca, node):
             return(dist)
 
     dist = len(lca) - binary_weight(binary)
-    return(dist)
+    
+    return dist
 
 
 def distance_between_nodes(t):
@@ -70,7 +74,7 @@ def distance_between_nodes(t):
     subtrees, lca = find_lca(tree, a, b)
     dist = 2 + distance_to_lca(subtrees[lca:], a) + distance_to_lca(subtrees[lca:], b)
     
-    return(dist)
+    return dist
     
 
 def main():

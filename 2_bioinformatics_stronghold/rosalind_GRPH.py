@@ -5,8 +5,10 @@ Rosalind: Bioinformatics Stronghold
 Problem: Overlap Graphs
 URL: http://rosalind.info/problems/grph/
 
-Given: A collection of DNA strings in FASTA format having total length at most 10 kbp.
-Return: The adjacency list corresponding to O3. You may return edges in any order.
+Given: A collection of DNA strings in FASTA format having total length at most
+10 kbp.
+Return: The adjacency list corresponding to O3. You may return edges in any
+order.
 '''
 
 from rosalind_utils import parse_fasta
@@ -22,7 +24,7 @@ def overlap_seqs(sequences):
 
 
 def main():
-    dataset = parse_fasta("problem_datasets/rosalind_grph.txt")
+    dataset = parse_fasta('problem_datasets/rosalind_grph.txt', no_id=False)
     
     with open('output/rosalind_grph_out.txt', 'w') as outfile:
         for line in overlap_seqs(dataset):
