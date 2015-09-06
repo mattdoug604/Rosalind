@@ -1,0 +1,5 @@
+carbohydrate metabolic process
+glycerol-3-phosphate biosynthetic process
+glycerol-3-phosphate catabolic process
+glycerophospholipid metabolic process
+phospholipid biosynthetic process
