@@ -35,8 +35,6 @@ def build_matrix(s, t, m, n):
                 d[i][j] = d[i-1][j-1]+1
             else:
                 d[i][j] = max(d[i-1][j], d[i][j-1])
-
-    print('The longest common subsequence is', d[m][n], 'bases long.')
     
     return d
 
@@ -66,6 +64,8 @@ def main():
 
     with open('output/rosalind_lcsq_out.txt', 'w') as outfile:
         outfile.write(seq)
+
+    print('The longest common subsequence is', len(seq), 'bases long.')
         
 
 if __name__ == '__main__':

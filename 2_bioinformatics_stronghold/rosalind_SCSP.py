@@ -19,55 +19,50 @@ EXAMPLE OUTPUT:
 ATGCATGAT
 '''
 
-from rosalind_utils import parse_fasta, print_matrix
+from rosalind_LCSQ import longest_sub
 
 def shortest_sub(s, t):
-    m = len(s)
-    n = len(t)
-
-    # Initialize the matrix.
-    l = [[[] for x in range(n+1)] for y in range(m+1)]
-
-    # Fill in the matrix.
-    for i in range(m+1):
-        for j in range(n+1):
-            if i == 0 or j == 0:
-                l[i][j] = 0
-            elif s[i-1] == t[j-1]:
-                l[i][j] = l[i-1][j-1]+1
-            else:
-                l[i][j] = max(l[i-1][j], l[i][j-1])
-
-    print('The shortest common subsequence should be', m + n - l[-1][-1], 'bases long.')
-    print_matrix(l, s, t)
-
-    # Traceback from the bottom corner of the matrix to build the substring.
-    i = m
-    j = n
-    lcs = ''
-
-    while i>0 and j>0:
-        if s[i-1] == t[j-1]:
-            lcs = s[i-1] + lcs
-            i -= 1
-            j -= 1
-        elif l[i-1][j] > l[i][j-1]:
-            i -= 1
-        else:
-            j -= 1
-
-    print('longest common subsequence =', lcs)
+    # Find the longest common subsequence.
+    lcs = longest_sub(s, t)
     
     # Fill out the subsequence with the remaining char.
+    scs = [''] * (len(lcs)+1)
+
+    m = 0
+    n = 0
+    for i in range(len(lcs)):
+        # Increment through each DNA string while the character at position
+        # m/n is not equal to the ith character of the longest subsequence,
+        # appending the character(s) as you go.
+        while s[m] != lcs[i] and m < len(s):
+            scs[i] += s[m]
+            m += 1
+        while t[n] != lcs[i] and n < len(t):
+            scs[i] += t[n]
+            n += 1
+
+        # Finally, add the ith character from the longest common subsequence,
+        # and increment each DNA sequence by 1.
+        scs[i] += lcs[i]
+        m += 1
+        n += 1
+
+    # Append the remaining characters (if any) to form the supersequence.
+    scs[-1] = s[m:] + t[n:]
    
-    return 
+    return ''.join(scs)
     
         
 def main():
     with open('problem_datasets/rosalind_scsp.txt', 'r') as infile:
         s, t = infile.read().strip().split('\n')
 
-    print(shortest_sub(s, t))
+    seq = shortest_sub(s, t)
+    
+    with open('output/rosalind_scsp_out.txt', 'w') as outfile:
+        outfile.write(seq)
+        
+    print('shortest common supersequence =', seq)
         
 
 if __name__ == '__main__':
