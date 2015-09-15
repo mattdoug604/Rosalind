@@ -37,7 +37,7 @@ def parse_fasta(path, no_id=True):
 #####################################
     
 def aa_mass(aa):
-    ''' Returns the monoisotopic mass of a given amino acid. '''
+    ''' Returns the monoisotopic mass of a given amino acid(s). '''
     mass_table = { 'A':71.03711,
                    'C':103.00919,
                    'D':115.02694,
@@ -58,9 +58,46 @@ def aa_mass(aa):
                    'V':99.06841,
                    'W':186.07931,
                    'Y':163.06333 }
+    
+    mass = 0
+    for i in aa:
+        try:
+            mass += mass_table[i]
+        except KeyError:
+            print('Error: Could not find a mass for an amino acid %s.' % i)
+            return None
 
-    return mass_table[aa]
+    return mass
 
+
+def mass_to_aa(mass, tol=0.0001):
+    ''' Returns the amino acid corresponding to a given mass. '''
+    aa_table = { 71.03711:'A',
+                 103.00919:'C',
+                 115.02694:'D',
+                 129.04259:'E',
+                 147.06841:'F',
+                 57.02146:'G',
+                 137.05891:'H',
+                 113.08406:'I',
+                 128.09496:'K',
+                 113.08406:'L',
+                 131.04049:'M',
+                 114.04293:'N',
+                 97.05276:'P',
+                 128.05858:'Q',
+                 156.10111:'R',
+                 87.03203:'S',
+                 101.04768:'T',
+                 99.06841:'V',
+                 186.07931:'W',
+                 163.06333:'Y' }
+
+    for key, aa in aa_table.items():
+        if abs(mass-key) < tol:
+            return aa
+
+    return '*'
 
 def codon_table(seq_type='rna'):
     ''' Return a dictionary of codons and corresponding amino acids '''
