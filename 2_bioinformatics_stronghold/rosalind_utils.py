@@ -70,7 +70,7 @@ def aa_mass(aa):
     return mass
 
 
-def mass_to_aa(mass, tol=0.0001):
+def mass_to_aa(val, tolerance=0.0001):
     ''' Returns the amino acid corresponding to a given mass. '''
     aa_table = { 71.03711:'A',
                  103.00919:'C',
@@ -93,11 +93,11 @@ def mass_to_aa(mass, tol=0.0001):
                  186.07931:'W',
                  163.06333:'Y' }
 
-    for key, aa in aa_table.items():
-        if abs(mass-key) < tol:
+    for mass, aa in aa_table.items():
+        if abs(val - mass) < tolerance:
             return aa
 
-    return '*'
+    return None
 
 def codon_table(seq_type='rna'):
     ''' Return a dictionary of codons and corresponding amino acids '''
