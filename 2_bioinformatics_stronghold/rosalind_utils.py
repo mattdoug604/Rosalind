@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 ''' This file contains a collection of functions that I've been using frequently
     in the Rosalind problems.
 '''
@@ -9,8 +7,9 @@
 #####################################
 
 def parse_fasta(path, no_id=True):
-    ''' Read in a Fasta file. If no_id is set to false, return a dictonary of
-        sequences with associated headers; else return a list of sequences only.
+    ''' Read in a Fasta file. If no_id is set to False, return a dictonary of
+        sequences with associated headers; otherwise return a list of sequences
+        only.
     '''
     ids = []
     seqs = []
@@ -32,8 +31,49 @@ def parse_fasta(path, no_id=True):
         return dict(zip(ids, seqs))
 
 
+def print_matrix(matrix, ylab=None, xlab=None):
+    ''' Print out the given 2D matrix with axis labels. Matrix rows must be the
+        same length.
+    '''
+    # Determine the spacing between columns.
+    spacing = [0 for i in range(len(matrix[0])+1)]
+    for i in range(len(matrix[0])):
+        max_l = 0
+        for j in range(len(matrix)):
+            l = len(str(matrix[j][i]))
+            if l > max_l:
+                max_l = l
+                spacing[i+1] = max_l
+
+    # Print the x-axis.
+    if xlab is not None:
+        xlab = ' ' + xlab
+        spacing[0] = len(max(ylab, key=len))
+        x_axis = ' ' * spacing[0]
+        for i, ch in enumerate(xlab):
+            x_axis += ' ' * spacing[i+1] + ch
+
+        print(x_axis)
+
+    # Print each row of the matrix with y-label.
+    if ylab is not None:
+        ylab = ' ' + ylab
+        
+    for i in range(len(matrix)):
+        if ylab is not None:
+            line = ylab[i]
+            for j in range(len(matrix[i])):
+                line += ' ' * (spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
+        else:
+            line = ''
+            for j in range(len(matrix[i])):
+                line += ' ' * (spacing[j]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
+
+        print(line)
+
+
 #####################################
-### ----------- TABLES ---------- ###
+### --------- MASS SPEC --------- ###
 #####################################
     
 def aa_mass(aa):
@@ -97,7 +137,13 @@ def mass_to_aa(val, tolerance=0.0001):
         if abs(val - mass) < tolerance:
             return aa
 
+    print('Error: Could not find an amino acid with monoisotopic mass %d.' % val)
     return None
+
+
+#####################################
+### -------- TRANSLATION -------- ###
+#####################################
 
 def codon_table(seq_type='rna'):
     ''' Return a dictionary of codons and corresponding amino acids '''
@@ -155,47 +201,3 @@ def match_score(scoring_matrix, a, b):
     cost = int(scoring_matrix[x+1][y])
 
     return cost
-
-
-def print_matrix(matrix, y=None, x=None):
-    ''' Print out the given 2D matrix with axis labels. Matrix rows must be the
-        same length.
-    '''
-    # If axis labels aren't specified...
-    #if len(y) < len(matrix)-1:
-    #    y = y + ' '*(len(matrix)-len(y)-1)
-    
-    # Determine the spacing between columns.
-    spacing = [0 for i in range(len(matrix[0])+1)]
-    for i in range(len(matrix[0])):
-        max_l = 0
-        for j in range(len(matrix)):
-            l = len(str(matrix[j][i]))
-            if l > max_l:
-                max_l = l
-                spacing[i+1] = max_l
-
-    # Print the x-axis.
-    if x is not None:
-        x = ' ' + x
-        spacing[0] = len(max(y, key=len))
-        x_axis = ' '*spacing[0]
-        for i, ch in enumerate(x):
-            x_axis += ' '*spacing[i+1] + ch
-        print(x_axis)
-
-    # Print each row of the matrix with y-label.
-    if y is not None:
-        y = ' ' + y
-        
-    for i in range(len(matrix)):
-        if y is not None:
-            line = y[i]
-            for j in range(len(matrix[i])):
-                line += ' '*(spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
-        else:
-            line = ''
-            for j in range(len(matrix[i])):
-                line += ' '*(spacing[j]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
-
-        print(line)
