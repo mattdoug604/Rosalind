@@ -1,25 +1,19 @@
-#!usr/bin/python
+#!/usr/bin/python
 
 '''
 Rosalind: Bioinformatics Stronghold
-Problem: Inferring Peptide from Full Spectrum
-URL: http://rosalind.info/problems/full/
+Problem: Matching a Spectrum to a Protein
+URL: http://rosalind.info/problems/prsm/
 
-Given: A list L containing 2n+3 positive real numbers (n≤100). The first number 
-in L is the parent mass of a peptide P, and all other numbers represent the 
-masses of some b-ions and y-ions of P (in no particular order). You may assume 
-that if the mass of a b-ion is present, then so is that of its complementary 
-y-ion, and vice-versa.
+Given: A positive integer n followed by a collection of n protein strings s1, 
+s2, ..., sn and a multiset R of positive numbers (corresponding to the complete spectrum of some unknown protein string).
 
-Return: A protein string t of length n for which there exist two positive real 
-numbers w1 and w2 such that for every prefix p and suffix s of t, each of 
-w(p)+w1 and w(s)+w2 is equal to an element of L. (In other words, there exists 
-a protein string whose t-prefix and t-suffix weights correspond to the 
-non-parent mass values of L.) If multiple solutions exist, you may output any 
-one.
+Return: The maximum multiplicity of R⊖S[sk] taken over all strings sk, 
+followed by the string sk for which this maximum multiplicity occurs (you may 
+output any such value if multiple solutions exist).
 '''
 
-from rosalind_utils import mass_to_aa
+from rosalind_utils import aa_mass
 
 def build_peptide(n, frag_dict, peptide='', aa=0):
     ''' Given a dictionary of fragment masses, with the next highest fragment
@@ -58,14 +52,22 @@ def peptide_from_fragments(p, l):
     # Return the completed peptide of length n.
     return peptide
 
+def max_multiplicity(n, s, r):
+    r = sorted(r)
+    
+    print(peptide_from_fragments(0, r))
+    
+    return '', ''
+
 
 def main():
-    with open('problem_datasets/rosalind_full.txt', 'r') as infile:
-        p = float(infile.readline().strip())
-        frags = list(map(float, infile.readlines()))
-     
-    print(peptide_from_fragments(p, frags))
-
+    with open('problem_datasets/rosalind_prsm.txt', 'r') as infile:
+        n = int(infile.readline().strip())
+        s = [infile.readline().strip() for i in range(n)]
+        r = list(map(float, infile.read().strip().split('\n')))
+    
+    print('\n'.join(map(str, max_multiplicity(n, s, r))))
+    
 
 if __name__ == '__main__':
     main()

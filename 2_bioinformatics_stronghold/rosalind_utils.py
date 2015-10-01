@@ -137,7 +137,7 @@ def mass_to_aa(val, tolerance=0.0001):
         if abs(val - mass) < tolerance:
             return aa
 
-    print('Error: Could not find an amino acid with monoisotopic mass %d.' % val)
+    print('Note: Could not find an amino acid with monoisotopic mass %.5f.' % val)
     return None
 
 

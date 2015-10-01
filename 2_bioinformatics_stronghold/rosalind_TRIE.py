@@ -42,7 +42,7 @@ class Node:
         self.mark = Node.mark_overall
 
     def __repr__(self):
-        return('Node (mark=%s, d=%s)' % (self.mark, self.s))
+        return 'Node (mark=%s, d=%s)' % (self.mark, self.s)
 
 
 def make_list(strings):
