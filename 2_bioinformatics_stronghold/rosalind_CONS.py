@@ -14,8 +14,8 @@ possible consensus strings exist, then you may return any one of them.)
 from rosalind_utils import parse_fasta
     
 def profile_matrix(seqs):
-    ''' Generate a profile matrix from a list of DNA sequences. Assumes all the
-        sequences are of equal length.
+    ''' Generate a profile matrix from a list of DNA sequences. Assumes all 
+        the sequences are of equal length.
     '''
     length = len(seqs[0])
     matrix =[[0 for x in range(4)] for y in range(length)]
@@ -24,7 +24,8 @@ def profile_matrix(seqs):
     for i in range(length):
         for string in seqs:
             s = string[i]
-            matrix[i][letters[s]] += 1
+            if s in letters:
+                matrix[i][letters[s]] += 1
 
     return matrix
 
@@ -54,7 +55,8 @@ def format_profile(profile):
 
 
 def main():
-    sequences = parse_fasta('problem_datasets/rosalind_cons.txt')
+    #sequences = parse_fasta('problem_datasets/rosalind_cons.txt')
+    sequences = ['ATAT-CCG', '---T-CCG', 'ATGTACTG', 'ATGT-CTG']
     profile = profile_matrix(sequences)
     consensus = consensus_seq(profile)
 
