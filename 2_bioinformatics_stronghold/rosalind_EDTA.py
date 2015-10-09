@@ -41,8 +41,8 @@ def edit_dist_with_align(s, t):
     for i in range(1, len(s)+1):
         for j in range(1, len(t)+1):
             scores = [d[i-1][j-1] + (s[i-1] != t[j-1]), # 0 = match
-                      d[i-1][j]+1,                      # 1 = insertion
-                      d[i][j-1]+1]                      # 2 = deletion
+                      d[i-1][j] + 1,                    # 1 = insertion
+                      d[i][j-1] + 1]                    # 2 = deletion
             d[i][j] = min(scores)
             traceback[i][j] = scores.index(d[i][j])
             
@@ -72,7 +72,7 @@ def edit_dist_with_align(s, t):
     for dash in range(j):
         s_align = s_align[:0] + '-' + s_align[0:]
 
-    return str(edit_dist), s_align, t_align
+    return edit_dist, s_align, t_align
 
    
 def main():
@@ -80,7 +80,7 @@ def main():
     aligned = edit_dist_with_align(s, t)
 
     with open('output/rosalind_edta_out.txt', 'w') as outfile:
-        outfile.write('\n'.join(aligned))
+        outfile.write('\n'.join(map(str, aligned)))
 
     print('Edit distance =', aligned[0])
         

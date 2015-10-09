@@ -35,6 +35,12 @@ def print_matrix(matrix, ylab=None, xlab=None):
     ''' Print out the given 2D matrix with axis labels. Matrix rows must be the
         same length.
     '''
+    
+    if ylab == None:
+        ylab = ' ' * len(matrix[0])
+    if xlab == None:
+        xlab = ' ' * len(matrix)        
+        
     # Determine the spacing between columns.
     spacing = [0 for i in range(len(matrix[0])+1)]
     for i in range(len(matrix[0])):
@@ -46,28 +52,18 @@ def print_matrix(matrix, ylab=None, xlab=None):
                 spacing[i+1] = max_l
 
     # Print the x-axis.
-    if xlab is not None:
-        xlab = ' ' + xlab
-        spacing[0] = len(max(ylab, key=len))
-        x_axis = ' ' * spacing[0]
-        for i, ch in enumerate(xlab):
-            x_axis += ' ' * spacing[i+1] + ch
+    spacing[0] = len(max(ylab, key=len))
+    x_axis = ' ' * spacing[0]
+    for i, ch in enumerate(xlab):
+        x_axis += ' ' * spacing[i+1] + ch
 
-        print(x_axis)
+    print(x_axis)
 
     # Print each row of the matrix with y-label.
-    if ylab is not None:
-        ylab = ' ' + ylab
-        
     for i in range(len(matrix)):
-        if ylab is not None:
-            line = ylab[i]
-            for j in range(len(matrix[i])):
-                line += ' ' * (spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
-        else:
-            line = ''
-            for j in range(len(matrix[i])):
-                line += ' ' * (spacing[j]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
+        line = ylab[i]
+        for j in range(len(matrix[i])):
+            line += ' ' * (spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
 
         print(line)
 

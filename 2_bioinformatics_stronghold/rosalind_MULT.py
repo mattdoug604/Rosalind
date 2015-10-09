@@ -13,7 +13,7 @@ score matched symbols 0 (including matched gap symbols) and all mismatched
 symbols -1 (thus incorporating a linear gap penalty of 1).
 '''
 
-from rosalind_utils import parse_fasta, print_matrix
+from rosalind_utils import parse_fasta
 
 def alignment_score(s, t):
     # Initialize the distance and traceback matrices with zeros.
@@ -40,7 +40,7 @@ def alignment_score(s, t):
     
     #print_matrix(d, s, t)
     #print()
-    print(s, ', ', t, ' -> ', score, sep='')    
+    #print(s, ', ', t, ' -> ', score, sep='')    
     
     return score, traceback
     
@@ -70,8 +70,8 @@ def align_sequences(s, t, traceback):
         s_align = s_align[:0] + '-' + s_align[0:]
 
     return s_align, t_align
-
-   
+    
+    
 def main():
     # Get the collection of sequences.
     #seqs = ['ATATCCG', 'TCCG', 'ATGTACTG', 'ATGTCTG']
@@ -94,7 +94,6 @@ def main():
     remaining.remove(a)
     remaining.remove(b)
     
-    print('Remaining')
     # Pick the sequence that aligned best to one of the already aligned 
     # sequences and align it to the set; repeat until all sequences are 
     # aligned. 
@@ -135,14 +134,21 @@ if __name__ == '__main__':
     main()
 
 '''
- 1. Find the two sequences with the highest pairwise similarity and align  
-    them using standard pairwise dynamic programming alignment. 
- 2. Find the sequence that is most similar to a profile of the alignment 
-    of the first two, and align it to the first two by profile-sequence 
-    alignment. Repeat until all sequences have been included in the  
-    multiple alignment.
- 3. Remove sequence x1 and realign it to a profile of the other aligned 
-    sequences by profile-sequence alignment. Repeat for sequences x2...xN.
- 4. Repeat the previous realignment step a fixed number of times, or 
-    until the alignment score converges.
+Input:
+>Rosalind_2962
+GCGGCGTAC
+>Rosalind_3274
+AACCCTTCT
+>Rosalind_9073
+ATAGCAAGGA
+>Rosalind_8296
+CTGGATTT
+
+
+Correct Answer:
+-43
+GCGGCGTAC-
+AACCCTTCT-
+ATAGCAAGGA
+CTGGATT-T-
 '''
