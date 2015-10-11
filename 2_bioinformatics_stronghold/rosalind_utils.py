@@ -31,15 +31,14 @@ def parse_fasta(path, no_id=True):
         return dict(zip(ids, seqs))
 
 
-def print_matrix(matrix, ylab=None, xlab=None):
+def print_matrix(matrix, ylab='', xlab=''):
     ''' Print out the given 2D matrix with axis labels. Matrix rows must be the
         same length.
     '''
     
-    if ylab == None:
-        ylab = ' ' * len(matrix[0])
-    if xlab == None:
-        xlab = ' ' * len(matrix)        
+    # If x- and y-labels won't cover the entire axis, prepend blank spaces.
+    ylab = ' ' * (len(matrix)-len(ylab)) + ylab
+    xlab = ' ' * (len(matrix[0])-len(xlab)) + xlab       
         
     # Determine the spacing between columns.
     spacing = [0 for i in range(len(matrix[0])+1)]
