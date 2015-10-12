@@ -64,7 +64,7 @@ def print_matrix(matrix, ylab='', xlab=''):
         for j in range(len(matrix[i])):
             line += ' ' * (spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
 
-        print(line)
+        print(line if len(line) < 80 else line[:76]+' ...')
 
 
 #####################################

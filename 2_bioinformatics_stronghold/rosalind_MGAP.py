@@ -13,7 +13,7 @@ alignment of s and t with score parameters satisfying m>0, d<0, and g<0.
 
 from rosalind_utils import parse_fasta
 
-def max_global_align_gaps(s, t):
+def global_align_max_gaps(s, t):
     # Initialize two matrices, one to hold the score and one to count the gaps.
     S = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
     gaps = [[0 for j in range(len(t)+1)] for i in range(len(s)+1)]
