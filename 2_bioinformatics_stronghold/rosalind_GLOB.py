@@ -5,12 +5,13 @@ Rosalind: Bioinformatics Stronghold
 Problem: Global Alignment with Scoring Matrix
 URL: http://rosalind.info/problems/glob/
 
-Given: Two protein strings s and t in FASTA format (each of length at most 1000
-aa).
+Given: Two protein strings s and t in FASTA format (each of length at most 
+1000 aa).
+
 Return: The maximum alignment score between s and t. Use:
-    - The BLOSUM62 scoring matrix.
-    - Linear gap penalty equal to 5 (i.e., a cost of -5 is assessed for each gap
-      symbol).
+        - The BLOSUM62 scoring matrix.
+        - Linear gap penalty equal to 5 (i.e., a cost of -5 is assessed for 
+          each gap symbol).
 '''
 
 '''

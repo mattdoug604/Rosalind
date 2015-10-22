@@ -31,10 +31,13 @@ def parse_fasta(path, no_id=True):
         return dict(zip(ids, seqs))
 
 
-def print_matrix(matrix, ylab='', xlab=''):
+def print_matrix(matrix, ylab='', xlab='', outdir=None):
     ''' Print out the given 2D matrix with axis labels. Matrix rows must be the
         same length.
     '''
+    
+    # Hold the output for later.
+    output = []    
     
     # If x- and y-labels won't cover the entire axis, prepend blank spaces.
     ylab = ' ' * (len(matrix)-len(ylab)) + ylab
@@ -56,15 +59,24 @@ def print_matrix(matrix, ylab='', xlab=''):
     for i, ch in enumerate(xlab):
         x_axis += ' ' * spacing[i+1] + ch
 
-    print(x_axis)
+    output.append(x_axis)
 
     # Print each row of the matrix with y-label.
     for i in range(len(matrix)):
         line = ylab[i]
         for j in range(len(matrix[i])):
             line += ' ' * (spacing[j+1]-len(str(matrix[i][j]))+1) + str(matrix[i][j])
-
-        print(line if len(line) < 80 else line[:76]+' ...')
+            
+        output.append(line)
+        
+    # Output each line.
+    if outdir != None:
+        location = outdir.strip('/')+'/matrix.txt'
+        with open(location, 'w') as outfile:
+            outfile.write('\n'.join(output))
+        print('Matrix written to ./' + location)
+    else:
+        print('\n'.join(output))
 
 
 #####################################
@@ -90,10 +102,21 @@ def aa_mass(aa):
                    'R':156.10111,
                    'S':87.03203,
                    'T':101.04768,
+                   'U':150.95363,
                    'V':99.06841,
                    'W':186.07931,
                    'Y':163.06333 }
+                   
+    aa = aa.upper()
     
+    # Check for cases of ambiguous amino acids.
+    if 'B' in aa:
+        print('Ambiguity: B can be either Asparagine (N) or Aspartic acid (D)!')
+        return None
+    if 'Z' in aa:
+        print('Ambiguity: Z can be either  Glutamine (Q) or Glutamic acid (E)!')
+        return None
+        
     mass = 0
     for i in aa:
         try:
@@ -101,12 +124,15 @@ def aa_mass(aa):
         except KeyError:
             print('Error: Could not find a mass for an amino acid %s.' % i)
             return None
-
+    
+    # Return the sum of the monoisotopic masses.
     return mass
 
 
 def mass_to_aa(val, tolerance=0.0001):
     ''' Returns the amino acid corresponding to a given mass. '''
+    
+    # The monoisotopic masses of each 
     aa_table = { 71.03711:'A',
                  103.00919:'C',
                  115.02694:'D',
@@ -124,16 +150,27 @@ def mass_to_aa(val, tolerance=0.0001):
                  156.10111:'R',
                  87.03203:'S',
                  101.04768:'T',
+                 150.95363:'U',
                  99.06841:'V',
                  186.07931:'W',
                  163.06333:'Y' }
-
+    
+    # Keep track of the closest match to the given mass. Admittedly this is 
+    # only useful in certain circumstances...
+    closest = ['', 999]
+    
     for mass, aa in aa_table.items():
-        if abs(val - mass) < tolerance:
+        diff = abs(val - mass)
+        if diff < closest[1]:
+            closest = [aa, diff]
+            
+        # Return if a match is found.
+        if diff < tolerance:
             return aa
 
+    # Print a warning message if no match is found.
     print('Note: Could not find an amino acid with monoisotopic mass %.5f.' % val)
-    return None
+    print(' '*6 + 'Closest match is', closest[0], '(mass difference %5f).' % closest[1])
 
 
 #####################################
