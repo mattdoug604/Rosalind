@@ -62,23 +62,12 @@ def fitting_alignment(s, t):
     # Trim the beginning of the string, up to where the alignment starts.
     s_align = s_align[i:]
     
-    return s_align, t_align
+    # Calculate the alignment score of two equal length sequences.
+    score = sum([[-1, 1][s_align[i]==t_align[i]] for i in range(len(s_align))])        
+    
+    # Return the score and alignment.
+    return str(score), s_align, t_align
 
-
-def alignment_score(s, t):
-    ''' Calculate the alignment score from two equal length strings. 
-        Matches = +1 point, mismatches = -1. 
-    '''
-    score = 0
-    
-    for i in range(len(s)):
-        if s[i] == t[i]:
-            score += 1
-        else:
-            score -= 1
-    
-    return str(score)
-    
     
 def main():
     # Read in the two sequences.
@@ -86,16 +75,13 @@ def main():
     
     # Get the alignment first.
     alignment = fitting_alignment(s, t)
-    
-    # Calculate the alignment score.
-    score = alignment_score(alignment[0], alignment[1])
 
     # Save the answer.
     with open('output/rosalind_sims_out.txt', 'w') as outfile:
-        outfile.write(score + '\n')
         outfile.write('\n'.join(alignment))
 
-    print('Optimal fitting alignment score =', score)
+    # Optional: Print the alignment score.
+    print('Optimal fitting alignment score =', alignment[0])
         
    
 if __name__ == '__main__':

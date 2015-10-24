@@ -1,5 +1,6 @@
-''' This file contains a collection of functions that I've been using frequently
-    in the Rosalind problems.
+''' 
+This file contains a collection of functions that I've been using frequently
+in the Rosalind problems.
 '''
 
 #####################################
@@ -74,7 +75,6 @@ def print_matrix(matrix, ylab='', xlab='', outdir=None):
         location = outdir.strip('/')+'/matrix.txt'
         with open(location, 'w') as outfile:
             outfile.write('\n'.join(output))
-        print('Matrix written to ./' + location)
     else:
         print('\n'.join(output))
 
