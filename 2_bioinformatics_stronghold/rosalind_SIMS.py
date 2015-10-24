@@ -73,7 +73,7 @@ def main():
     # Read in the two sequences.
     s, t = parse_fasta('problem_datasets/rosalind_sims.txt')
     
-    # Get the alignment first.
+    # Get the alignment.
     alignment = fitting_alignment(s, t)
 
     # Save the answer.
