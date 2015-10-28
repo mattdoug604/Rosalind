@@ -6,16 +6,17 @@ Problem: Distances in Trees
 URL: http://rosalind.info/problems/nwck/
 
 Given: A collection of n trees (n <= 40) in Newick format, with each tree
-containing at most 200 nodes; each tree Tk is followed by a pair of nodes xk and
-yk in Tk.
+containing at most 200 nodes; each tree Tk is followed by a pair of nodes xk 
+and yk in Tk.
 Return: A collection of n positive integers, for which the kth integer
 represents the distance between xk and yk in Tk.
 '''
 
 def find_lca(t, a, b):
-    '''  Find the lowest common ancestor of both nodes being compared. Returns a partially complete
-        list (unless the LCA is the root of the tree) of each level of the tree that contains the LCA, and
-        the level of the tree containing the LCA.
+    ''' Find the lowest common ancestor of both nodes being compared. Returns 
+        a partially complete list (unless the LCA is the root of the tree) of 
+        each level of the tree that contains the LCA, and the level of the 
+        tree containing the LCA.
     '''
     level = 0
     pos = []
@@ -81,11 +82,7 @@ def main():
     with open('problem_datasets/rosalind_nwck.txt' ,'r') as infile:
         trees = [l.split('\n') for l in infile.read().strip().split('\n\n')]
 
-    answer = []
-    for t in trees:
-        answer.append(distance_between_nodes(t))
-
-    print(' '.join(map(str, answer)))
+    print(' '.join([str(distance_between_nodes(t)) for t in trees]))
 
 
 if __name__ == '__main__':
