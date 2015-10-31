@@ -6,6 +6,7 @@ Problem: Encoding Suffix Trees
 URL: http://rosalind.info/problems/suff/
 
 Given: A DNA string s of length at most 1kbp.
+
 Return: The substrings of s∗ encoding the edges of the suffix tree for s.
 You may list these substrings in any order.
 '''
@@ -40,6 +41,9 @@ def main():
         s = infile.readline().strip()
     
     print('\n'.join(make_suffix_tree(s)))
+    
+    with open('output/rosalind_suff_out.txt', 'w') as outfile:
+        outfile.write('\n'.join(make_suffix_tree(s)))
     
     
 if __name__ == '__main__':
