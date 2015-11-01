@@ -65,11 +65,10 @@ def main():
     with open('problem_datasets/rosalind_ctbl.txt', 'r') as infile:
         tree = infile.read().strip()
     
-    #tree = '(dog,((elephant,mouse),robot),cat);'
+    answer = find_lca(tree)
     
     with open('output/rosalind_ctbl_out.txt', 'w') as outfile:
-        for i in find_lca(tree):
-            outfile.write(' '.join((map(str, i))) + '\n')
+        outfile.write('\n'.join([''.join(map(str, answer[i])) for i in range(len(answer))]))
 
 
 if __name__ == '__main__':
