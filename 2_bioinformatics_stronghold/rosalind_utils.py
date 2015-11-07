@@ -9,8 +9,8 @@ in the Rosalind problems.
 
 def parse_fasta(path, no_id=True):
     ''' Read in a Fasta file. If no_id is set to False, return a dictonary of
-        sequences with associated headers; otherwise return a list of sequences
-        only.
+        sequences with associated headers; otherwise return a list of 
+        sequences only.
     '''
     ids = []
     seqs = []
@@ -33,8 +33,8 @@ def parse_fasta(path, no_id=True):
 
 
 def print_matrix(matrix, ylab='', xlab='', outdir=None):
-    ''' Print out the given 2D matrix with axis labels. Matrix rows must be the
-        same length.
+    ''' Print out the given 2D matrix with axis labels. Matrix rows must be 
+        the same length.
     '''
     
     # Hold the output for later.
@@ -195,9 +195,9 @@ def codon_table(seq_type='rna'):
 def reverse_complement(seq):
     ''' Return the reverse complement of a given DNA or RNA string. '''
     if 'U' in seq:
-        seq_dict = { 'A':'U', 'U':'A', 'G':'C', 'C':'G' }
+        seq_dict = {'A':'U', 'U':'A', 'G':'C', 'C':'G'}
     else:
-        seq_dict = { 'A':'T', 'T':'A', 'G':'C', 'C':'G' }
+        seq_dict = {'A':'T', 'T':'A', 'G':'C', 'C':'G'}
 
     return ''.join([seq_dict[base] for base in reversed(seq)])
 
