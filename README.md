@@ -3,6 +3,7 @@ Repository is for bioinformatics problems from http://www.rosalind.info and the 
 
 Completed "Bioinformatics Stronghold" Problems:
 DNA  "Counting DNA Nucleotides"
+
 RNA  "Transcribing DNA into RNA"
 REVC "Complementing a Strand of DNA"
 FIB  "Rabbits and Recurrence Relations"
@@ -83,29 +84,29 @@ LAFF "Local Alignment with Affine Gap Penalty"
 OSYM "Isolating Symbols in Alignments"
 
 Unfinished "Bioinformatics Stronghold" Problems:
-CSTR "Creating a Character Table from Genetic Strings"        
-CUNR "Counting Unrooted Binary Trees"        
-PCOV "Genome Assembly with Perfect Coverage"        
-PRSM "Matching a Spectrum to a Protein"        
-QRT  "Quartets"        
-SUFF "Encoding Suffix Trees"        
-MEND "Inferring Genotype from a Pedigree"        
-WFMD "The Wright-Fisher Model of Genetic Drift"        
-KSIM "Finding All Similar Motifs"        
-CHBP "Character-Based Phylogeny"        
-CNTQ "Counting Quartets"        
-EUBT "Enumerating Unrooted Binary Trees"        
-GASM "Genome Assembly Using Reads"        
-LING "Linguistic Complexity of a Genome"        
-MREP "Identifying Maximal Repeats"        
-PDPL "Creating a Restriction Map"        
-ROOT "Counting Rooted Binary Trees"        
-SPTD "Phylogeny Comparison with Split Distance"        
-ALPH "Alignment-Based Phylogeny"        
-ASMQ "Assessing Assembly Quality with N50 and N75"        
-CSET "Fixing an Inconsistent Character Set"        
-EBIN "Wright-Fisher's Expected Behavior"        
-FOUN "The Founder Effect and Genetic Drift"        
-GREP "Genome Assembly with Perfect Coverage and Repeats"        
-QRTD "Quartet Distance"        
+CSTR "Creating a Character Table from Genetic Strings"   Â  Â  Â 
+CUNR "Counting Unrooted Binary Trees"   Â  Â  Â 
+PCOV "Genome Assembly with Perfect Coverage"   Â  Â  Â 
+PRSM "Matching a Spectrum to a Protein"   Â  Â  Â 
+QRT  "Quartets"   Â  Â  Â 
+SUFF "Encoding Suffix Trees"   Â  Â  Â 
+MEND "Inferring Genotype from a Pedigree"   Â  Â  Â 
+WFMD "The Wright-Fisher Model of Genetic Drift"   Â  Â  Â 
+KSIM "Finding All Similar Motifs"   Â  Â  Â 
+CHBP "Character-Based Phylogeny"   Â  Â  Â 
+CNTQ "Counting Quartets"   Â  Â  Â 
+EUBT "Enumerating Unrooted Binary Trees"   Â  Â  Â 
+GASM "Genome Assembly Using Reads"   Â  Â  Â 
+LING "Linguistic Complexity of a Genome"   Â  Â  Â 
+MREP "Identifying Maximal Repeats"   Â  Â  Â 
+PDPL "Creating a Restriction Map"   Â  Â  Â 
+ROOT "Counting Rooted Binary Trees"   Â  Â  Â 
+SPTD "Phylogeny Comparison with Split Distance"   Â  Â  Â 
+ALPH "Alignment-Based Phylogeny"   Â  Â  Â 
+ASMQ "Assessing Assembly Quality with N50 and N75"   Â  Â  Â 
+CSET "Fixing an Inconsistent Character Set"   Â  Â  Â 
+EBIN "Wright-Fisher's Expected Behavior"   Â  Â  Â 
+FOUN "The Founder Effect and Genetic Drift"   Â  Â  Â 
+GREP "Genome Assembly with Perfect Coverage and Repeats"   Â  Â  Â 
+QRTD "Quartet Distance"   Â  Â  Â 
 RSUB "Identifying Reversing Substitutions" 
