@@ -78,12 +78,13 @@ LOCA | Local Alignment with Scoring Matrix
 MGAP | Maximizing the Gap Symbols of an Optimal Alignment  
 MULT | Multiple Alignment  
 SEXL | Sex-Linked Inheritance  
-GAFF | Global Alignment with Scoring Matrix and Affine Gap Penalty  
-OAP | Overlap Alignment  
-SIMS | Finding a Motif with Modifications  
-SMGB | Semiglobal Alignment  
-LAFF | Local Alignment with Affine Gap Penalty  
-OSYM | Isolating Symbols in Alignments  
+GAFF | Global Alignment with Scoring Matrix and Affine Gap Penalty
+OAP | Overlap Alignment
+SIMS | Finding a Motif with Modifications
+SMGB | Semiglobal Alignment
+LAFF | Local Alignment with Affine Gap Penalty
+OSYM | Isolating Symbols in Alignments
+MEND | Inferring Genotype from a Pedigree 
 
 
 Unfinished "Bioinformatics Stronghold" Problems:
@@ -96,13 +97,12 @@ PCOV | Genome Assembly with Perfect Coverage
 PRSM | Matching a Spectrum to a Protein
 QRT | Quartets
 SUFF | Encoding Suffix Trees
-MEND | Inferring Genotype from a Pedigree
 WFMD | The Wright-Fisher Model of Genetic Drift
 KSIM | Finding All Similar Motifs
-CHBP | Character-Based Phylogeny 
+CHBP | Character-Based Phylogeny 
 CNTQ | Counting Quartets
 EUBT | Enumerating Unrooted Binary Trees
-GASM | Genome Assembly Using Reads 
+GASM | Genome Assembly Using Reads 
 LING | Linguistic Complexity of a Genome
 MREP | Identifying Maximal Repeats
 PDPL | Creating a Restriction Map
@@ -116,4 +116,3 @@ FOUN | The Founder Effect and Genetic Drift
 GREP | Genome Assembly with Perfect Coverage and Repeats
 QRTD | Quartet Distance
 RSUB | Identifying Reversing Substitutions
-
