@@ -84,20 +84,23 @@ SIMS | Finding a Motif with Modifications
 SMGB | Semiglobal Alignment
 LAFF | Local Alignment with Affine Gap Penalty
 OSYM | Isolating Symbols in Alignments
-MEND | Inferring Genotype from a Pedigree 
+MEND | Inferring Genotype from a Pedigree
+CSTR | Creating a Character Table from Genetic Strings
+WFMD | The Wright-Fisher Model of Genetic Drift
+EBIN | Wright-Fisher's Expected Behavior
+FOUN | The Founder Effect and Genetic Drift
 
 
 Unfinished "Bioinformatics Stronghold" Problems:
 
 ID | Title
 ---|------
-CSTR | Creating a Character Table from Genetic Strings
+
 CUNR | Counting Unrooted Binary Trees
 PCOV | Genome Assembly with Perfect Coverage
 PRSM | Matching a Spectrum to a Protein
 QRT | Quartets
 SUFF | Encoding Suffix Trees
-WFMD | The Wright-Fisher Model of Genetic Drift
 KSIM | Finding All Similar Motifs
 CHBP | Character-Based Phylogeny 
 CNTQ | Counting Quartets
@@ -111,8 +114,6 @@ SPTD | Phylogeny Comparison with Split Distance
 ALPH | Alignment-Based Phylogeny
 ASMQ | Assessing Assembly Quality with N50 and N75
 CSET | Fixing an Inconsistent Character Set
-EBIN | Wright-Fisher's Expected Behavior
-FOUN | The Founder Effect and Genetic Drift
 GREP | Genome Assembly with Perfect Coverage and Repeats
 QRTD | Quartet Distance
 RSUB | Identifying Reversing Substitutions
