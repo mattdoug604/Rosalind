@@ -21,7 +21,7 @@ def parse_taxa(t):
     return sorted(re.sub('[^0-9a-zA-Z_]+', ' ', t).strip().split(' '))
     
 
-def find_lca(t):
+def char_table_from_newick(t):
     # Initialize the character table.
     char = []
     
@@ -65,7 +65,7 @@ def main():
     with open('problem_datasets/rosalind_ctbl.txt', 'r') as infile:
         tree = infile.read().strip()
     
-    answer = find_lca(tree)
+    answer = char_table_from_newick(tree)
     
     with open('output/rosalind_ctbl_out.txt', 'w') as outfile:
         outfile.write('\n'.join([''.join(map(str, answer[i])) for i in range(len(answer))]))
