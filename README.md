@@ -95,7 +95,6 @@ Unfinished "Bioinformatics Stronghold" Problems:
 
 ID | Title
 ---|------
-
 CUNR | Counting Unrooted Binary Trees
 PCOV | Genome Assembly with Perfect Coverage
 PRSM | Matching a Spectrum to a Protein
