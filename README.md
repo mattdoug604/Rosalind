@@ -89,13 +89,14 @@ CSTR | Creating a Character Table from Genetic Strings
 WFMD | The Wright-Fisher Model of Genetic Drift
 EBIN | Wright-Fisher's Expected Behavior
 FOUN | The Founder Effect and Genetic Drift
+CUNR | Counting Unrooted Binary Trees
+ROOT | Counting Rooted Binary Trees
 
 
 Unfinished "Bioinformatics Stronghold" Problems:
 
 ID | Title
 ---|------
-CUNR | Counting Unrooted Binary Trees
 PCOV | Genome Assembly with Perfect Coverage
 PRSM | Matching a Spectrum to a Protein
 QRT | Quartets
@@ -108,7 +109,6 @@ GASM | Genome Assembly Using Reads
 LING | Linguistic Complexity of a Genome
 MREP | Identifying Maximal Repeats
 PDPL | Creating a Restriction Map
-ROOT | Counting Rooted Binary Trees
 SPTD | Phylogeny Comparison with Split Distance
 ALPH | Alignment-Based Phylogeny
 ASMQ | Assessing Assembly Quality with N50 and N75
