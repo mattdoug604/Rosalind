@@ -40,9 +40,17 @@ def print_matrix(matrix, ylab='', xlab='', outdir=None):
     # Hold the output for later.
     output = []    
     
-    # If x- and y-labels won't cover the entire axis, prepend blank spaces.
-    ylab = ' ' * (len(matrix)-len(ylab)) + ylab
-    xlab = ' ' * (len(matrix[0])-len(xlab)) + xlab       
+    # If the axis won't cover the entire axis, prepend blank spaces. If it is 
+    # longer than the matrix, strip the extra characters.
+    if len(ylab) < len(matrix):
+        ylab = ' ' * (len(matrix)-len(ylab)) + ylab
+    elif len(ylab) > len(matrix):
+        ylab = ylab[:len(matrix)]
+        
+    if len(xlab) < len(matrix[0]):
+        xlab = ' ' * (len(matrix[0])-len(xlab)) + xlab
+    elif len(xlab) > len(matrix[0]):
+        xlab = xlab[:len(matrix[0])]
         
     # Determine the spacing between columns.
     spacing = [0 for i in range(len(matrix[0])+1)]
