@@ -91,13 +91,15 @@ EBIN | Wright-Fisher's Expected Behavior
 FOUN | The Founder Effect and Genetic Drift
 CUNR | Counting Unrooted Binary Trees
 ROOT | Counting Rooted Binary Trees
+PCOV | Genome Assembly with Perfect Coverage
+ASMQ | Assessing Assembly Quality with N50 and N75
+GASM | Genome Assembly Using Reads 
 
 
 Unfinished "Bioinformatics Stronghold" Problems:
 
 ID | Title
 ---|------
-PCOV | Genome Assembly with Perfect Coverage
 PRSM | Matching a Spectrum to a Protein
 QRT | Quartets
 SUFF | Encoding Suffix Trees
@@ -105,13 +107,11 @@ KSIM | Finding All Similar Motifs
 CHBP | Character-Based Phylogeny 
 CNTQ | Counting Quartets
 EUBT | Enumerating Unrooted Binary Trees
-GASM | Genome Assembly Using Reads 
 LING | Linguistic Complexity of a Genome
 MREP | Identifying Maximal Repeats
 PDPL | Creating a Restriction Map
 SPTD | Phylogeny Comparison with Split Distance
 ALPH | Alignment-Based Phylogeny
-ASMQ | Assessing Assembly Quality with N50 and N75
 CSET | Fixing an Inconsistent Character Set
 GREP | Genome Assembly with Perfect Coverage and Repeats
 QRTD | Quartet Distance
