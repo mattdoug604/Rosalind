@@ -22,13 +22,8 @@ EXAMPLE OUTPUT:
 '''
 
 def count_matchings(i, j):
-    ''' Calculate the total number of noncrossing basepairs for a string of DNA
-        with the same number of occurances of 'A' as 'T' and 'C' as 'G'.
-    '''
     if pairs[i][j] != -1:
         return(pairs[i][j])
-
-    sub = s[i:j+1]
     
     result = 0
     if i > j:
@@ -41,17 +36,16 @@ def count_matchings(i, j):
                 result += count_matchings(i+1, k-1) * count_matchings(k+1, j)
         
     pairs[i][j] = result
-    
     return result
 
 
 if __name__ == '__main__':
     match = {'A':'U','U':'A', 'C':'G', 'G':'C'}
-    pairs = [[-1 for x in range(len(s)+1)] for y in range(len(s)+1)]
     
     with open('problem_datasets/rosalind_cat.txt', 'r') as infile:
-        next(infile)
+        infile.readline()
         s = infile.read().replace('\n', '')
-        
-    print(count_matchings(0, len(s)-1) % 1000000)
     
+    pairs = [[-1 for x in range(len(s)+1)] for y in range(len(s)+1)]
+       
+    print(count_matchings(0, len(s)-1) % 1000000)
