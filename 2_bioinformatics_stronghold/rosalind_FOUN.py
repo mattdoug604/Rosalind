@@ -12,9 +12,11 @@ Return: An m×k matrix B for which Bi,j represents the common logarithm of the
 probability that after i generations, no copies of the recessive allele for 
 the j-th factor will remain in the population. Apply the Wright-Fisher model.
 """
-
 from math import factorial as f
 from math import log10
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_foun.txt")
 
 
 def fixation_prob(n, m, a):
@@ -49,7 +51,7 @@ def fixation_prob(n, m, a):
 
 def main():
     # Read the input value.
-    with open("problem_datasets/rosalind_foun.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n, m = map(int, infile.readline().strip().split(" "))
         a = list(map(int, infile.readline().strip().split(" ")))
 

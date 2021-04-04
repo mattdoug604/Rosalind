@@ -16,13 +16,15 @@ represented by four components:
 Return: The longest substring of s that occurs at least k times in s. (If
 multiple solutions exist, you may return any single solution.)
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_lrep.txt")
 
 
 def longest_substring(s, k, edges):
     """Build a tree from an edge list and find the longest repeat that occurs
     more than k times.
     """
-
     # Construct a tree from the edge list.
     child = {}
     parent = {}
@@ -114,7 +116,7 @@ def longest_substring(s, k, edges):
 
 
 def main():
-    with open("problem_datasets/rosalind_lrep.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         s = infile.readline().strip()
         k = int(infile.readline().strip())
         edges = [i.strip().split(" ") for i in infile.readlines()]

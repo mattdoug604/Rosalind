@@ -14,8 +14,11 @@ length.
 Return: A shortest superstring containing all the given strings (thus
 corresponding to a reconstructed chromosome).
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_long.txt")
 
 
 def match_seq(seq, seq_list):
@@ -54,7 +57,7 @@ def shortest_contig(seq_list):
 
 def main():
     # Extract sequences from a fasta file.
-    seqs = parse_fasta("problem_datasets/rosalind_long.txt")
+    seqs = parse_fasta(INPUT_FILE)
 
     # Find the shortest superstring.
     answer = shortest_contig(seqs)

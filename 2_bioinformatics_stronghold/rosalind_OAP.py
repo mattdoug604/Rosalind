@@ -13,8 +13,11 @@ score. Use an alignment score in which matching symbols count +1,
 substitutions count -2, and there is a linear gap penalty of 2. If multiple 
 optimal alignments exist, then you may return any one.
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_oap.txt")
 
 
 def overlap_align(s, t):
@@ -87,7 +90,7 @@ def overlap_align(s, t):
 
 def main():
     # Read in the two strings.
-    s, t = parse_fasta("problem_datasets/rosalind_oap.txt")
+    s, t = parse_fasta(INPUT_FILE)
 
     # Find the alignment.
     alignment = overlap_align(s, t)

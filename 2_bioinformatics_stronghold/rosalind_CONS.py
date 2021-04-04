@@ -9,8 +9,11 @@ in FASTA format.
 Return: A consensus string and profile matrix for the collection. (If several
 possible consensus strings exist, then you may return any one of them.)
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_cons.txt")
 
 
 def profile_matrix(seqs):
@@ -53,7 +56,7 @@ def format_profile(profile):
 
 
 def main():
-    sequences = parse_fasta("problem_datasets/rosalind_cons.txt")
+    sequences = parse_fasta(INPUT_FILE)
     profile = profile_matrix(sequences)
     consensus = consensus_seq(profile)
 

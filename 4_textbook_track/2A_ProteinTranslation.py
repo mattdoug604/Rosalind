@@ -4,6 +4,9 @@ Translate an RNA string into an amino acid string.
 Given: An RNA string Pattern.
 Return: The translation of Pattern into an amino acid string Peptide.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_2a.txt")
 
 
 def getCodonTable():
@@ -19,7 +22,7 @@ def getCodonTable():
     return codon_table
 
 
-with open("problem_datasets/rosalind_2a.txt", "r") as infile:
+with open(INPUT_FILE, "r") as infile:
     rna = infile.read()
 
 # Translate RNA sequence

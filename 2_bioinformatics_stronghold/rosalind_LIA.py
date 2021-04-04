@@ -12,6 +12,9 @@ Return: The probability that at least N Aa Bb organisms will belong to the k-th
 generation of Tom's family tree (don't count the Aa Bb mates at each level).
 Assume that Mendel's second law holds for the factors.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_lia.txt")
 
 
 def binomial(k, n):
@@ -41,7 +44,7 @@ def main():
     """Read a text file containing two integers, k and n, respectively.
     Rosalind give the answer to three decimal places.
     """
-    with open("problem_datasets/rosalind_lia.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         k, n = map(int, infile.read().strip().split(" "))
 
     print(f"{getProb(k, n):.3f}")

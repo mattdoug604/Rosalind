@@ -8,19 +8,21 @@ Given: Two GenBank IDs.
 Return: The maximum global alignment score between the DNA strings associated 
 with these IDs.
 """
-
 import subprocess
+from os.path import dirname, join
 from time import time
 
 import Bio.Emboss.Applications
 from Bio import Entrez, SeqIO
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_need.txt")
 
 
 def main():
     Entrez.email = input("Please specify an email address for the NCBI database:\n").strip()
 
     # Read in two GenBank IDs.
-    with open("problem_datasets/rosalind_need.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         gen_ids = infile.read().strip().split(" ")
 
     # Retrieve the plain text records in FASTA format from the NCBI database.

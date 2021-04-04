@@ -7,10 +7,13 @@ URL: http://rosalind.info/problems/subs/
 Given: Two DNA strings s and t (each of length at most 1 kbp).
 Return: All locations of t as a substring of s.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_subs.txt")
 
 
 def main():
-    with open("problem_datasets/rosalind_subs.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         s, t = infile.read().strip().split("\n")
 
     pos = []

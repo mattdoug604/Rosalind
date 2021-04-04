@@ -29,6 +29,9 @@ EXAMPLE OUTPUT:
 8 9 A
 9 10 T
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_trie.txt")
 
 
 class Node:
@@ -65,7 +68,7 @@ def format_answer(root, answer=[]):
 
 
 def main():
-    with open("problem_datasets/rosalind_trie.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         strings = infile.read().strip().split("\n")
 
     root = make_list(strings)

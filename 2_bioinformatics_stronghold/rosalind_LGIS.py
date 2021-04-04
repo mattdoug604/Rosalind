@@ -8,6 +8,9 @@ Given: A positive integer n <= 10000 followed by a permutation π of length n.
 Return: A longest increasing subsequence of π, followed by a longest decreasing
 subsequence of π.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_lgis.txt")
 
 
 def longest_seq(n, seq, op):
@@ -43,7 +46,7 @@ def longest_seq(n, seq, op):
 
 
 def main():
-    with open("problem_datasets/rosalind_lgis.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n = int(infile.readline())
         perm = [int(i) for i in infile.readline().split(" ")]
 

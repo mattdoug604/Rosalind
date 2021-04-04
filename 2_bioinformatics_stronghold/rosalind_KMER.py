@@ -7,8 +7,10 @@ URL: http://rosalind.info/problems/kmer/
 Given: A DNA string s in FASTA format (having length at most 100 kbp).
 Return: The 4-mer composition of s.
 """
-
 from itertools import product
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_kmer.txt")
 
 
 def count_mers(seq, k=4):
@@ -37,7 +39,7 @@ def composition(seq):
 
 
 def main():
-    with open("problem_datasets/rosalind_kmer.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         seq = "".join(infile.readlines()[1:]).replace("\n", "")
 
     with open("output/rosalind_kmer_out.txt", "w") as outfile:

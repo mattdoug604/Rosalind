@@ -4,8 +4,10 @@ Find a median string.
 Given: An integer k and a collection of strings DNA.
 Return: A k-mer Pattern that minimizes d(Pattern, DNA) over all k-mers Pattern. (If multiple answers exist, you may return any one.)
 """
-
 import itertools
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_3b.txt")
 
 
 def countMedian(kmers, motifs, k):
@@ -43,7 +45,7 @@ def findMedianMotif(strings, k):
 
 
 ## Read in file
-with open("problem_datasets/rosalind_3b.txt", "r") as infile:
+with open(INPUT_FILE, "r") as infile:
     text = infile.read().rstrip().split("\n")
     k = int(text[0])
     strings = text[1:]

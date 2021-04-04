@@ -23,8 +23,11 @@ EXAMPLE OUTPUT:
 PRT---EINS
 PRTWPSEIN-
 """
+from os.path import dirname, join
 
 from utils import BLOSUM62, match_score, parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_gaff.txt")
 
 
 def global_align_with_affine(s, t, scores, gap, gap_e):
@@ -115,7 +118,7 @@ def global_align_with_affine(s, t, scores, gap, gap_e):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_gaff.txt")
+    s, t = parse_fasta(INPUT_FILE)
     alignment = global_align_with_affine(s, t, BLOSUM62(), -11, -1)
 
     with open("output/rosalind_gaff_out.txt", "w") as f:

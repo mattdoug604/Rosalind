@@ -10,8 +10,10 @@ mismatches) in that string, compare those to kmers (with mismatches) in the
 next string, eliminate any kmers that do not appear in both strings. Continue
 for the remaining strings.
 """
-
 import itertools
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_3a.txt")
 
 
 def findMers(seqs, k, d):
@@ -47,7 +49,7 @@ def compMotifs(kmers, motifs, k, d):
                 yield (mer1)
 
 
-with open("problem_datasets/rosalind_3a.txt", "r") as infile:
+with open(INPUT_FILE, "r") as infile:
     text = infile.read().rstrip().split("\n")
     k = int(text[0].split(" ")[0])
     d = int(text[0].split(" ")[1])

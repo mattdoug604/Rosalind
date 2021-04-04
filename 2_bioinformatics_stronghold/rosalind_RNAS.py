@@ -9,6 +9,9 @@ Given: An RNA string s (of length at most 200 bp).
 Return: The total number of distinct valid matchings of basepair edges in the 
 bonding graph of s. Assume that wobble base pairing is allowed.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_rnas.txt")
 
 
 def pair(seq):
@@ -33,7 +36,7 @@ def pair(seq):
 
 if __name__ == "__main__":
     # Read sequence.
-    with open("problem_datasets/rosalind_rnas.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         seq = infile.read().replace("\n", "")
 
     # The possible basepair matchings including wobble base pairing.

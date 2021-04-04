@@ -8,6 +8,9 @@ Given: Positive integers n <= 100 and m <= 20.
 Return: The total number of pairs of rabbits that will remain after the n-th
 month if all rabbits live for m months.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_fibd.txt")
 
 
 def rabbits(months, life):
@@ -29,7 +32,7 @@ def rabbits(months, life):
 
 
 def main():
-    with open("problem_datasets/rosalind_fibd.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n, m = [int(i) for i in infile.read().strip().split(" ")]
 
     with open("output/rosalind_fibd_out.txt", "w") as outfile:

@@ -12,6 +12,9 @@ symbol choice at a single position of the strings. (Note: the choice of
 assigning '1' and '0' to the two states of each SNP in the strings is 
 arbitrary.)
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_cstr.txt")
 
 
 def character_table(t):
@@ -58,7 +61,7 @@ def character_table(t):
 
 
 def main():
-    with open("problem_datasets/rosalind_cstr.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         strings = infile.read().strip().split("\n")
 
     answer = character_table(strings)

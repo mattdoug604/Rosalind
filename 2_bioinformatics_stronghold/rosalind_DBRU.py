@@ -10,10 +10,12 @@ Given: A collection of up to 1000 DNA strings of equal length (not exceeding
 Return: The adjacency list corresponding to the de Bruijn graph corresponding 
 to S ∪ Src.
 """
-
 from collections import defaultdict
+from os.path import dirname, join
 
 from utils import reverse_complement as rc
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_dbru.txt")
 
 
 def de_bruijn(seq_list):
@@ -42,7 +44,7 @@ def de_bruijn(seq_list):
 
 def main():
     # Read a list of equal length kmers.
-    with open("problem_datasets/rosalind_dbru.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         s = infile.read().strip().split("\n")
 
     # Get a dictionary of adjacent kmers.

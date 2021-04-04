@@ -11,8 +11,10 @@ Return: The largest multiplicity of S1⊖S2, as well as the absolute value of
 the number x maximizing (S1⊖S2)(x) (you may return any such value if multiple 
 solutions exist).
 """
-
 from decimal import Decimal
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_conv.txt")
 
 
 def largest_multiplicity(s, t):
@@ -33,7 +35,7 @@ def largest_multiplicity(s, t):
 
 
 def main():
-    with open("problem_datasets/rosalind_conv.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         s, t = [[Decimal(x) for x in line.split()] for line in infile.read().strip().split("\n")]
 
     print("\n".join(map(str, largest_multiplicity(s, t))))

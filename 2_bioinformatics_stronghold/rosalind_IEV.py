@@ -20,6 +20,9 @@ Return: The expected number of offspring displaying the dominant phenotype in
 the next generation, under the assumption that every couple has exactly two
 offspring.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_iev.txt")
 
 
 def expected(f):
@@ -27,7 +30,7 @@ def expected(f):
 
 
 def main():
-    with open("problem_datasets/rosalind_iev.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         f = [float(i) for i in infile.read().split()]
 
     answer = expected(f)

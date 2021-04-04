@@ -9,9 +9,11 @@ Return: For each protein possessing the N-glycosylation motif, output its given
 access ID followed by a list of locations in the protein string where the motif
 can be found.
 """
-
 import re
+from os.path import dirname, join
 from urllib.request import urlopen
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_mprt.txt")
 
 
 def parse_seq(fasta):
@@ -52,7 +54,7 @@ def main():
     retrieves the protein sequences from UniProt, and identifies any
     N-glycoslyation motifs
     """
-    with open("problem_datasets/rosalind_mprt.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         ids = infile.read().strip().split("\n")
 
     fastas = {}

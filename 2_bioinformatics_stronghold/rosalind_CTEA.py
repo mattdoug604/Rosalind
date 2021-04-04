@@ -18,15 +18,17 @@ MEANLY
 EXAMPLE OUTPUT:
 4
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_ctea.txt")
 
 
 def count_alignments(s, t):
     """Calculate the minimum edit distance between two strings, s and t, and
     the number of alignments with that score, modulo 2^27 - 1.
     """
-
     # Initialize the distance and alignment count matrices with zeros.
     d = [[0 for j in range(len(t) + 1)] for i in range(len(s) + 1)]
     counts = [[0 for j in range(len(t) + 1)] for i in range(len(s) + 1)]
@@ -64,7 +66,7 @@ def count_alignments(s, t):
 
 def main():
     # Read in the two input strings.
-    s, t = parse_fasta("problem_datasets/rosalind_ctea.txt")
+    s, t = parse_fasta(INPUT_FILE)
 
     # Print the number of optimal alignments (modulo 2^27 - 1).
     print(count_alignments(s, t))

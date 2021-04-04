@@ -4,9 +4,13 @@ Find all approximate occurrences of a pattern in a string.
 Given: Strings Pattern and Text along with an integer d.
 Return: All starting positions where Pattern appears as a substring of Text with at most d mismatches.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_1f.txt")
+
 
 # Read file
-with open("problem_datasets/rosalind_1f.txt", "r") as in_file:
+with open(INPUT_FILE, "r") as in_file:
     text = in_file.read().split("\n")
     pattern = text[0]
     genome = text[1]

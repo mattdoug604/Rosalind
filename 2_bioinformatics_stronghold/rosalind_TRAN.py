@@ -7,8 +7,11 @@ URL: http://rosalind.info/problems/tran/
 Given: Two DNA strings s1 and s2 of equal length (at most 1 kbp).
 Return: The transition/transversion ratio R(s1,s2).
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_tran.txt")
 
 
 def pointMutations(s1, s2):
@@ -33,7 +36,7 @@ def pointMutations(s1, s2):
 
 
 def main():
-    s1, s2 = parse_fasta("problem_datasets/rosalind_tran.txt")
+    s1, s2 = parse_fasta(INPUT_FILE)
 
     print(pointMutations(s1, s2))
 

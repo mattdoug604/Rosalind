@@ -4,9 +4,11 @@ Find the most frequent k-mers (with mismatches and reverse complements) in a DNA
 Given: A DNA string Text as well as integers k and d.
 Return: All k-mers Pattern maximizing the sum Count.d(Text, Pattern) + Count.d(Text, RevCompPattern) over all possible k-mers.
 """
-
 import itertools
 from collections import defaultdict
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_1h.txt")
 
 
 def revCompSeq(seq):
@@ -62,7 +64,7 @@ def countMer(gen, k):
 
 
 # Read file
-with open("problem_datasets/rosalind_1h.txt", "r") as in_file:
+with open(INPUT_FILE, "r") as in_file:
     text = in_file.read().split("\n")
     genome = text[0]
     val = text[1].split(" ")

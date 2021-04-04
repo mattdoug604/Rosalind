@@ -9,6 +9,9 @@ Given: An RNA string s of length at most 300 bp.
 Return: The total number of noncrossing matchings of basepair edges in the 
 bonding graph of s, modulo 1,000,000
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_motz.txt")
 
 
 def motz_number(seq):
@@ -35,7 +38,7 @@ if __name__ == "__main__":
     match = {"A": "U", "U": "A", "C": "G", "G": "C"}
     prev = {}
 
-    with open("problem_datasets/rosalind_motz.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         next(infile)
         seq = infile.read().replace("\n", "")
 

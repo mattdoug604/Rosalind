@@ -9,14 +9,16 @@ occurrences of 'A' as 'U' and the same number of occurrences of 'C' as 'G'.
 Return: The total possible number of perfect matchings of basepair edges in the
 bonding graph of s.
 """
-
 from math import factorial
+from os.path import dirname, join
 
 from utils import parse_fasta
 
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_pmch.txt")
+
 
 def main():
-    rna = parse_fasta("problem_datasets/rosalind_pmch.txt")
+    rna = parse_fasta(INPUT_FILE)
 
     perfect = factorial(rna.count("A")) * factorial(rna.count("C"))
     print(perfect)

@@ -19,8 +19,11 @@ EXAMPLE INPUT:
 EXAMPLE OUTPUT:
 WMQS
 """
+from os.path import dirname, join
 
 from utils import mass_to_aa
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_spec.txt")
 
 
 def calc_protein(l):
@@ -33,7 +36,7 @@ def calc_protein(l):
 
 def main():
     # Read in the list of prefix weights.
-    with open("problem_datasets/rosalind_spec.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         l = list(map(float, infile.read().strip().split("\n")))
 
     # Print answer.

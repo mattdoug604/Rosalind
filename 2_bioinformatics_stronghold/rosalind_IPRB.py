@@ -11,6 +11,9 @@ Return: The probability that two randomly selected mating organisms will produce
 an individual possessing a dominant allele (and thus displaying the dominant
 phenotype). Assume that any two organisms can mate.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_iprb.txt")
 
 
 def prob(k, m, n):
@@ -35,7 +38,7 @@ def main():
     of homozygous dominant, heterozygous, and homozygous recessive
     individuals.
     """
-    with open("problem_datasets/rosalind_iprb.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         k, m, n = map(float, infile.read().strip().split(" "))
 
     answer = prob(k, m, n)

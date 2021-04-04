@@ -9,8 +9,11 @@ Given: A collection of DNA strings in FASTA format having total length at most
 Return: The adjacency list corresponding to O3. You may return edges in any
 order.
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_grph.txt")
 
 
 def overlap_seqs(sequences):
@@ -24,7 +27,7 @@ def overlap_seqs(sequences):
 
 
 def main():
-    dataset = parse_fasta("problem_datasets/rosalind_grph.txt", no_id=False)
+    dataset = parse_fasta(INPUT_FILE, no_id=False)
 
     with open("output/rosalind_grph_out.txt", "w") as outfile:
         for line in overlap_seqs(dataset):

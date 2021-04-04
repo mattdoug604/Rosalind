@@ -11,8 +11,10 @@ Profile	C: .1  .6  .0  .0  .0  .0  .0  .4  .1  .2  .4  .6
 	T: .7  .2  .0  .0  .1  .1  .0  .5  .8  .7  .3  .4
 Pr(ACGGGGATTACC|Profile) = .2*.6*.1*.1*.9*.9*.9*.5*.8*.1*.4*.6 = 0.000839808
 """
-
 from collections import defaultdict
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_3c.txt")
 
 
 def getKmers(dna, k):
@@ -44,7 +46,7 @@ def findProb(dna, k, profile):
 
 
 ## Read file
-with open("problem_datasets/rosalind_3c.txt", "r") as infile:
+with open(INPUT_FILE, "r") as infile:
     text = infile.read().rstrip().split("\n")
     string = text[0]
     k = int(text[1])

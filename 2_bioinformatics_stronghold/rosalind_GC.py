@@ -10,8 +10,11 @@ GC-content of that string. Rosalind allows for a default error of 0.001 in all
 decimal answers unless otherwise stated; please see the note on absolute error
 below.
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_gc.txt")
 
 
 def compute_gc(fastas):
@@ -28,7 +31,7 @@ def compute_gc(fastas):
 
 
 def main():
-    fastas = parse_fasta("problem_datasets/rosalind_gc.txt", no_id=False)
+    fastas = parse_fasta(INPUT_FILE, no_id=False)
     max_h, max_gc = compute_gc(fastas)
 
     print(max_h, "\n", f"{max_gc:.6f}", sep="")

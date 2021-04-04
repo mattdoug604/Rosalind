@@ -19,6 +19,9 @@ ATAGCCGA
 EXAMPLE OUTPUT:
 0.689
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_rstr.txt")
 
 
 def prob(n, gc, seq):
@@ -38,7 +41,7 @@ def prob(n, gc, seq):
 
 
 def main():
-    with open("problem_datasets/rosalind_rstr.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n, s = infile.read().strip().split("\n")
         n, x = n.split(" ")
         n = int(n)

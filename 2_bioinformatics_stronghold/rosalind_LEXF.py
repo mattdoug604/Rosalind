@@ -9,12 +9,14 @@ positive integer n (n <= 10).
 Return: All strings of length n that can be formed from the alphabet, ordered
 lexicographically.
 """
-
 from itertools import product
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_lexf.txt")
 
 
 def main():
-    with open("problem_datasets/rosalind_lexf.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         alpha = infile.readline().strip().split(" ")
         n = int(infile.readline())
 

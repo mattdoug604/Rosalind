@@ -4,7 +4,6 @@ Compute the number of peptides of given total mass.
 Given: An integer m.
 Return: The number of linear peptides having integer mass m.
 """
-
 m = 224
 
 mass_list = [57, 71, 87, 97, 99, 101, 103, 113, 114, 115, 128, 129, 131, 137, 147, 156, 163, 186]

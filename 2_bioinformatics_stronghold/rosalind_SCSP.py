@@ -15,8 +15,11 @@ TGCATA
 EXAMPLE OUTPUT:
 ATGCATGAT
 """
+from os.path import dirname, join
 
 from rosalind_LCSQ import longest_sub
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_scsp.txt")
 
 
 def shortest_sub(s, t):
@@ -52,7 +55,7 @@ def shortest_sub(s, t):
 
 
 def main():
-    with open("problem_datasets/rosalind_scsp.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         s, t = infile.read().strip().split("\n")
 
     seq = shortest_sub(s, t)

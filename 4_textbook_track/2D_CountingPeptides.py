@@ -4,7 +4,6 @@ Compute the number of peptides of given total mass.
 Given: An integer m.
 Return: The number of linear peptides having integer mass m.
 """
-
 """
 def permu(m, masses):  
     ways = [0] * (m + 1)

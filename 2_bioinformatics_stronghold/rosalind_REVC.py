@@ -7,6 +7,9 @@ URL: http://rosalind.info/problems/revc/
 Given: A DNA string s of length at most 1000 bp.
 Return: The reverse complement sc of s.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_revc.txt")
 
 
 def rev_comp(seq):
@@ -17,7 +20,7 @@ def rev_comp(seq):
 
 
 def main():
-    with open("problem_datasets/rosalind_revc.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         seq = "".join(infile.read().strip())
 
     answer = rev_comp(seq)

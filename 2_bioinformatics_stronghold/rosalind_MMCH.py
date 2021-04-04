@@ -15,8 +15,11 @@ AUGCUUC
 EXAMPLE OUTPUT:
 6
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_mmch.txt")
 
 
 def count_bases(s, a, b):
@@ -48,7 +51,7 @@ def max_matches(s):
 
 
 def main():
-    s = parse_fasta("problem_datasets/rosalind_mmch.txt")
+    s = parse_fasta(INPUT_FILE)
 
     print(max_matches(s))
 

@@ -4,9 +4,11 @@ Find the most frequent k-mers with mismatches in a string.
 Given: A string genome as well as integers k and d.
 Return: All most frequent k-mers with up to d mismatches in genome.
 """
-
 import itertools
 from collections import defaultdict
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_1g.txt")
 
 
 # Split the genome into substrings of length, k, starting on intervals starting from 0 to k.
@@ -36,7 +38,7 @@ def count_mer(gen, k):
 
 
 # Read file
-with open("problem_datasets/rosalind_1g.txt", "r") as in_file:
+with open(INPUT_FILE, "r") as in_file:
     text = in_file.read().split("\n")
     genome = text[0]
     val = text[1].split(" ")

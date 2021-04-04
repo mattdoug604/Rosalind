@@ -21,6 +21,9 @@ AG
 EXAMPLE OUTPUT:
 0.422 0.563 0.422
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_eval.txt")
 
 
 def gc_p(seq, gc):
@@ -45,7 +48,7 @@ def prob(n, s, a):
 
 
 def main():
-    with open("problem_datasets/rosalind_eval.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n, s, a = infile.read().strip().split("\n")
         n = int(n)
         a = [float(i) for i in a.split(" ")]

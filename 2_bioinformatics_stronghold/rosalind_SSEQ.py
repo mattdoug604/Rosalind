@@ -8,8 +8,11 @@ Given: Two DNA strings s and t (each of length at most 1 kbp) in FASTA format.
 Return: One collection of indices of s in which the symbols of t appear as a
 subsequence of s. If multiple solutions exist, you may return any one.
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_sseq.txt")
 
 
 def find_subsequence(s, t):
@@ -37,7 +40,7 @@ def main():
     be split into seperate sequences based on the position of the header
     lines.
     """
-    s, t = parse_fasta("problem_datasets/rosalind_sseq.txt")
+    s, t = parse_fasta(INPUT_FILE)
 
     pos = find_subsequence(s, t)
     print(" ".join(pos))

@@ -4,13 +4,11 @@ Given all pairwise distances between points on a line segment, reconstruct the p
 Given: A collection of integers L.
 Return: A set A such that ∆A = L.
 """
-
 from math import sqrt
 
 """
 with open('rosalind_2i.txt', 'r') as infile:
     a = infile.read()"""
-
 a = "1 2 2 2 3 3 3 4 5 5 5 6 7 8 10"
 a = list(map(int, a.split(" ")))
 

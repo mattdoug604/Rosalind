@@ -14,8 +14,11 @@ CAGCATGGTATCACAGCAGAG
 EXAMPLE OUTPUT:
 0 0 0 1 2 0 0 0 0 0 0 1 2 1 2 3 4 5 3 0 0
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_kmp.txt")
 
 
 def failure_array(s):
@@ -40,7 +43,7 @@ def failure_array(s):
 
 
 def main():
-    s = parse_fasta("problem_datasets/rosalind_kmp.txt")
+    s = parse_fasta(INPUT_FILE)
 
     with open("output/rosalind_kmp_out.txt", "w") as outfile:
         outfile.write(" ".join(map(str, failure_array(s))))

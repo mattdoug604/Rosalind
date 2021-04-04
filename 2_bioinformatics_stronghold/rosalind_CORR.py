@@ -43,9 +43,12 @@ TTCAT->TTGAT
 GAGGA->GATGA
 TTTCC->TTTCA
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
 from utils import reverse_complement as rev_comp
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_corr.txt")
 
 """
 def rev_comp(string):
@@ -97,7 +100,6 @@ def error_correct(string_list):
     known correct strings (i.e. those that occur one or more times in the
     list).
     """
-
     counts = count_apperances(string_list)
     correct = []
     incorrect = []
@@ -118,7 +120,7 @@ def error_correct(string_list):
 
 
 def main():
-    strings = parse_fasta("problem_datasets/rosalind_corr.txt")
+    strings = parse_fasta(INPUT_FILE)
     strings += [rev_comp(i) for i in strings]
 
     corr = error_correct(strings)

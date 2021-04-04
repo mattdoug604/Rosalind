@@ -13,9 +13,13 @@ EXAMPLE INPUT:
 EXAMPLE OUTPUT:
 8
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_sset.txt")
+
 
 if __name__ == "__main__":
-    with open("problem_datasets/rosalind_sset.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n = int(infile.read())
 
     print(2 ** n % 1000000)

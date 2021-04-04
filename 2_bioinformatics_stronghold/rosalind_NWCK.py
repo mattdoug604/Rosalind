@@ -10,6 +10,9 @@ and yk in Tk.
 Return: A collection of n positive integers, for which the kth integer
 represents the distance between xk and yk in Tk.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_nwck.txt")
 
 
 def find_lca(t, a, b):
@@ -79,7 +82,7 @@ def distance_between_nodes(t):
 
 
 def main():
-    with open("problem_datasets/rosalind_nwck.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         trees = [l.split("\n") for l in infile.read().strip().split("\n\n")]
 
     print(" ".join([str(distance_between_nodes(t)) for t in trees]))

@@ -9,8 +9,11 @@ Given: Two DNA strings s and t in FASTA format (each of length at most 5000 bp).
 Return: The maximum number of gap symbols that can appear in any maximum score
 alignment of s and t with score parameters satisfying m>0, d<0, and g<0.
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_mgap.txt")
 
 
 def global_align_max_gaps(s, t):
@@ -51,7 +54,7 @@ def global_align_max_gaps(s, t):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_mgap.txt")
+    s, t = parse_fasta(INPUT_FILE)
 
     print(global_align_max_gaps(s, t))
 

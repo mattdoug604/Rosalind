@@ -3,6 +3,11 @@
 This file contains a collection of functions that I've been using frequently
 in the Rosalind problems.
 """
+from os.path import dirname, join
+
+BLOSUM62_PATH = join(dirname(__file__), "data", "BLOSUM62.txt")
+DNAFULL_PATH = join(dirname(__file__), "data", "DNAfull.txt")
+PAM250_PATH = join(dirname(__file__), "data", "PAM250.txt")
 
 #####################################
 ### ---------- FILE I/O --------- ###
@@ -38,7 +43,6 @@ def print_matrix(matrix, ylab="", xlab="", outdir=None):
     """Print out the given 2D matrix with axis labels. Matrix rows must be
     the same length.
     """
-
     # Hold the output for later.
     output = []
 
@@ -144,7 +148,6 @@ def aa_mass(aa):
 
 def mass_to_aa(val, tolerance=0.0001):
     """Returns the amino acid corresponding to a given mass."""
-
     # The monoisotopic masses of each
     aa_table = {
         71.03711: "A",
@@ -225,11 +228,11 @@ def reverse_complement(seq):
 
 
 def BLOSUM62():
-    return scoring_matrix("data/blosum62.txt")
+    return scoring_matrix(BLOSUM62_PATH)
 
 
 def PAM250():
-    return scoring_matrix("data/pam250.txt")
+    return scoring_matrix(PAM250_PATH)
 
 
 def scoring_matrix(path):

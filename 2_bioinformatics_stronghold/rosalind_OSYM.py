@@ -12,8 +12,11 @@ by the sum of all elements of the matrix M corresponding to s and t that was
 defined above. Apply the mismatch score introduced in “Finding a Motif with 
 Modifications”.
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_osym.txt")
 
 
 def global_alignment(s, t):
@@ -86,7 +89,7 @@ def align_to_symbols(s, t):
 
 def main():
     # Get the sequences from the .txt file.
-    s, t = parse_fasta("problem_datasets/rosalind_osym.txt")
+    s, t = parse_fasta(INPUT_FILE)
 
     # Compute the maximum alignment score, and the sum of all alignment scores.
     print("\n".join(map(str, align_to_symbols(s, t))))

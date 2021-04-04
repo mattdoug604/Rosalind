@@ -7,6 +7,9 @@ URL: http://rosalind.info/problems/hamm/
 Given: Two DNA strings s and t of equal length (not exceeding 1 kbp).
 Return: The Hamming distance dH(s,t).
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_hamm.txt")
 
 
 def hamm_dist(dna):
@@ -20,7 +23,7 @@ def hamm_dist(dna):
 
 
 def main():
-    with open("problem_datasets/rosalind_hamm.txt", "r") as f:
+    with open(INPUT_FILE, "r") as f:
         seqs = f.read().split("\n")
 
     print(hamm_dist(seqs))

@@ -14,8 +14,10 @@ EXAMPLE INPUT:
 EXAMPLE OUTPUT:
 42
 """
-
 from math import factorial as f
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_aspc.txt")
 
 
 def combinations(n, m):
@@ -23,7 +25,7 @@ def combinations(n, m):
 
 
 def main():
-    with open("problem_datasets/rosalind_aspc.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n, m = [int(i) for i in infile.readline().strip().split(" ")]
 
     answer = combinations(n, m) % 1000000

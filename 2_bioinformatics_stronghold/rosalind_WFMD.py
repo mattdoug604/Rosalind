@@ -11,8 +11,10 @@ initially possessing m copies of a dominant allele, we will observe after g
 generations at least k copies of a recessive allele. Assume the Wright-Fisher 
 model.
 """
-
 from math import factorial as f
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_wfmd.txt")
 
 
 def probability(n, m, g, k):
@@ -41,7 +43,7 @@ def probability(n, m, g, k):
 
 def main():
     # Read the input value.
-    with open("problem_datasets/rosalind_wfmd.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n, m, g, k = [int(i) for i in infile.read().strip().split(" ")]
 
     # Calculate and print the answer.

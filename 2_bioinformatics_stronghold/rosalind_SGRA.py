@@ -10,8 +10,11 @@ Return: The longest protein string that matches the spectrum graph of L (if
 multiple solutions exist, you may output any one of them). Consult the
 monoisotopic mass table.
 """
+from os.path import dirname, join
 
 from utils import mass_to_aa
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_sgra.txt")
 
 
 def build_peptide(l, peptide="", aa=0):
@@ -50,7 +53,7 @@ def peptide_from_spectrum(l):
 
 
 def main():
-    with open("problem_datasets/rosalind_sgra.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         l = list(map(float, infile.readlines()))
 
     print(peptide_from_spectrum(l))

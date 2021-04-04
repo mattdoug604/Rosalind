@@ -17,8 +17,11 @@ a protein string whose t-prefix and t-suffix weights correspond to the
 non-parent mass values of L.) If multiple solutions exist, you may output any 
 one.
 """
+from os.path import dirname, join
 
 from utils import mass_to_aa
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_full.txt")
 
 
 def build_peptide(n, frag_dict, peptide="", aa=0):
@@ -60,7 +63,7 @@ def peptide_from_fragments(p, l):
 
 
 def main():
-    with open("problem_datasets/rosalind_full.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         p = float(infile.readline().strip())
         frags = list(map(float, infile.readlines()))
 

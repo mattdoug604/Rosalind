@@ -12,6 +12,9 @@ Return: Three numbers between 0 and 1, corresponding to the respective
 probabilities that the individual at the root of T will exhibit the "AA", "Aa" 
 and "aa" genotypes.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_mend.txt")
 
 
 def subtrees(t):
@@ -42,7 +45,6 @@ def offspring_prob(parents):
     'Aa', or 'aa' genotype, based on the probability that each of the
     parents do.
     """
-
     # Split the two branches of the subtree.
     if parents[0] == "(":
         level = 1
@@ -101,7 +103,7 @@ if __name__ == "__main__":
     prob = {"AA": [1, 0, 0], "Aa": [0, 1, 0], "aa": [0, 0, 1]}
 
     # Read the Newick tree.
-    with open("problem_datasets/rosalind_mend.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         tree = infile.read().strip()
 
     # Calculate the genotype probabilities for the individual at the tree root.

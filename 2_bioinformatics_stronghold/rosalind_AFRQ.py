@@ -12,8 +12,10 @@ Return: An array B having the same length as A in which B[k] represents the
 probability that a randomly selected individual carries at least one copy of
 the recessive allele for the k-th factor.
 """
-
 from math import sqrt
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_afrq.txt")
 
 
 def probability(i):
@@ -37,7 +39,7 @@ def probability(i):
 
 def main():
     # Read the list of frequencies.
-    with open("problem_datasets/rosalind_afrq.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         a = [float(i) for i in infile.read().strip().split(" ")]
 
     # Calculate the probability for each one.

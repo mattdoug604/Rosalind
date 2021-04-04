@@ -18,6 +18,9 @@ Output:
 4 9
 2 5
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_sort.txt")
 
 
 def breakpoint(p):
@@ -50,7 +53,6 @@ def reversal_dist(p1, p2):
     distance and the reversals need to achieve that. If there's more than
     one solution, it just returns the first one.
     """
-
     # Perform a quick check to see if the pair is already the same.
     if p1 == p2:
         return 0
@@ -126,7 +128,7 @@ def checkAnswer(to_match, to_reverse, revs):
 
 def main():
     # Read the input .txt file.
-    with open("problem_datasets/rosalind_sort.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         pair = infile.read().strip().split("\n")
         permA, permB = [list(map(int, p.split(" "))) for p in pair]
 

@@ -17,6 +17,9 @@ AUAU
 EXAMPLE OUTPUT:
 2
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_cat.txt")
 
 
 def count_matchings(i, j):
@@ -40,7 +43,7 @@ def count_matchings(i, j):
 if __name__ == "__main__":
     match = {"A": "U", "U": "A", "C": "G", "G": "C"}
 
-    with open("problem_datasets/rosalind_cat.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         infile.readline()
         s = infile.read().replace("\n", "")
 

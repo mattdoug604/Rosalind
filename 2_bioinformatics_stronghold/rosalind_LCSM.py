@@ -9,8 +9,11 @@ FASTA format.
 Return: A longest common substring of the collection. (If multiple solutions
 exist, you may return any single solution.)
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_lcsm.txt")
 
 
 def longest_motif(seq_list):
@@ -36,7 +39,7 @@ def longest_motif(seq_list):
 
 
 def main():
-    sequences = parse_fasta("problem_datasets/rosalind_lcsm.txt")
+    sequences = parse_fasta(INPUT_FILE)
 
     answer = longest_motif(sequences)
 

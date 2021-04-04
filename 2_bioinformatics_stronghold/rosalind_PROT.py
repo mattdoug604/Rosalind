@@ -8,8 +8,11 @@ Given: An RNA string s corresponding to a strand of mRNA (of length at most
 10kbp).
 Return: The protein string encoded by s.
 """
+from os.path import dirname, join
 
 from utils import codon_table
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_prot.txt")
 
 
 def translate(rna):
@@ -28,7 +31,7 @@ def translate(rna):
 
 
 def main():
-    with open("problem_datasets/rosalind_prot.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         rna = infile.read().strip()
 
     answer = translate(rna)

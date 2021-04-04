@@ -11,11 +11,14 @@ genes. Assume that the population is in genetic equilibrium for all n genes.
 Return: An array B of length n in which B[k] equals the probability that a 
 randomly selected female will be a carrier for the k-th gene.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_sexl.txt")
 
 
 def main():
     # Read the list of frequencies.
-    with open("problem_datasets/rosalind_sexl.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         a = [float(i) for i in infile.read().strip().split(" ")]
 
     prob = [i * (1 - i) / 0.5 for i in a]

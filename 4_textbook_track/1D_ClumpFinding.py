@@ -4,11 +4,13 @@ Find patterns forming clumps in a string.
 Given: A string Genome, and integers k, L, and t.
 Return: All distinct k-mers forming (L, t)-clumps in Genome.
 """
-
 from collections import defaultdict
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_1d.txt")
 
 # 'Pattern' and 'Genome' are seperated by a line break
-with open("problem_datasets/rosalind_1d.txt", "r") as in_file:
+with open(INPUT_FILE, "r") as in_file:
     both = in_file.read().split("\n")
     genome = both[0].rstrip()
     vals = both[1].split(" ")

@@ -12,11 +12,14 @@ Return: An array B of length m for which B[k] is the expected value of
 Bin(n,P[k]); in terms of Wright-Fisher, it represents the expected allele 
 frequency of the next generation.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_ebin.txt")
 
 
 def main():
     # Read the input values.
-    with open("problem_datasets/rosalind_ebin.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n = int(infile.readline())
         p = [float(i) for i in infile.readline().split(" ")]
 

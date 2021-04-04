@@ -20,8 +20,10 @@ EXAMPLE OUTPUT:
 0 1 0
 1 0 0
 """
-
 from itertools import combinations_with_replacement as comb_r
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_itwv.txt")
 
 
 def is_superstring(a, b, superstr):
@@ -65,7 +67,7 @@ def find_disjoint_motifs(s, patterns):
 
 def main():
     # Read in string, s, and a list of patterns.
-    with open("problem_datasets/rosalind_itwv.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         s = infile.readline().strip()
         patterns = infile.read().strip().split("\n")
 

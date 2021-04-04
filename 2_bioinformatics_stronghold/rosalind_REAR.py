@@ -27,6 +27,9 @@ Input:
 Output:
 9 4 5 7 0
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_rear.txt")
 
 
 def split_pair(pair):
@@ -63,7 +66,6 @@ def reversal_dist(p1, p2):
     """Determine the minimum reversal distance for a pair of permutations by
     performing a greedy search.
     """
-
     """Perform a quick check to see if the pair is already the same."""
     if p1 == p2:
         return 0
@@ -123,7 +125,7 @@ def reversal_dist(p1, p2):
 
 
 def main():
-    with open("problem_datasets/rosalind_rear.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         permutations = [x.split("\n") for x in infile.read().strip().split("\n\n")]
         permutations = [split_pair(pair) for pair in permutations]
 

@@ -12,10 +12,12 @@ Return: The maximum multiplicity of R⊖S[sk] taken over all strings sk,
 followed by the string sk for which this maximum multiplicity occurs (you may 
 output any such value if multiple solutions exist).
 """
-
 from decimal import *
+from os.path import dirname, join
 
 from utils import aa_mass
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_prsm.txt")
 
 getcontext().prec = 8
 
@@ -55,7 +57,7 @@ def main():
     most_peptide = ""
 
     # Read the integer, n, the peptides, and the complete spectrum.
-    with open("problem_datasets/rosalind_prsm.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n = int(infile.readline())
         peptides = [infile.readline().strip() for i in range(n)]
         spectrum = [Decimal(i) for i in infile.readlines()]

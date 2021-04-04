@@ -6,6 +6,9 @@ Return: A collection of strings BestMotifs resulting from running
         Profile-most probable k-mer in a given string, select the one occurring
         first in the string.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_3d.txt")
 
 
 def mostProbMotif(dna, k, profile):
@@ -65,7 +68,7 @@ Read file:
     k = length of motifs to search for
     t = number of DNA strings
 """
-with open("problem_datasets/rosalind_3d.txt", "r") as infile:
+with open(INPUT_FILE, "r") as infile:
     text = infile.read().rstrip().split("\n")
     k, t = [int(x) for x in text[0].split(" ")]
     strings = text[1:]

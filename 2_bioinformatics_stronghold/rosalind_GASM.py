@@ -11,10 +11,12 @@ BkBk on Sk+1∪Srck+1 consists of exactly two directed cycles.
 Return: A cyclic superstring of minimal length containing every read or its 
 reverse complement.
 """
-
 from itertools import chain
+from os.path import dirname, join
 
 from utils import reverse_complement as rc
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_gasm.txt")
 
 
 def cyclic_superstring(dna):
@@ -41,7 +43,7 @@ def cyclic_superstring(dna):
 
 
 def main():
-    with open("problem_datasets/rosalind_gasm.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         dna = infile.read().strip().split("\n")
         dna = list(set(dna + [rc(i) for i in dna]))  # Add the reverse complement of each string.
 

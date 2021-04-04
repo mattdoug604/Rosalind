@@ -8,8 +8,10 @@ Given: A positive integer n <= 6.
 Return: The total number of signed permutations of length n, followed by a list
 of all such permutations (you may list the signed permutations in any order).
 """
-
 import itertools
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_sign.txt")
 
 
 def get_perms(n):
@@ -35,7 +37,7 @@ def get_perms(n):
 
 
 def main():
-    with open("problem_datasets/rosalind_sign.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n = int(infile.read().strip())
 
     count, perms = get_perms(n)

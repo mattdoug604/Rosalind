@@ -9,13 +9,16 @@ Return: Four integers (separated by spaces) representing the respective number
 of times that the symbols 'A', 'C', 'G', and 'T' occur in s. Note: You must
 provide your answer in the format shown in the sample output below.
 """
+from os.path import dirname, join
 
 from Bio.Seq import Seq
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_ini.txt")
 
 
 def main():
     # Read the input file.
-    with open("problem_datasets/rosalind_ini.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         seq = Seq(infile.readline())
 
     # Count the number of each nucleotide.

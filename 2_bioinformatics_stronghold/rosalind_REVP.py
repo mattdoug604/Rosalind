@@ -8,8 +8,11 @@ Given: A DNA string of length at most 1 kbp in FASTA format.
 Return: The position and length of every reverse palindrome in the string having
 length between 4 and 12. You may return these pairs in any order.
 """
+from os.path import dirname, join
 
 from utils import reverse_complement as rev_comp
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_revp.txt")
 
 
 def locate_sites(f_dna):
@@ -24,7 +27,7 @@ def locate_sites(f_dna):
 
 
 def main():
-    with open("problem_datasets/rosalind_revp.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         dna = "".join(infile.readlines()[1:]).replace("\n", "")
 
     with open("output/rosalind_revp_out.txt", "w") as outfile:

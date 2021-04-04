@@ -9,6 +9,9 @@ not exceed 50 kbp).
 
 Return: N50 and N75 for this collection of strings.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_asmq.txt")
 
 
 def Nxx(lenlist, xx):
@@ -24,7 +27,7 @@ def Nxx(lenlist, xx):
 
 
 def main():
-    with open("problem_datasets/rosalind_asmq.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         dna = infile.read().strip().split("\n")
 
     # Create a list containing n copies of an integer, n, where n is the

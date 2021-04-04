@@ -4,7 +4,6 @@ Find the most frequent k-mers in a string.
 Given: A DNA string 'Text' and an integer 'k'.
 Return: All most frequent k-mers in 'Text' (in any order).
 """
-
 from collections import defaultdict
 
 text = "ACGTTGCATGTCGCATGATGCATGAGAGCT"

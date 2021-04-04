@@ -20,8 +20,11 @@ EXAMPLE OUTPUT:
 PRETTY--
 PR-TTEIN
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_edta.txt")
 
 
 def edit_dist_with_align(s, t):
@@ -76,7 +79,7 @@ def edit_dist_with_align(s, t):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_edta.txt")
+    s, t = parse_fasta(INPUT_FILE)
     aligned = edit_dist_with_align(s, t)
 
     with open("output/rosalind_edta_out.txt", "w") as outfile:

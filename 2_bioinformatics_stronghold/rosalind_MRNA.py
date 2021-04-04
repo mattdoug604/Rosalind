@@ -25,6 +25,9 @@ UGC C      CGC R      AGC S      GGC G
 UGA Stop   CGA R      AGA R      GGA G
 UGG W      CGG R      AGG R      GGG G
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_mrna.txt")
 
 
 def count_mRNA(seq):
@@ -63,7 +66,7 @@ def count_mRNA(seq):
 
 
 def main():
-    with open("problem_datasets/rosalind_mrna.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         seq = infile.read().strip()
 
     print(count_mRNA(seq) % 1000000)

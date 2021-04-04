@@ -8,10 +8,12 @@ Given: A DNA string s of length at most 1 kbp in FASTA format.
 Return: Every distinct candidate protein string that can be translated from ORFs
 of s. Strings can be returned in any order.
 """
-
 import re
+from os.path import dirname, join
 
 from utils import codon_table, parse_fasta, reverse_complement
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_orf.txt")
 
 
 def raw_translate(seq):
@@ -55,7 +57,7 @@ def find_orfs(peptides):
 
 
 def main():
-    seq = parse_fasta("problem_datasets/rosalind_orf.txt")
+    seq = parse_fasta(INPUT_FILE)
 
     peptides = raw_translate(seq)
     orfs = find_orfs(peptides)

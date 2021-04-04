@@ -12,8 +12,10 @@ lexicographically; the rows of the character table may be given in any order.
 Also, for any given character, the particular subset of taxa to which 1s are 
 assigned is arbitrary.
 """
-
 import re
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_ctbl.txt")
 
 
 def parse_taxa(t):
@@ -62,7 +64,7 @@ def char_table_from_newick(t):
 
 
 def main():
-    with open("problem_datasets/rosalind_ctbl.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         tree = infile.read().strip()
 
     answer = char_table_from_newick(tree)

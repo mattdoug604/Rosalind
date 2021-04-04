@@ -4,6 +4,9 @@ Find substrings of a genome encoding a given amino acid sequence.
 Given: A DNA string Text and an amino acid string Peptide.
 Return: All substrings of Text encoding Peptide (if any such substrings exist).
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_2b.txt")
 
 
 def getCodonTable():
@@ -71,7 +74,7 @@ def getEncodeSeq(dna, match, codons):
     return encodes
 
 
-with open("problem_datasets/rosalind_2b.txt", "r") as infile:
+with open(INPUT_FILE, "r") as infile:
     text = infile.read().split("\n")
     sequence = text[0]
     peptide = text[1]

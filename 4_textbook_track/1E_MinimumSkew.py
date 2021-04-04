@@ -8,6 +8,9 @@ Example:
    C  A  T G G G C A T C G G C C A T A  C G  C  C
 0 -1 -1 -1 0 1 2 1 1 1 0 1 2 1 0 0 0 0 -1 0 -1 -2
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_1e.txt")
 
 
 def find_min_skew(genome):
@@ -26,7 +29,7 @@ def find_min_skew(genome):
 
 
 # Read file
-with open("problem_datasets/rosalind_1e.txt", "r") as in_file:
+with open(INPUT_FILE, "r") as in_file:
     genome = in_file.read().rstrip()
 
 # Find the smallest skew value and associated value(s) of i

@@ -25,8 +25,11 @@ EXAMPLE OUTPUT:
 0.10000 0.40000 0.00000 0.20000
 0.10000 0.30000 0.20000 0.00000
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_pdst.txt")
 
 
 def calc_distance(s1, s2):
@@ -47,7 +50,7 @@ def distance_matrix(strings):
 
 
 def main():
-    strings = parse_fasta("problem_datasets/rosalind_pdst.txt")
+    strings = parse_fasta(INPUT_FILE)
     matrix = distance_matrix(strings)
 
     with open("output/rosalind_pdst_out.txt", "w") as outfile:

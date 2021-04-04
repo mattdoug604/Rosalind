@@ -9,10 +9,13 @@ a graph on n nodes that contains no cycles.
 Return: The minimum number of edges that can be added to the graph to produce a
 tree.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_tree.txt")
 
 
 def main():
-    with open("problem_datasets/rosalind_tree.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n = int(infile.readline())
         adj_list = infile.readlines()
 

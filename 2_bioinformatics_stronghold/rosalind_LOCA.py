@@ -24,15 +24,17 @@ EXAMPLE OUTPUT:
 MEANLYPRTEINSTRIN
 LEASANTLYEINSTEIN
 """
+from os.path import dirname, join
 
 from utils import PAM250, match_score, parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_loca.txt")
 
 
 def alignment_score(s, t, scores, gap):
     """Returns two matrices of the edit distance and edit alignment between
     strings s and t.
     """
-
     # Initialize the similarity and traceback matrices.
     S = [[0 for j in range(len(t) + 1)] for i in range(len(s) + 1)]
     traceback = [[3 for j in range(len(t) + 1)] for i in range(len(s) + 1)]
@@ -80,7 +82,7 @@ def alignment_score(s, t, scores, gap):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_loca.txt")
+    s, t = parse_fasta(INPUT_FILE)
     alignment = alignment_score(s, t, PAM250(), -5)
 
     with open("output/rosalind_loca_out.txt", "w") as outfile:

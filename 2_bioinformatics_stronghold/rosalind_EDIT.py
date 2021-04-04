@@ -33,8 +33,11 @@ Y [10 10 9 8 7 6 5]
 EXAMPLE OUTPUT:
 5
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_edit.txt")
 
 
 def edit_dist(s, t):
@@ -73,7 +76,7 @@ def edit_dist(s, t):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_edit.txt")
+    s, t = parse_fasta(INPUT_FILE)
 
     print(edit_dist(s, t))
 

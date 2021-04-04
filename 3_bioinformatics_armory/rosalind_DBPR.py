@@ -9,13 +9,16 @@ Return: A list of biological processes in which the protein is involved
 (biological processes are found in a subsection of the protein's "Gene Ontology"
 (GO) section).
 """
+from os.path import dirname, join
 
 from Bio import ExPASy, SwissProt
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_dbpr.txt")
 
 
 def main():
     # Read the UniProt ID for a txt file.
-    with open("problem_datasets/rosalind_dbpr.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         uni_id = infile.read().strip()
 
     # Retrieve the data from UniProt (separated IDs by commas).

@@ -20,6 +20,9 @@ dog elephant
 EXAMPLE OUTPUT:
 75 136
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_nkew.txt")
 
 
 def parse_dist_value(sub_string):
@@ -94,7 +97,7 @@ def distance_between_nodes(t):
 
 
 def main():
-    with open("problem_datasets/rosalind_nkew.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         trees = [l.split("\n") for l in infile.read().strip().split("\n\n")]
 
     answer = []

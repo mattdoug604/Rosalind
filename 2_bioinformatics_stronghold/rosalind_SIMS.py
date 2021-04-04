@@ -12,8 +12,11 @@ Return: An optimal fitting alignment score with respect to the mismatch score
 alignment of a substring of s against t. If multiple such alignments exist, 
 then you may output any one.
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_sims.txt")
 
 
 def fitting_alignment(s, t):
@@ -73,7 +76,7 @@ def fitting_alignment(s, t):
 
 def main():
     # Read in the two sequences.
-    s, t = parse_fasta("problem_datasets/rosalind_sims.txt")
+    s, t = parse_fasta(INPUT_FILE)
 
     # Get the alignment.
     alignment = fitting_alignment(s, t)

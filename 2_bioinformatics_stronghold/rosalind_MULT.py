@@ -11,8 +11,11 @@ Return: A multiple alignment of the strings having maximum score, where we
 score matched symbols 0 (including matched gap symbols) and all mismatched 
 symbols -1 (thus incorporating a linear gap penalty of 1).
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_mult.txt")
 
 
 def alignment_score(s, t):
@@ -77,7 +80,7 @@ def align_sequences(s, t, traceback):
 def main():
     # Get the collection of sequences.
     # seqs = ['ATATCCG', 'TCCG', 'ATGTACTG', 'ATGTCTG']
-    seqs = parse_fasta("problem_datasets/rosalind_mult.txt")
+    seqs = parse_fasta(INPUT_FILE)
 
     # Create two arrays to keep track of which sequences are already aligned.
     alignment = ["" for i in seqs]

@@ -4,11 +4,14 @@ Find all occurrences of a pattern in a string.
 Given: Strings 'Pattern' and 'Genome'.
 Return: All starting positions in 'Genome' where 'Pattern' appears as a substring. Use 0-based indexing.
 """
-
 import re
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_1c.txt")
+
 
 # 'Pattern' and 'Genome' are seperated by a line break
-with open("problem_datasets/rosalind_1c.txt", "r") as in_file:
+with open(INPUT_FILE, "r") as in_file:
     both = in_file.read().split("\n")
     Pattern = both[0]
     Genome = both[1]

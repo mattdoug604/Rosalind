@@ -7,6 +7,9 @@ URL: http://rosalind.info/problems/cunr/
 Given: A positive integer n (n≤1000).
 Return: The value of b(n) modulo 1,000,000.
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_cunr.txt")
 
 
 if __name__ == "__main__":
@@ -14,7 +17,7 @@ if __name__ == "__main__":
     doublefactorial = lambda n: n * doublefactorial(n - 2) if n > 1 else 1
 
     # Read the number of leaves, n.
-    n = int(open("problem_datasets/rosalind_cunr.txt", "r").read())
+    n = int(open(INPUT_FILE, "r").read())
 
     # The number of trees on n leaves is the double factorial, (2n-5)!!
     print(doublefactorial(2 * n - 5) % 1000000)

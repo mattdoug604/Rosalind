@@ -21,8 +21,11 @@ MEANLY
 EXAMPLE OUTPUT:
 8
 """
+from os.path import dirname, join
 
 from utils import BLOSUM62, match_score, parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_glob.txt")
 
 
 def global_align(s, t, scores, gap):
@@ -51,7 +54,7 @@ def global_align(s, t, scores, gap):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_glob.txt")
+    s, t = parse_fasta(INPUT_FILE)
     max_score = global_align(s, t, BLOSUM62(), -5)
 
     print(max_score)

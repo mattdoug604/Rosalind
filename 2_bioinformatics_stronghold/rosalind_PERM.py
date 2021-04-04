@@ -8,12 +8,14 @@ Given: A positive integer n <= 7.
 Return: The total number of permutations of length n, followed by a list of all
 such permutations (in any order).
 """
-
 from itertools import permutations
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_perm.txt")
 
 
 def main():
-    with open("problem_datasets/rosalind_perm.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         n = int(infile.read())
 
     ints = [str(x) for x in range(1, n + 1)]

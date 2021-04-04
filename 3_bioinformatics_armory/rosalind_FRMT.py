@@ -7,15 +7,18 @@ URL: http://rosalind.info/problems/frmt/
 Given: A collection of n (n <= 10) GenBank entry IDs.
 Return: The shortest of the strings associated with the IDs in FASTA format.
 """
+from os.path import dirname, join
 
 from Bio import Entrez, SeqIO
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_frmt.txt")
 
 
 def main():
     Entrez.email = input("Please specify an email address for the NCBI database:\n").strip()
 
     # Read the GerBank IDs from a text file.
-    with open("problem_datasets/rosalind_frmt.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         gen_ids = infile.read().strip().split()
 
     # Retrieve the plain text records in FASTA format from the NCBI database.

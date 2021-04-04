@@ -11,8 +11,10 @@ Return: An array B having the same length as A in which B[k] represents the
 common logarithm of the probability that a random string constructed with the
 GC-content found in A[k] will match s exactly.
 """
-
 from math import log10
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_prob.txt")
 
 
 def prob(seq, gc):
@@ -37,7 +39,7 @@ def prob(seq, gc):
 
 
 def main():
-    with open("problem_datasets/rosalind_prob.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         seq, gc = infile.read().strip().split("\n")
         gc = [float(x) for x in gc.split(" ")]
 

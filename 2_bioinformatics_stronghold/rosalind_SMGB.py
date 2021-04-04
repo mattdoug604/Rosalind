@@ -22,8 +22,11 @@ EXAMPLE OUTPUT:
 CAGCA-CTTGGATTCTCGG
 ---CAGCGTGG--------
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_smgb.txt")
 
 
 def semiglobal_align(s, t):
@@ -86,7 +89,7 @@ def semiglobal_align(s, t):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_smgb.txt")
+    s, t = parse_fasta(INPUT_FILE)
     alignment = semiglobal_align(s, t)
 
     with open("output/rosalind_smgb_out.txt", "w") as outfile:

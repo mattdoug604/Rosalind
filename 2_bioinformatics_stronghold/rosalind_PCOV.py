@@ -12,6 +12,9 @@ one simple cycle.
 Return: A cyclic superstring of minimal length containing the reads (thus 
 corresponding to a candidate cyclic chromosome).
 """
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_pcov.txt")
 
 
 def adjacency_list(seq_list):
@@ -69,7 +72,7 @@ def cyclic_superstring(dna):
 
 
 def main():
-    with open("problem_datasets/rosalind_pcov.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         dna = infile.read().strip().split("\n")
 
     with open("output/rosalind_pcov_out.txt", "w") as outfile:

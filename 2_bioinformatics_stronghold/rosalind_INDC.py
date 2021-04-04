@@ -10,9 +10,11 @@ Return: An array A of length 2n in which A[k] represents the common logarithm
 of the probability that two diploid siblings share at least k of their 2n 
 chromosomes (we do not consider recombination for now).
 """
-
 from math import factorial as f
 from math import log10
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_indc.txt")
 
 
 def binomial_random_variable(n, k, p):
@@ -25,7 +27,7 @@ def binomial_random_variable(n, k, p):
 
 def main():
     # Read the input value.
-    n = int(open("problem_datasets/rosalind_indc.txt").read())
+    n = int(open(INPUT_FILE).read())
 
     # A distribution showing the probability of sharing exactly k chromosomes.
     prob = [binomial_random_variable(n * 2, k, 0.5) for k in range(2 * n, -1, -1)]

@@ -12,8 +12,11 @@ Return: All substrings t′ of t such that the edit distance dE(s,t′) is less
 than or equal to k. Each substring should be encoded by a pair containing its 
 location in t followed by its length.
 """
+from os.path import dirname, join
 
 from utils import print_matrix
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_ksim.txt")
 
 
 def edit_distance(k, s, t):
@@ -56,7 +59,7 @@ def modified_motifs(k, s, t):
 
 
 def main():
-    with open("problem_datasets/rosalind_ksim.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         k = int(infile.readline())
         s, t = infile.read().strip().split("\n")
 

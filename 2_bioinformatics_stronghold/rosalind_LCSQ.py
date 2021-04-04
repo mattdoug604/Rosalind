@@ -18,8 +18,11 @@ ACACTGTGA
 EXAMPLE OUTPUT:
 AACTGG
 """
+from os.path import dirname, join
 
 from utils import parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_lcsq.txt")
 
 
 def build_matrix(s, t, m, n):
@@ -57,7 +60,7 @@ def longest_sub(s, t):
 
 
 def main():
-    s, t = parse_fasta("problem_datasets/rosalind_lcsq.txt")
+    s, t = parse_fasta(INPUT_FILE)
     seq = longest_sub(s, t)
 
     with open("output/rosalind_lcsq_out.txt", "w") as outfile:

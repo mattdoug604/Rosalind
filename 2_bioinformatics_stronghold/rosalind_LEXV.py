@@ -18,8 +18,10 @@ EXAMPLE OUTPUT:
 D DD DDD DDN DDA DN DND DNN DNA DA DAD DAN DAA N ND NDD NDN NDA NN NND NNN NNA
 NA NAD NAN NAA A AD ADD ADN ADA AN AND ANN ANA AA AAD AAN AAA
 """
-
 from itertools import product
+from os.path import dirname, join
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_lexv.txt")
 
 
 def generate_strings(alpha, n):
@@ -33,7 +35,7 @@ def generate_strings(alpha, n):
 
 
 def main():
-    with open("problem_datasets/rosalind_lexv.txt", "r") as infile:
+    with open(INPUT_FILE, "r") as infile:
         alpha = infile.readline().strip().split(" ")
         n = int(infile.readline())
 

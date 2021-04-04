@@ -9,8 +9,11 @@ of s acting as introns. All strings are given in FASTA format.
 Return: A protein string resulting from transcribing and translating the exons
 of s. (Note: Only one solution will exist for the dataset provided.)
 """
+from os.path import dirname, join
 
 from utils import codon_table, parse_fasta
+
+INPUT_FILE = join(dirname(__file__), "problem_datasets", "rosalind_splc.txt")
 
 
 def translate(string):
@@ -37,7 +40,7 @@ def splice_RNA(rna, introns):
 
 
 def main():
-    sequences = parse_fasta("problem_datasets/rosalind_splc.txt")
+    sequences = parse_fasta(INPUT_FILE)
     rna = max(sequences, key=len)
     introns = [i for i in sequences if i != rna]
 
