@@ -7,3 +7,6 @@ venv/
 
 # Exclude incomplete files
 *_unfinished.*
+
+# VS Code files
+settings.json
