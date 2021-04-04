@@ -10,3 +10,4 @@ venv/
 
 # VS Code files
 settings.json
+.vscode/
