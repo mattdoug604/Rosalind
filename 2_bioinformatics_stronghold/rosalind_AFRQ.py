@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Rosalind: Bioinformatics Stronghold
 Problem: Counting Disease Carriers
 URL: http://rosalind.info/problems/afrq/
@@ -12,9 +12,10 @@ Assume that the population is in genetic equilibrium for all factors.
 Return: An array B having the same length as A in which B[k] represents the
 probability that a randomly selected individual carries at least one copy of
 the recessive allele for the k-th factor.
-'''
+"""
 
 from math import sqrt
+
 
 def probability(i):
     # f(aa) = p**2
@@ -37,16 +38,16 @@ def probability(i):
 
 def main():
     # Read the list of frequencies.
-    with open('problem_datasets/rosalind_afrq.txt', 'r') as infile:
-        a = [float(i) for i in infile.read().strip().split(' ')]
+    with open("problem_datasets/rosalind_afrq.txt", "r") as infile:
+        a = [float(i) for i in infile.read().strip().split(" ")]
 
     # Calculate the probability for each one.
     prob = [probability(i) for i in a]
 
     # Output the answer.
-    with open('output/rosalind_afrq_out.txt', 'w') as outfile:
-        outfile.write(' '.join(['%.3f' % i for i in prob]))
+    with open("output/rosalind_afrq_out.txt", "w") as outfile:
+        outfile.write(" ".join(["%.3f" % i for i in prob]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

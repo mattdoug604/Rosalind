@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Rosalind: Bioinformatics Stronghold
 Problem: Finding Disjoint Motifs in a Gene
 URL: http://rosalind.info/problems/itwv/
@@ -9,9 +9,9 @@ Given: A text DNA string s of length at most 10 kbp, followed by a collection of
 n (n <= 10) DNA strings of length at most 10 bp acting as patterns.
 Return: An n×n matrix M for which Mj,k = 1 if the jth and kth pattern strings
 can be interwoven into s and Mj,k = 0 otherwise.
-'''
+"""
 
-'''
+"""
 EXAMPLE INPUT:
 GACCACGGTT
 ACAG
@@ -22,11 +22,12 @@ EXAMPLE OUTPUT:
 0 0 1
 0 1 0
 1 0 0
-'''
+"""
 
 from itertools import combinations_with_replacement as comb_r
 
-def is_superstring(a, b, superstr):    
+
+def is_superstring(a, b, superstr):
     # Check if two strings can be interwoven into a superstring.
     if len(superstr) == 0:
         return True
@@ -38,23 +39,23 @@ def is_superstring(a, b, superstr):
         return is_superstring(a, b[1:], superstr[1:])
     else:
         return False
-    
-    
+
+
 def find_disjoint_motifs(s, patterns):
     # Initialize the matrix that will hold 1 at position i, j if pattern[i] and
     # pattern[j] can be interwoven into a superstring in s, or 0 if they can't.
     matrix = [[0 for j in range(len(patterns))] for i in range(len(patterns))]
-    
+
     # For each unique combination of patterns...
     for i in list(comb_r((i for i in range(len(patterns))), 2)):
         a = patterns[i[0]]
         b = patterns[i[1]]
- 
-        for j in range(len(s)-len(a)-len(b)+1):
-            superstr = s[j:j+len(a)+len(b)]
+
+        for j in range(len(s) - len(a) - len(b) + 1):
+            superstr = s[j : j + len(a) + len(b)]
 
             # Add a character outside the alphabet to avoid out of range errors.
-            if is_superstring(a+'$', b+'$', superstr):
+            if is_superstring(a + "$", b + "$", superstr):
 
                 # If, for example, patterns 3 and 1 can form a superstring,
                 # patterns 1 and 3 can as well.
@@ -67,21 +68,21 @@ def find_disjoint_motifs(s, patterns):
 
 def main():
     # Read in string, s, and a list of patterns.
-    with open('problem_datasets/rosalind_itwv.txt', 'r') as infile:
+    with open("problem_datasets/rosalind_itwv.txt", "r") as infile:
         s = infile.readline().strip()
-        patterns = infile.read().strip().split('\n')
+        patterns = infile.read().strip().split("\n")
 
     # Build and fill out the matrix.
     matrix = find_disjoint_motifs(s, patterns)
 
     # Write answer.
-    with open('output/rosalind_itwv_out.txt', 'w') as outfile:
+    with open("output/rosalind_itwv_out.txt", "w") as outfile:
         for i in matrix:
-            outfile.write(' '.join(map(str, i)) + '\n')
+            outfile.write(" ".join(map(str, i)) + "\n")
 
     for i in matrix:
-        print(' '.join(map(str, i)))
-        
+        print(" ".join(map(str, i)))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

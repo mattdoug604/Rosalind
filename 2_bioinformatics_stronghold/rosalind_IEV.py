@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Rosalind: Bioinformatics Stronghold
 Problem: Calculating Expected Offspring
 URL: http://rosalind.info/problems/iev/
@@ -20,19 +20,20 @@ number of couples having the following genotypes:
 Return: The expected number of offspring displaying the dominant phenotype in
 the next generation, under the assumption that every couple has exactly two
 offspring.
-'''
+"""
+
 
 def expected(f):
-    return((f[0]*1 + f[1]*1 + f[2]*1 + f[3]*3/4 + f[4]*1/2 + f[5]*0)*2)
+    return (f[0] * 1 + f[1] * 1 + f[2] * 1 + f[3] * 3 / 4 + f[4] * 1 / 2 + f[5] * 0) * 2
 
 
 def main():
-    with open('problem_datasets/rosalind_iev.txt', 'r') as infile:
+    with open("problem_datasets/rosalind_iev.txt", "r") as infile:
         f = [float(i) for i in infile.read().split()]
 
     answer = expected(f)
-    print('%.1f' % answer)
+    print("%.1f" % answer)
 
-    
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

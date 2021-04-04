@@ -7,7 +7,7 @@ b = 8733
 
 s = 0
 
-for x in range(a, b+1):
+for x in range(a, b + 1):
     if x % 2 == 1:
         s += x
 

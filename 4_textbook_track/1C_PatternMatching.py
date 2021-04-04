@@ -7,13 +7,13 @@
 import re
 
 # 'Pattern' and 'Genome' are seperated by a line break
-with open('problem_datasets/rosalind_1c.txt', 'r') as in_file:
-        both = in_file.read().split('\n')
-        Pattern = both[0]
-        Genome = both[1]
+with open("problem_datasets/rosalind_1c.txt", "r") as in_file:
+    both = in_file.read().split("\n")
+    Pattern = both[0]
+    Genome = both[1]
 
 # Get the position of each match using a list comprehension
-positions = [nt.start() for nt in re.finditer('(?='+Pattern+')', Genome)]
+positions = [nt.start() for nt in re.finditer("(?=" + Pattern + ")", Genome)]
 
 # Print out as a space-seperated string for readability
-print(' '.join(map(str, positions)))
+print(" ".join(map(str, positions)))

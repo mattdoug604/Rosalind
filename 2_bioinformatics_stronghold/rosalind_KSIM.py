@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Rosalind: Bioinformatics Stronghold
 Problem: Finding All Similar Motifs
 URL: http://rosalind.info/problems/ksim/
@@ -12,16 +12,17 @@ representing a motif, and a DNA string t of length at most 50 kbp representing
 Return: All substrings t′ of t such that the edit distance dE(s,t′) is less 
 than or equal to k. Each substring should be encoded by a pair containing its 
 location in t followed by its length.
-'''
+"""
 
 from rosalind_utils import print_matrix
+
 
 def edit_distance(k, s, t):
     m = len(s) + 1
     n = len(t) + 1
-    
+
     lengths = []
-    
+
     # Initialize the distance matrix with zeros.
     d = [[0 for j in range(n)] for i in range(m)]
 
@@ -34,45 +35,47 @@ def edit_distance(k, s, t):
     # Fill in the distance matrix.
     for i in range(1, m):
         for j in range(1, n):
-            scores = [d[i-1][j-1] + (s[i-1] != t[j-1]), # 0 = match
-                      d[i-1][j] + 1,                    # 1 = insertion
-                      d[i][j-1] + 1]                    # 2 = deletion
+            scores = [
+                d[i - 1][j - 1] + (s[i - 1] != t[j - 1]),  # 0 = match
+                d[i - 1][j] + 1,  # 1 = insertion
+                d[i][j - 1] + 1,
+            ]  # 2 = deletion
             d[i][j] = min(scores)
-    
-            if i == m-1 and d[i][j] <= k:
+
+            if i == m - 1 and d[i][j] <= k:
                 lengths.append(j)
-    
-    print_matrix(d, s, t)  
-    
+
+    print_matrix(d, s, t)
+
     return lengths
-    
+
 
 def modified_motifs(k, s, t):
     pairs = [(1, i) for i in edit_distance(k, s, t)]
-        
+
     return pairs
-    
-    
+
+
 def main():
-    with open('problem_datasets/rosalind_ksim.txt', 'r') as infile:
+    with open("problem_datasets/rosalind_ksim.txt", "r") as infile:
         k = int(infile.readline())
-        s, t = infile.read().strip().split('\n')
-        
-    k, s, t = 2, 'ACGTAG', 'ACGGATCGGCATCGT'
-        
-    print('len(s)='+str(len(s)), 'len(t)='+str(len(t)))
-    
-    print('\n'.join([' '.join(map(str, i)) for i in modified_motifs(k, s, t)]))
+        s, t = infile.read().strip().split("\n")
+
+    k, s, t = 2, "ACGTAG", "ACGGATCGGCATCGT"
+
+    print("len(s)=" + str(len(s)), "len(t)=" + str(len(t)))
+
+    print("\n".join([" ".join(map(str, i)) for i in modified_motifs(k, s, t)]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-    
+
 # INPUT:
 # 2
 # ACGTAG
 # ACGGATCGGCATCGT
-#    
+#
 # OUTPUT:
 # 1 4 <- ACGTAG
 #        ACG--G

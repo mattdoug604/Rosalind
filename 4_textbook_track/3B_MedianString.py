@@ -6,11 +6,12 @@
 
 import itertools
 
+
 def countMedian(kmers, motifs, k):
     # compare possible k-mer to each found k-mer, nucleotide-by-nucleotide
     # and keep the minimum value for each along that particular string.s
     for old in motifs:
-        temp = k    # k is the maximum possible value
+        temp = k  # k is the maximum possible value
         for new in kmers:
             diff = 0
             for nt in range(k):
@@ -19,35 +20,37 @@ def countMedian(kmers, motifs, k):
 
             if diff < temp:
                 temp = diff
-            
+
         motifs[old] += temp
     return motifs
 
+
 def findMedianMotif(strings, k):
     ## Start with dictionary of all possible k-mers (value for each k-mer starts at 0)
-    motifs = {''.join(nt) : 0 for nt in itertools.product(['A','C','T','G'], repeat=k)}
+    motifs = {"".join(nt): 0 for nt in itertools.product(["A", "C", "T", "G"], repeat=k)}
 
     ## Find all k-mers in each string...
     for seq in strings:
         kmers = []
-        for i in range(len(seq)-k+1):
-            kmers.append(seq[i:i+k])
+        for i in range(len(seq) - k + 1):
+            kmers.append(seq[i : i + k])
 
         ## Find the min for each k-mer and return an updated dictionary of values
         motifs = countMedian(kmers, motifs, k)
-    
+
     return motifs
 
-## Read in file    
-with open('problem_datasets/rosalind_3b.txt', 'r') as infile:
-    text = infile.read().rstrip().split('\n')
+
+## Read in file
+with open("problem_datasets/rosalind_3b.txt", "r") as infile:
+    text = infile.read().rstrip().split("\n")
     k = int(text[0])
     strings = text[1:]
 
 # Find minimum d(Pattern, DNA), then print out every Pattern with the minimum value
 answer = findMedianMotif(strings, k)
 minVal = min(answer.values())
-print('median = %i' % minVal)
+print("median = %i" % minVal)
 for key, val in answer.items():
     if val == minVal:
         print(key)

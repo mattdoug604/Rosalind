@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Rosalind: Bioinformatics Stronghold
 Problem: Matching Random Motifs
 URL: http://rosalind.info/problems/rstr/
@@ -12,42 +12,43 @@ Return: The probability that if N random DNA strings having the same length as
 s are constructed with GC-content x (see “Introduction to Random Strings”), then
 at least one of the strings equals s. We allow for the same random string to be
 created more than once.
-'''
+"""
 
-'''
+"""
 EXAMPLE INPUT:
 90000 0.6
 ATAGCCGA
 
 EXAMPLE OUTPUT:
 0.689
-'''
+"""
+
 
 def prob(n, gc, seq):
     percent = 1
-    prob_gc = gc/2
-    prob_at = (1-gc)/2
-    
+    prob_gc = gc / 2
+    prob_at = (1 - gc) / 2
+
     for i in seq:
-        if i == 'G' or i == 'C':
+        if i == "G" or i == "C":
             percent *= prob_gc
-        elif i == 'A' or i == 'T':
+        elif i == "A" or i == "T":
             percent *= prob_at
 
     percent = 1 - (1 - percent) ** n
-    
+
     return percent
 
-    
+
 def main():
-    with open('problem_datasets/rosalind_rstr.txt', 'r') as infile:
-        n, s = infile.read().strip().split('\n')
-        n, x = n.split(' ')
+    with open("problem_datasets/rosalind_rstr.txt", "r") as infile:
+        n, s = infile.read().strip().split("\n")
+        n, x = n.split(" ")
         n = int(n)
         x = float(x)
 
-    print('%.3f' % prob(n, x, s))
+    print("%.3f" % prob(n, x, s))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

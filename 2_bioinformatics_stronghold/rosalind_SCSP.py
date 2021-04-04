@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Rosalind: Bioinformatics Stronghold
 Problem: Interleaving Two Motifs
 URL: http://rosalind.info/problems/scsp/
@@ -8,25 +8,26 @@ URL: http://rosalind.info/problems/scsp/
 Given: Two DNA strings s and t.
 Return: A shortest common supersequence of s and t. If multiple solutions exist,
 you may output any one.
-'''
+"""
 
-'''
+"""
 EXAMPLE INPUT:
 ATCTGAT
 TGCATA
 
 EXAMPLE OUTPUT:
 ATGCATGAT
-'''
+"""
 
 from rosalind_LCSQ import longest_sub
+
 
 def shortest_sub(s, t):
     # Find the longest common subsequence.
     lcs = longest_sub(s, t)
-    
+
     # Fill out the subsequence with the remaining char.
-    scs = [''] * (len(lcs)+1)
+    scs = [""] * (len(lcs) + 1)
 
     m = 0
     n = 0
@@ -49,21 +50,21 @@ def shortest_sub(s, t):
 
     # Append the remaining characters (if any) to form the supersequence.
     scs[-1] = s[m:] + t[n:]
-   
-    return ''.join(scs)
-    
-        
+
+    return "".join(scs)
+
+
 def main():
-    with open('problem_datasets/rosalind_scsp.txt', 'r') as infile:
-        s, t = infile.read().strip().split('\n')
+    with open("problem_datasets/rosalind_scsp.txt", "r") as infile:
+        s, t = infile.read().strip().split("\n")
 
     seq = shortest_sub(s, t)
-    
-    with open('output/rosalind_scsp_out.txt', 'w') as outfile:
-        outfile.write(seq)
-        
-    print('shortest common supersequence =', seq)
-        
 
-if __name__ == '__main__':
+    with open("output/rosalind_scsp_out.txt", "w") as outfile:
+        outfile.write(seq)
+
+    print("shortest common supersequence =", seq)
+
+
+if __name__ == "__main__":
     main()

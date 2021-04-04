@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-'''
+"""
 Rosalind: Bioinformatics Stronghold
 Problem: Finding the Longest Multiple Repeat
 URL: http://rosalind.info/problems/lrep/
@@ -16,34 +16,35 @@ represented by four components:
 
 Return: The longest substring of s that occurs at least k times in s. (If
 multiple solutions exist, you may return any single solution.)
-'''
+"""
+
 
 def longest_substring(s, k, edges):
-    ''' Build a tree from an edge list and find the longest repeat that occurs
-        more than k times.
-    '''
-    
+    """Build a tree from an edge list and find the longest repeat that occurs
+    more than k times.
+    """
+
     # Construct a tree from the edge list.
     child = {}
     parent = {}
     for p, c, a, b in edges:
-        t = s[int(a)-1:int(a)-1+int(b)]
+        t = s[int(a) - 1 : int(a) - 1 + int(b)]
 
         if p in child:
             child[p].append(c)
         else:
             child[p] = [0, c]
-        
+
         if c in parent:
             parent[c].append(p)
         else:
             parent[c] = [0, t, p]
-    
+
     # Find the root of the tree.
     for i in child.keys():
         if i not in parent:
             root = i
-    
+
     # Find the leaves (childless nodes) of the tree.
     leaves = []
     for i in parent.keys():
@@ -70,16 +71,16 @@ def longest_substring(s, k, edges):
     # Count the number of leaf descendants of each node.
     top_nodes = []
     for i in leaves:
-        top = ''
+        top = ""
         par = parent[i][2]
-        
+
         while True:
             child[par][0] += 1
-            
+
             if child[par][0] >= k:
                 if par != root:
                     top_nodes.append(par)
-                
+
             if par in parent:
                 par = parent[par][2]
             else:
@@ -98,7 +99,7 @@ def longest_substring(s, k, edges):
     # Traceback to the root to build substrings.
     substrings = []
     for i in deep_nodes:
-        sub = ''
+        sub = ""
         par = i
         while True:
             t, par = parent[par][1:]
@@ -109,18 +110,18 @@ def longest_substring(s, k, edges):
 
     # Return the longest of the substrings.
     longest = max(substrings, key=len)
-    
+
     return longest
 
-            
+
 def main():
-    with open('problem_datasets/rosalind_lrep.txt', 'r') as infile:
+    with open("problem_datasets/rosalind_lrep.txt", "r") as infile:
         s = infile.readline().strip()
         k = int(infile.readline().strip())
-        edges = [i.strip().split(' ') for i in infile.readlines()]
-    
+        edges = [i.strip().split(" ") for i in infile.readlines()]
+
     print(longest_substring(s, k, edges))
-    
-    
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     main()
