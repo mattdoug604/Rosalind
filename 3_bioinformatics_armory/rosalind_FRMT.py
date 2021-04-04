@@ -32,7 +32,7 @@ def main():
         SeqIO.write(min_seq, outfile, "fasta")
 
     # Optional: Print answer and gene ID/name
-    print("\nThe shortest sequence is: %s" % min_seq.id)
+    print(f"\nThe shortest sequence is: {min_seq.id}")
 
 
 if __name__ == "__main__":

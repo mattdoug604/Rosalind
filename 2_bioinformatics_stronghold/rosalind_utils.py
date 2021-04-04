@@ -135,7 +135,7 @@ def aa_mass(aa):
         try:
             mass += mass_table[i]
         except KeyError:
-            print("Error: Could not find a mass for an amino acid %s." % i)
+            print(f"Error: Could not find a mass for an amino acid {i}.")
             return None
 
     # Return the sum of the monoisotopic masses.
