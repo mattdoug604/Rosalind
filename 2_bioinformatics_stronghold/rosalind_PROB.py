@@ -43,7 +43,7 @@ def main():
 
     answer = prob(seq, gc)
 
-    print(" ".join([f"{i:.3}" for i in answer]))
+    print(" ".join([f"{i:.3f}" for i in answer]))
 
 
 if __name__ == "__main__":

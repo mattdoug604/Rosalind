@@ -25,7 +25,7 @@ def main():
         prot = "".join(infile.read().strip())
 
     answer = calc_mass(prot)
-    print(f"{answer:.3}")
+    print(f"{answer:.3f}")
 
 
 if __name__ == "__main__":

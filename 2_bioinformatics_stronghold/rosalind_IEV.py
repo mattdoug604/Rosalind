@@ -31,7 +31,7 @@ def main():
         f = [float(i) for i in infile.read().split()]
 
     answer = expected(f)
-    print(f"{answer:.1}")
+    print(f"{answer:.1f}")
 
 
 if __name__ == "__main__":

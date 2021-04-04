@@ -50,7 +50,7 @@ def main():
         n = int(n)
         a = [float(i) for i in a.split(" ")]
 
-    print(" ".join([f"{p:.3}" for p in prob(n, s, a)]))
+    print(" ".join([f"{p:.3f}" for p in prob(n, s, a)]))
 
 
 if __name__ == "__main__":

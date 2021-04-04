@@ -44,7 +44,7 @@ def main():
     with open("problem_datasets/rosalind_lia.txt", "r") as infile:
         k, n = map(int, infile.read().strip().split(" "))
 
-    print(f"{getProb(k, n):.3}")
+    print(f"{getProb(k, n):.3f}")
 
 
 if __name__ == "__main__":
