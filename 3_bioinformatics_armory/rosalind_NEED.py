@@ -18,8 +18,7 @@ from Bio import SeqIO
 import Bio.Emboss.Applications
 
 def main():
-    Entrez.email = 'kapoozy@gmail.com'
-    #Entrez.email = input('Please specify an email address for the NCBI database:\n').strip()
+    Entrez.email = input('Please specify an email address for the NCBI database:\n').strip()
     
     # Read in two GenBank IDs.
     with open('problem_datasets/rosalind_need.txt', 'r') as infile:
