@@ -16,7 +16,7 @@ def Nxx(lenlist, xx):
     # of elements. Otherwise, take the middle element.
     n = 100 / (100 - xx)
     medianpos = int(len(lenlist) / n)
-    print medianpos
+    print(medianpos)
     if len(lenlist) % 2 == 0:
         return lenlist[medianpos] + lenlist[medianpos-1] / n
     else:
@@ -33,7 +33,7 @@ def main():
     for i in dna:
         lenlist += [len(i)]*len(i)
     lenlist = sorted(lenlist)
-    print len(lenlist)
+    print(len(lenlist))
 
     print(Nxx(lenlist, 50), Nxx(lenlist, 75))
 

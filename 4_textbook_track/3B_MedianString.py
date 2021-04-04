@@ -39,15 +39,15 @@ def findMedianMotif(strings, k):
     return motifs
 
 ## Read in file    
-with open('rosalind_3b.txt', 'r') as infile:
+with open('problem_datasets/rosalind_3b.txt', 'r') as infile:
     text = infile.read().rstrip().split('\n')
     k = int(text[0])
     strings = text[1:]
 
 # Find minimum d(Pattern, DNA), then print out every Pattern with the minimum value
 answer = findMedianMotif(strings, k)
-minVal = min(answer.itervalues())
+minVal = min(answer.values())
 print('median = %i' % minVal)
-for key, val in answer.iteritems():
+for key, val in answer.items():
     if val == minVal:
         print(key)

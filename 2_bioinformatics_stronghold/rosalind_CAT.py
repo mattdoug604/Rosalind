@@ -29,7 +29,7 @@ def count_matchings(i, j):
     if i > j:
         result = 1
     elif j == 1 and match[s[i] == s[j]]:
-		result = 1
+	    result = 1
     else:
         for k in range(i+1, j+1, 2):
             if s[k] == match[s[i]]:

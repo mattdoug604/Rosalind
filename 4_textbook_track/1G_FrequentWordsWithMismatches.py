@@ -35,7 +35,7 @@ def count_mer(gen, k):
     return mismatches
 
 # Read file
-with open('rosalind_1g.txt', 'r') as in_file:
+with open('problem_datasets/rosalind_1g.txt', 'r') as in_file:
     text = in_file.read().split('\n')
     genome = text[0]
     val = text[1].split(' ')

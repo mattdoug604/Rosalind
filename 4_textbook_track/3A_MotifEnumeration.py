@@ -45,7 +45,7 @@ def compMotifs(kmers, motifs, k, d):
                 yield(mer1)   
 
 
-with open('rosalind_3a.txt', 'r') as infile:
+with open('problem_datasets/rosalind_3a.txt', 'r') as infile:
     text = infile.read().rstrip().split('\n')
     k = int(text[0].split(' ')[0])
     d = int(text[0].split(' ')[1])

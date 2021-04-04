@@ -7,7 +7,7 @@
 from collections import defaultdict
 
 # 'Pattern' and 'Genome' are seperated by a line break
-with open('rosalind_1d.txt', 'r') as in_file:
+with open('problem_datasets/rosalind_1d.txt', 'r') as in_file:
         both = in_file.read().split('\n')
         genome = both[0].rstrip()
         vals = both[1].split(' ')
@@ -52,4 +52,4 @@ def find_clumps(gen, k, L, t):
 
 # Find clump
 for clump in find_clumps(genome, k, L, t):
-    print clump
+    print(clump)

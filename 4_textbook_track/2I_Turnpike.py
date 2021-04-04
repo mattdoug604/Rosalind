@@ -12,7 +12,7 @@ with open('rosalind_2i.txt', 'r') as infile:
     a = infile.read()'''
 
 a = '1 2 2 2 3 3 3 4 5 5 5 6 7 8 10'
-a = map(int, a.split(' '))
+a = list(map(int, a.split(' ')))
 
 '''
 def getDiff(line):

@@ -4,7 +4,7 @@
 # Given: A DNA string 'Pattern'.
 # Return: 'Complement', the reverse complement of 'Pattern'.
 
-with open('rosalind_1b_1_dataset.txt', 'r') as in_file:
+with open('problem_datasets/rosalind_1b.txt', 'r') as in_file:
         Pattern = in_file.read()
         
 Complement = ''
@@ -18,4 +18,4 @@ for nt in Pattern:
         elif nt == 'G':
                 Complement += 'C'
 
-print Complement[::-1]
+print(Complement[::-1])

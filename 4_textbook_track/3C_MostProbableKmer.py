@@ -37,7 +37,7 @@ def findProb(dna, k, profile):
     return(str(maxVal + ' with P(' + str(prob[maxVal]) + ')'))
         
 ## Read file
-with open('rosalind_3c.txt', 'r') as infile:
+with open('problem_datasets/rosalind_3c.txt', 'r') as infile:
     text = infile.read().rstrip().split('\n')
     string = text[0]
     k = int(text[1])

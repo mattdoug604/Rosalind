@@ -8,4 +8,4 @@ b = 79
 c = 119
 d = 128
 
-print s[a:b+1] + " " + s[c:d+1]
+print(s[a:b+1] + " " + s[c:d+1])

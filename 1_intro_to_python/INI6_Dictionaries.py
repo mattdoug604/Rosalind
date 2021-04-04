@@ -12,6 +12,6 @@ for word in s.split(" "):
         dict[word] = 1
 
 for key, value in dict.items():
-    print key, value
+    print(key, value)
 
 # Note: this doesn't acount for upper/lower case letters, eg) 'We' and 'we' are seen as different words

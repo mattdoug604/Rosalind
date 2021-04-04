@@ -11,4 +11,4 @@ for x in range(a, b+1):
     if x % 2 == 1:
         s += x
 
-print s
+print(s)

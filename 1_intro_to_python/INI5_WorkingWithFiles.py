@@ -7,5 +7,5 @@ counter = 0
 
 for line in open(filename, "r"):
     if counter % 2 == 1:
-        print line.strip() #.strip() removes any trailing whitespace/newlines
+        print(line.strip()) #.strip() removes any trailing whitespace/newlines
     counter += 1

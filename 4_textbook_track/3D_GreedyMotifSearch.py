@@ -61,7 +61,7 @@ Read file:
     k = length of motifs to search for
     t = number of DNA strings
 '''
-with open('rosalind_3d.txt', 'r') as infile:
+with open('problem_datasets/rosalind_3d.txt', 'r') as infile:
     text = infile.read().rstrip().split('\n')
     k, t = [int(x) for x in text[0].split(' ')]
     strings = text[1:]

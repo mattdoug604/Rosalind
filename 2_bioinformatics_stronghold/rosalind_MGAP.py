@@ -51,7 +51,7 @@ def global_align_max_gaps(s, t):
 def main():
     s, t = parse_fasta('problem_datasets/rosalind_mgap.txt')
     
-    print(max_global_align_gaps(s, t))
+    print(global_align_max_gaps(s, t))
         
 
 if __name__ == '__main__':

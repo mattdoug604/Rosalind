@@ -66,7 +66,7 @@ def getEncodeSeq(dna, match, codons):
             
     return(encodes)
 
-with open('rosalind_2b.txt', 'r') as infile:
+with open('problem_datasets/rosalind_2b.txt', 'r') as infile:
     text = infile.read().split('\n')
     sequence = text[0]
     peptide = text[1]

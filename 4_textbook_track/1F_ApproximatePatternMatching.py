@@ -5,7 +5,7 @@
 # Return: All starting positions where Pattern appears as a substring of Text with at most d mismatches.
 
 # Read file
-with open('rosalind_1f.txt', 'r') as in_file:
+with open('problem_datasets/rosalind_1f.txt', 'r') as in_file:
         text = in_file.read().split('\n')
         pattern = text[0]
         genome = text[1]
@@ -27,4 +27,4 @@ def pattern_match(gen, pat, d):
     
     return results
 
-for p in pattern_match(genome, pattern, d): print p
+for p in pattern_match(genome, pattern, d): print(p)

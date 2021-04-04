@@ -12,11 +12,11 @@ def getCodonTable():
     aa = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'
     bases = ['U','C','A','G']
     codons = [a+b+c for a in bases for b in bases for c in bases]
-    codon_table = dict(zip(codons, aa))
+    codon_table = dict(list(zip(codons, aa)))
 
     return codon_table
 
-with open('rosalind_2a.txt', 'r') as infile:
+with open('problem_datasets/rosalind_2a.txt', 'r') as infile:
     rna = infile.read()
 
 # Translate RNA sequence

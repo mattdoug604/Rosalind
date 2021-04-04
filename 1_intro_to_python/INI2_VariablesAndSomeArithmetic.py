@@ -5,4 +5,4 @@ import math
 
 a = 945
 b = 817
-print int(math.pow(a, 2) + math.pow(b, 2))
+print(int(math.pow(a, 2) + math.pow(b, 2)))

@@ -36,7 +36,7 @@ def main():
         SeqIO.write(record, out_handle, 'fasta')
         
     # Get needle output.
-    pair = Bio.Emboss.Applications.NeedleCommandline('output\temp1.fasta')
+    pair = Bio.Emboss.Applications.NeedleCommandline('output/temp1.fasta')
     print(pair)
     
 
