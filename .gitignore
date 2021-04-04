@@ -1,2 +1,9 @@
+# Python compilation files
+*.py[cod]
+__pycache__/
+
+# Exclude python virtual environment
+venv/
+
 # Exclude incomplete files
 *_unfinished.*
