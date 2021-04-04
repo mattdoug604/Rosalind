@@ -1,15 +1,16 @@
 # Rosalind
-Repository is for bioinformatics problems from http://www.rosalind.info and the textbook, "Bioinformatics Algorithms - An Active Learning Approach" by Phillip Compeau &amp; Pavel Pevzner.
 
-Completed "Bioinformatics Stronghold" Problems:
+Repository is for bioinformatics problems from <http://www.rosalind.info> and the textbook, "Bioinformatics Algorithms - An Active Learning Approach" by Phillip Compeau &amp; Pavel Pevzner.
 
-ID | Title
----|------
-DNA | Counting DNA Nucleotides  
-RNA | Transcribing DNA into RNA  
+## Completed "Bioinformatics Stronghold" Problems
+
+ID   | Title
+-----|------
+DNA  | Counting DNA Nucleotides  
+RNA  | Transcribing DNA into RNA  
 REVC | Complementing a Strand of DNA  
-FIB | Rabbits and Recurrence Relations  
-GC | Computing GC Content  
+FIB  | Rabbits and Recurrence Relations  
+GC   | Computing GC Content  
 HAMM | Counting Point Mutations  
 IPRB | Mendel's First Law  
 PROT | Translating RNA into Protein  
@@ -17,12 +18,12 @@ SUBS | Finding a Motif in DNA
 CONS | Consensus and Profile  
 FIBD | Mortal Fibonacci Rabbits  
 GRPH | Overlap Graphs  
-IEV | Calculating Expected Offspring  
+IEV  | Calculating Expected Offspring  
 LCSM | Finding a Shared Motif  
-LIA | Independent Alleles  
+LIA  | Independent Alleles  
 MPRT | Finding a Protein Motif  
 MRNA | Inferring mRNA from Protein  
-ORF | Open Reading Frames  
+ORF  | Open Reading Frames  
 PERM | Enumerating Gene Orders  
 PRTM | Calculating Protein Mass  
 REVP | Locating Restriction Sites  
@@ -37,11 +38,11 @@ SIGN | Enumerating Oriented Gene Orderings
 SSEQ | Finding a Spliced Motif  
 TRAN | Transitions and Transversions  
 TREE | Completing a Tree  
-CAT | Catalan Numbers and RNA Secondary Structures  
+CAT  | Catalan Numbers and RNA Secondary Structures  
 CORR | Error Correction in Reads  
 INOD | Counting Phylogenetic Ancestors  
 KMER | k-Mer Composition  
-KMP | Speeding Up Motif Finding  
+KMP  | Speeding Up Motif Finding  
 LCSQ | Finding a Shared Spliced Motif  
 LEXV | Ordering Strings of Varying Length Lexicographically  
 MMCH | Maximum Matchings and RNA Secondary Structures  
@@ -79,7 +80,7 @@ MGAP | Maximizing the Gap Symbols of an Optimal Alignment
 MULT | Multiple Alignment  
 SEXL | Sex-Linked Inheritance  
 GAFF | Global Alignment with Scoring Matrix and Affine Gap Penalty
-OAP | Overlap Alignment
+OAP  | Overlap Alignment
 SIMS | Finding a Motif with Modifications
 SMGB | Semiglobal Alignment
 LAFF | Local Alignment with Affine Gap Penalty
@@ -93,18 +94,17 @@ CUNR | Counting Unrooted Binary Trees
 ROOT | Counting Rooted Binary Trees
 PCOV | Genome Assembly with Perfect Coverage
 ASMQ | Assessing Assembly Quality with N50 and N75
-GASM | Genome Assembly Using Reads 
+GASM | Genome Assembly Using Reads
 
+## Unfinished "Bioinformatics Stronghold" Problems
 
-Unfinished "Bioinformatics Stronghold" Problems:
-
-ID | Title
----|------
+ID   | Title
+-----|------
 PRSM | Matching a Spectrum to a Protein
-QRT | Quartets
+QRT  | Quartets
 SUFF | Encoding Suffix Trees
 KSIM | Finding All Similar Motifs
-CHBP | Character-Based Phylogeny 
+CHBP | Character-Based Phylogeny
 CNTQ | Counting Quartets
 EUBT | Enumerating Unrooted Binary Trees
 LING | Linguistic Complexity of a Genome
