@@ -44,7 +44,7 @@ def main():
         n = int(n)
         x = float(x)
 
-    print("%.3f" % prob(n, x, s))
+    print(f"{prob(n, x, s):.3}")
 
 
 if __name__ == "__main__":

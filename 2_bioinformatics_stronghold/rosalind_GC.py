@@ -31,7 +31,7 @@ def main():
     fastas = parse_fasta("problem_datasets/rosalind_gc.txt", no_id=False)
     max_h, max_gc = compute_gc(fastas)
 
-    print(max_h, "\n", "%.6f" % max_gc, sep="")
+    print(max_h, "\n", f"{max_gc:.6}", sep="")
 
 
 if __name__ == "__main__":

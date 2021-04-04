@@ -29,4 +29,4 @@ def pep_counter(targ):
 
 
 # This line calls the routine and indexes the returned dict.  Both with the desired mass (the mass we want peptides to sum up to)
-print("answer: %i" % pep_counter(m))
+print(f"answer: {pep_counter(m)}")

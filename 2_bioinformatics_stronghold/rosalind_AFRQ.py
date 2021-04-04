@@ -45,7 +45,7 @@ def main():
 
     # Output the answer.
     with open("output/rosalind_afrq_out.txt", "w") as outfile:
-        outfile.write(" ".join(["%.3f" % i for i in prob]))
+        outfile.write(" ".join([f"{i:.3}" for i in prob]))
 
 
 if __name__ == "__main__":

@@ -39,7 +39,7 @@ def main():
         k, m, n = map(float, infile.read().strip().split(" "))
 
     answer = prob(k, m, n)
-    print("%.5f" % answer)
+    print(f"{answer:.5}")
 
 
 if __name__ == "__main__":

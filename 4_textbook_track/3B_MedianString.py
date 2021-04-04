@@ -51,7 +51,7 @@ with open("problem_datasets/rosalind_3b.txt", "r") as infile:
 # Find minimum d(Pattern, DNA), then print out every Pattern with the minimum value
 answer = findMedianMotif(strings, k)
 minVal = min(answer.values())
-print("median = %i" % minVal)
+print(f"median = {minVal}")
 for key, val in answer.items():
     if val == minVal:
         print(key)

@@ -63,7 +63,7 @@ def main():
     open("output/rosalind_long_out.txt", "w").write(answer)
 
     # Optional: Print the length of the superstring.
-    print("Shortest superstring is %i nucleotides long." % len(answer))
+    print(f"Shortest superstring is {len(answer)} nucleotides long.")
 
 
 if __name__ == "__main__":

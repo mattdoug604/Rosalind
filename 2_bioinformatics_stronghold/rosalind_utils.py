@@ -184,8 +184,8 @@ def mass_to_aa(val, tolerance=0.0001):
             return aa
 
     # Print a warning message if no match is found.
-    print("Note: Could not find an amino acid with monoisotopic mass %.5f." % val)
-    print(" " * 6 + "Closest match is", closest[0], "(mass difference %5f)." % closest[1])
+    print(f"Note: Could not find an amino acid with monoisotopic mass {val:.5}.")
+    print(" " * 6 + f"Closest match is {closest[0]} (mass difference {closest[1]:.5}).")
 
 
 #####################################
