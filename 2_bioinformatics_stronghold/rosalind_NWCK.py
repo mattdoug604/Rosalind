@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Distances in Trees
@@ -44,7 +43,7 @@ def find_lca(t, a, b):
 
 
 def distance_to_lca(lca, node):
-    """ Returns the distance from a given node to the LCA. """
+    """Returns the distance from a given node to the LCA."""
     binary = False
     binary_weight = lambda binary: 1 if binary else 2
 
@@ -69,7 +68,7 @@ def distance_to_lca(lca, node):
 
 
 def distance_between_nodes(t):
-    """ Finds the pairwise distance between two nodes in a rooted tree. """
+    """Finds the pairwise distance between two nodes in a rooted tree."""
     tree = t[0]
     a, b = t[1].split(" ")
 

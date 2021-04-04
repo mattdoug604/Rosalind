@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Matching Random Motifs
@@ -12,9 +11,7 @@ Return: The probability that if N random DNA strings having the same length as
 s are constructed with GC-content x (see “Introduction to Random Strings”), then
 at least one of the strings equals s. We allow for the same random string to be
 created more than once.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 90000 0.6
 ATAGCCGA

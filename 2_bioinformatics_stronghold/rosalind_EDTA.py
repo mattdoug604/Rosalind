@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Edit Distance Alignment
@@ -9,9 +8,7 @@ Given: Two protein strings s and t in FASTA format (with each string having
 length at most 1000 aa).
 Return: The edit distance dE(s,t) followed by two augmented strings s′ and t′
 representing an optimal alignment of s and t.
-"""
 
-"""
 EXAMPLE INPUT:
 >Rosalind_43
 PRETTY

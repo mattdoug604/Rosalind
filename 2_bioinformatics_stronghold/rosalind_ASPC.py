@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Introduction to Alternative Splicing
@@ -8,9 +7,7 @@ URL: http://rosalind.info/problems/aspc/
 Given: Positive integers n and m with 0 <= m <= n <= 2000.
 Return: The sum of combinations C(n,k) for all k satisfying m <= k <= n, modulo
 1,000,000.
-"""
 
-"""
 EXAMPLE INPUT:
 6 3
 

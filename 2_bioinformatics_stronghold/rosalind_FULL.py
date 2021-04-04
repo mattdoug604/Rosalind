@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Inferring Peptide from Full Spectrum

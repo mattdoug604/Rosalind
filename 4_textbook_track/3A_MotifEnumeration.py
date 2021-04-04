@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
+"""
+Find all (k, d)-motifs in a collection of strings.
+Given: Integers k and d, followed by a collection of strings Dna.
+Return: All (k, d)-motifs in Dna.
 
-# Find all (k, d)-motifs in a collection of strings.
-# Given: Integers k and d, followed by a collection of strings Dna.
-# Return: All (k, d)-motifs in Dna.
-
-# A motif only counts if it occurs in *all* dna strings!
-# Method: start with an arbitrary dna string, get a list of all kmers (with
-# mismatches) in that string, compare those to kmers (with mismatches) in the
-# next string, eliminate any kmers that do not appear in both strings. Continue
-# for the remaining strings.
+A motif only counts if it occurs in *all* dna strings!
+Method: start with an arbitrary dna string, get a list of all kmers (with
+mismatches) in that string, compare those to kmers (with mismatches) in the
+next string, eliminate any kmers that do not appear in both strings. Continue
+for the remaining strings.
+"""
 
 import itertools
 

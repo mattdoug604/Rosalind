@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Global Alignment with Scoring Matrix
@@ -12,9 +11,7 @@ Return: The maximum alignment score between s and t. Use:
         - The BLOSUM62 scoring matrix.
         - Linear gap penalty equal to 5 (i.e., a cost of -5 is assessed for 
           each gap symbol).
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_67
 PLEASANTLY

@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-
-# Find a position in a genome minimizing the skew.
-# Given: A DNA string Genome.
-# Return: All integer(s) i minimizing Skew(Prefix,i (Text)) over all values of i (from 0 to |Genome|).
-
 """
-example:
+Find a position in a genome minimizing the skew.
+Given: A DNA string Genome.
+Return: All integer(s) i minimizing Skew(Prefix,i (Text)) over all values of i (from 0 to |Genome|).
+
+Example:
    C  A  T G G G C A T C G G C C A T A  C G  C  C
 0 -1 -1 -1 0 1 2 1 1 1 0 1 2 1 0 0 0 0 -1 0 -1 -2
 """

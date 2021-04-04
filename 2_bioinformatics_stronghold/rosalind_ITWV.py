@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Finding Disjoint Motifs in a Gene
@@ -9,9 +8,7 @@ Given: A text DNA string s of length at most 10 kbp, followed by a collection of
 n (n <= 10) DNA strings of length at most 10 bp acting as patterns.
 Return: An n×n matrix M for which Mj,k = 1 if the jth and kth pattern strings
 can be interwoven into s and Mj,k = 0 otherwise.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 GACCACGGTT
 ACAG

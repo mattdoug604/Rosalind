@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
-# Generate the theoretical spectrum of a cyclic peptide.
-# Given: An amino acid string Peptide.
-# Return: Cyclospectrum(Peptide).
+"""
+Generate the theoretical spectrum of a cyclic peptide.
+Given: An amino acid string Peptide.
+Return: Cyclospectrum(Peptide).
+"""
 
 
 def calcMass(frag):

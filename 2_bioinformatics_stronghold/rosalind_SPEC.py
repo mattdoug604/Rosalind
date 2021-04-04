@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Inferring Protein from Spectrum
@@ -9,9 +8,7 @@ Given: A list L of n (n≤100) positive real numbers.
 Return: A protein string of length n−1 whose prefix spectrum is equal to L (if
 multiple solutions exist, you may output any one of them). Consult the
 monoisotopic mass table.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 3524.8542
 3710.9335

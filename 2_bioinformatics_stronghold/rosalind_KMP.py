@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Speeding Up Motif Finding 
@@ -7,9 +6,7 @@ URL: http://rosalind.info/problems/kmp/
 
 Given: A DNA string s (of length at most 100 kbp) in FASTA format.
 Return: The failure array of s.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_87
 CAGCATGGTATCACAGCAGAG

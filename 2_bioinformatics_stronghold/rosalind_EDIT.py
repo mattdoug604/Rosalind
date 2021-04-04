@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Edit Distance
@@ -8,9 +7,7 @@ URL: http://rosalind.info/problems/edit/
 Given: Two protein strings s and t in FASTA format (each of length at most 1000
 aa).
 Return: The edit distance dE(s,t).
-"""
 
-"""
 EXAMPLE INPUT:
 >Rosalind_39
 PLEASANTLY

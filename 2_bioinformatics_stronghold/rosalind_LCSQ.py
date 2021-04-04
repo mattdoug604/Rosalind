@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Finding a Shared Spliced Motif
@@ -9,9 +8,7 @@ Given: Two DNA strings s and t (each having length at most 1 kbp) in FASTA
 format.
 Return: A longest common subsequence of s and t. (If more than one solution
 exists, you may return any one.)
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_23
 AACCTTGG

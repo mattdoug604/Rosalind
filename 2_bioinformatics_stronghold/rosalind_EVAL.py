@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Expected Number of Restriction Sites
@@ -13,9 +12,7 @@ Return: An array B having the same length as A in which B[i] represents the
 expected number of times that s will appear as a substring of a random DNA
 string t of length n, where t is formed with GC-content A[i]
 (see “Introduction to Random Strings”).
-"""
 
-"""
 EXAMPLE INPUT:
 10
 AG

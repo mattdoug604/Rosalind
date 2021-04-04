@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-
-## Find a Profile-most probable k-mer in a string.
-## Given: A string Text, an integer k, and a 4 * k matrix Profile.
-## Return: A Profile-most probable k-mer in Text. (If multiple answers exist, you may return any one.)
-
 """
+Find a Profile-most probable k-mer in a string.
+Given: A string Text, an integer k, and a 4 * k matrix Profile.
+Return: A Profile-most probable k-mer in Text. (If multiple answers exist, you may return any one.)
+
 Example Matrix Profile:
 	A: .2  .2  .0  .0  .0  .0  .9  .1  .1  .1  .3  .0
 Profile	C: .1  .6  .0  .0  .0  .0  .0  .4  .1  .2  .4  .6

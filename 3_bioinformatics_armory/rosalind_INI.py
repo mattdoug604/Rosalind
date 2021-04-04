@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Armory
 Problem: Introduction to the Bioinformatics Armory

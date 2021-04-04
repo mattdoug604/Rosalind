@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-
-""" 
+"""
 This file contains a collection of functions that I've been using frequently
 in the Rosalind problems.
 """
@@ -96,7 +95,7 @@ def print_matrix(matrix, ylab="", xlab="", outdir=None):
 
 
 def aa_mass(aa):
-    """ Returns the monoisotopic mass of a given amino acid(s). """
+    """Returns the monoisotopic mass of a given amino acid(s)."""
     mass_table = {
         "A": 71.03711,
         "C": 103.00919,
@@ -144,7 +143,7 @@ def aa_mass(aa):
 
 
 def mass_to_aa(val, tolerance=0.0001):
-    """ Returns the amino acid corresponding to a given mass. """
+    """Returns the amino acid corresponding to a given mass."""
 
     # The monoisotopic masses of each
     aa_table = {
@@ -195,7 +194,7 @@ def mass_to_aa(val, tolerance=0.0001):
 
 
 def codon_table(seq_type="rna"):
-    """ Return a dictionary of codons and corresponding amino acids """
+    """Return a dictionary of codons and corresponding amino acids"""
     bases = ["U", "C", "A", "G"] if seq_type == "rna" else ["T", "C", "A", "G"]
 
     amino_acids = "FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG"
@@ -211,7 +210,7 @@ def codon_table(seq_type="rna"):
 
 
 def reverse_complement(seq):
-    """ Return the reverse complement of a given DNA or RNA string. """
+    """Return the reverse complement of a given DNA or RNA string."""
     if "U" in seq:
         seq_dict = {"A": "U", "U": "A", "G": "C", "C": "G"}
     else:
@@ -246,7 +245,7 @@ def scoring_matrix(path):
 
 
 def match_score(scoring_matrix, a, b):
-    """ Return the score from the scoring matrix. """
+    """Return the score from the scoring matrix."""
     x = scoring_matrix[0].index(a)
     y = scoring_matrix[0].index(b)
     cost = int(scoring_matrix[x + 1][y])

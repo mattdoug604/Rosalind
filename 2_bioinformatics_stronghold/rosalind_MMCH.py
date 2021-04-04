@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Maximum Matchings and RNA Secondary Structures
@@ -8,9 +7,7 @@ URL: http://rosalind.info/problems/mmch/
 Given: An RNA string s of length at most 100.
 Return: The total possible number of maximum matchings of basepair edges in the
 bonding graph of s.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_92
 AUGCUUC

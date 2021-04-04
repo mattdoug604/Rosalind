@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Inferring mRNA from Protein
@@ -7,9 +6,7 @@ URL: http://rosalind.info/problems/mrna/
 
 Given: A protein string of length at most 1000 aa.
 Return: The total number of different RNA strings from which the protein could have been translated, modulo 1,000,000. (Don't neglect the importance of the stop codon in protein translation.)
-"""
-
-"""
+ 
 CODON TABLE:
 UUU F      CUU L      AUU I      GUU V
 UUC F      CUC L      AUC I      GUC V

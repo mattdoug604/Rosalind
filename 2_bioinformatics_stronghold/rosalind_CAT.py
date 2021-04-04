@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Catalan Numbers and RNA Secondary Structures
@@ -10,9 +9,7 @@ the same number of occurrences of 'C' as 'G'. The length of the string is at
 most 300 bp.
 Return: The total number of noncrossing perfect matchings of basepair edges in
 the bonding graph of s, modulo 1,000,000.
-"""
 
-"""
 EXAMPLE INPUT:
 >Rosalind_57
 AUAU

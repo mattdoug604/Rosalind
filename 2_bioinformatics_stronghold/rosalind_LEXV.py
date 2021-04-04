@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Ordering Strings of Varying Length Lexicographically 
@@ -10,9 +9,7 @@ positive integer n (n <= 4).
 Return: All strings of length at most n formed from A, ordered lexicographically.
 (Note: As in “Enumerating k-mers Lexicographically”, alphabet order is based on
 the order in which the symbols are given.)
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 D N A
 3

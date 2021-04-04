@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Global Alignment with Scoring Matrix and Affine Gap Penalty
@@ -12,9 +11,7 @@ strings s′ and t′ representing an optimal alignment of s and t. Use:
     - The BLOSUM62 scoring matrix.
     - Gap opening penalty equal to 11.
     - Gap extension penalty equal to 1.
-"""
 
-"""
 EXAMPLE INPUT:
 >Rosalind_49
 PRTEINS

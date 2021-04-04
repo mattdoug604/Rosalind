@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: k-Mer Composition
@@ -25,7 +24,7 @@ def count_mers(seq, k=4):
 
 
 def composition(seq):
-    """ Count, sort, and arrange k-mer counts into a readable array. """
+    """Count, sort, and arrange k-mer counts into a readable array."""
     mer_dict = count_mers(seq)
 
     array = []

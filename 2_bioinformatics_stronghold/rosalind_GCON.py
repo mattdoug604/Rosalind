@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+#!/usr/bin/env python
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Global Alignment with Constant Gap Penalty
@@ -10,9 +9,7 @@ aa).
 Return: The maximum alignment score between s and t. Use:
     - The BLOSUM62 scoring matrix.
     - Constant gap penalty equal to 5.
-"""
 
-"""
 EXAMPLE INPUT:
 >Rosalind_79
 PLEASANTLY

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Semiglobal Alignment
@@ -11,9 +10,7 @@ alignment of s and t achieving this maximum score. Use an alignment score in
 which matching symbols count +1, substitutions count -1, and there is a linear
 gap penalty of 1. If multiple optimal alignments exist, then you may return any
 one.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_79
 CAGCACTTGGATTCTCGG

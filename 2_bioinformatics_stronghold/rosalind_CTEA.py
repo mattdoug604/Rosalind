@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Counting Optimal Alignments
@@ -9,9 +8,7 @@ Given: Two protein strings s and t in FASTA format, each of length at most 1000
 aa.
 Return: The total number of optimal alignments of s and t with respect to edit
 alignment score, modulo 134,217,727 (227-1).
-"""
 
-"""
 EXAMPLE INPUT:
 >Rosalind_78
 PLEASANTLY

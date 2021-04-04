@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Error Correction in Reads
@@ -18,9 +17,7 @@ each read s in the dataset, one of the following applies:
 Return: A list of all corrections in the form "[old read]->[new read]". (Each
 correction must be a single symbol substitution, and you may return the 
 corrections in any order.)
-"""
 
-"""
 EXAMPLE INPUT:
 >Rosalind_52
 TCATC
@@ -52,7 +49,7 @@ from rosalind_utils import reverse_complement as rev_comp
 
 """
 def rev_comp(string):
-    """ """Return the reverse complement of a given DNA string. """ """
+    """ """Return the reverse complement of a given DNA string.""" """
     rev = {'A':'T', 'T':'A', 'C':'G', 'G':'C'}
     rev_string = ''.join([rev[i] for i in string[::-1]])
 

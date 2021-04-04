@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Introduction to Pattern Matching
@@ -13,9 +12,7 @@ label the remaining nodes with the integers 2 through n in any order you like.
 Each edge of the adjacency list of T will be encoded by a triple containing the
 integer representing the edge's parent node, followed by the integer
 representing the edge's child node, and finally the symbol labeling the edge.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 ATAGA
 ATC

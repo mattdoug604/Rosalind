@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
-# Find the most frequent k-mers with mismatches in a string.
-# Given: A string genome as well as integers k and d.
-# Return: All most frequent k-mers with up to d mismatches in genome.
+"""
+Find the most frequent k-mers with mismatches in a string.
+Given: A string genome as well as integers k and d.
+Return: All most frequent k-mers with up to d mismatches in genome.
+"""
 
 import itertools
 from collections import defaultdict

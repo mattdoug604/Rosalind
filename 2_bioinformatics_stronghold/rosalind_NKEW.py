@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Newick Format with Edge Weights
@@ -10,9 +9,7 @@ tree containing at most 200 nodes; each tree Tk is followed by a pair of nodes
 xk and yk in Tk.
 Return: A collection of n numbers, for which the kth number represents the
 distance between xk and yk in Tk.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 (dog:42,cat:33);
 cat dog
@@ -70,7 +67,7 @@ def find_lca(t, a, b):
 
 
 def distance_to_lca(lca, node):
-    """ Returns the distance from a given node to the LCA. """
+    """Returns the distance from a given node to the LCA."""
     dist = 0
 
     for i in lca[0]:
@@ -86,7 +83,7 @@ def distance_to_lca(lca, node):
 
 
 def distance_between_nodes(t):
-    """ Finds the pairwise distance between two nodes in a rooted tree. """
+    """Finds the pairwise distance between two nodes in a rooted tree."""
     tree = t[0]
     a, b = t[1].split(" ")
 

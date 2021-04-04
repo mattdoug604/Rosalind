@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Motzkin Numbers and RNA Secondary Structures
@@ -13,7 +12,7 @@ bonding graph of s, modulo 1,000,000
 
 
 def motz_number(seq):
-    """ Return the number of noncrossing matchings of basepair edges. """
+    """Return the number of noncrossing matchings of basepair edges."""
     # Only one possible match for a seq of length one.
     if len(seq) <= 1:
         return 1

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Local Alignment with Affine Gap Penalty
@@ -16,9 +15,7 @@ of s and t. Use:
     - Gap extension penalty equal to 1.
     
 If multiple solutions exist, then you may output any one.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_8
 PLEASANTLY

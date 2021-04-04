@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
-## Find a median string.
-## Given: An integer k and a collection of strings DNA.
-## Return: A k-mer Pattern that minimizes d(Pattern, DNA) over all k-mers Pattern. (If multiple answers exist, you may return any one.)
+"""
+Find a median string.
+Given: An integer k and a collection of strings DNA.
+Return: A k-mer Pattern that minimizes d(Pattern, DNA) over all k-mers Pattern. (If multiple answers exist, you may return any one.)
+"""
 
 import itertools
 

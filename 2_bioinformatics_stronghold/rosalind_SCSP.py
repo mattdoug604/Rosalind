@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Interleaving Two Motifs
@@ -8,9 +7,7 @@ URL: http://rosalind.info/problems/scsp/
 Given: Two DNA strings s and t.
 Return: A shortest common supersequence of s and t. If multiple solutions exist,
 you may output any one.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 ATCTGAT
 TGCATA

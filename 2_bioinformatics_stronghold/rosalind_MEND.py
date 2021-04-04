@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Inferring Genotype from a Pedigree
@@ -16,7 +15,7 @@ and "aa" genotypes.
 
 
 def subtrees(t):
-    """ Split a Newick formatted tree into seperate subtrees. """
+    """Split a Newick formatted tree into seperate subtrees."""
     level = 0
     pos = []
     branches = []

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Open Reading Frames
@@ -16,7 +15,7 @@ from rosalind_utils import codon_table, parse_fasta, reverse_complement
 
 
 def raw_translate(seq):
-    """ Translate all 6 ORFs (3 for the forward strand, 3 for the reverse). """
+    """Translate all 6 ORFs (3 for the forward strand, 3 for the reverse)."""
     table = codon_table("dna")
     peptides = ["" for x in range(6)]
     rev = reverse_complement(seq)

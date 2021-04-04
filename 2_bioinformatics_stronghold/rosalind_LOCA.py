@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Local Alignment with Scoring Matrix
@@ -12,9 +11,7 @@ respectively, which produce this maximum alignment score (multiple solutions may
 exist, in which case you may output any one). Use:
     - The PAM250 scoring matrix.
     - Linear gap penalty equal to 5.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_80
 MEANLYPRTEINSTRING

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
-# Given all pairwise distances between points on a line segment, reconstruct the positions of those points.
-# Given: A collection of integers L.
-# Return: A set A such that ∆A = L.
+"""
+Given all pairwise distances between points on a line segment, reconstruct the positions of those points.
+Given: A collection of integers L.
+Return: A set A such that ∆A = L.
+"""
 
 from math import sqrt
 

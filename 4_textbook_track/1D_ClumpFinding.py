@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
-# Find patterns forming clumps in a string.
-# Given: A string Genome, and integers k, L, and t.
-# Return: All distinct k-mers forming (L, t)-clumps in Genome.
+"""
+Find patterns forming clumps in a string.
+Given: A string Genome, and integers k, L, and t.
+Return: All distinct k-mers forming (L, t)-clumps in Genome.
+"""
 
 from collections import defaultdict
 

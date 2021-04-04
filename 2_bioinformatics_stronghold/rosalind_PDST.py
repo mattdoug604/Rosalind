@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Creating a Distance Matrix
@@ -9,9 +8,7 @@ Given: A collection of n (n <= 10) DNA strings s1,…,sn of equal length (at mos
 1 kbp). Strings are given in FASTA format.
 Return: The matrix D corresponding to the p-distance dp on the given strings. As
 always, note that your answer is allowed an absolute error of 0.001.
-"""
-
-"""
+ 
 EXAMPLE INPUT:
 >Rosalind_9499
 TTTCCATTTA

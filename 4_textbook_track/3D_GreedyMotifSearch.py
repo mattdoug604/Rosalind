@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Given: Integers k and t, followed by a collection of strings Dna.
 Return: A collection of strings BestMotifs resulting from running
@@ -27,7 +26,7 @@ def mostProbMotif(dna, k, profile):
 
 
 def newProfile(motifs):
-    """ Takes a list of motifs and returns the dna profile """
+    """Takes a list of motifs and returns the dna profile"""
     positions = ["".join(nt) for nt in zip(*motifs)]
     return [[float(pos.count(nt)) / float(len(pos)) for nt in "ACGT"] for pos in positions]
 
@@ -82,9 +81,7 @@ AAGAATCAGTCA
 CAAGGAGTTCGC
 CACGTCAATCAC
 CAATAATATTCG
-"""
-
-"""
+ 
 Expected output for each k-mer in the first dna string:
 ['GGC', 'AAG', 'AAG', 'CAC', 'CAA']
 ['GCG', 'AAG', 'AAG', 'ACG', 'CAA']

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
-# Find the most frequent k-mers (with mismatches and reverse complements) in a DNA string.
-# Given: A DNA string Text as well as integers k and d.
-# Return: All k-mers Pattern maximizing the sum Count.d(Text, Pattern) + Count.d(Text, RevCompPattern) over all possible k-mers.
+"""
+Find the most frequent k-mers (with mismatches and reverse complements) in a DNA string.
+Given: A DNA string Text as well as integers k and d.
+Return: All k-mers Pattern maximizing the sum Count.d(Text, Pattern) + Count.d(Text, RevCompPattern) over all possible k-mers.
+"""
 
 import itertools
 from collections import defaultdict

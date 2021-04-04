@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
-# Find all occurrences of a pattern in a string.
-# Given: Strings 'Pattern' and 'Genome'.
-# Return: All starting positions in 'Genome' where 'Pattern' appears as a substring. Use 0-based indexing.
+"""
+Find all occurrences of a pattern in a string.
+Given: Strings 'Pattern' and 'Genome'.
+Return: All starting positions in 'Genome' where 'Pattern' appears as a substring. Use 0-based indexing.
+"""
 
 import re
 

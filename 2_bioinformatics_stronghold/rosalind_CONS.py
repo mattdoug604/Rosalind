@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Consensus and Profile
@@ -15,7 +14,7 @@ from rosalind_utils import parse_fasta
 
 
 def profile_matrix(seqs):
-    """ Generate a profile matrix from a list of DNA sequences. """
+    """Generate a profile matrix from a list of DNA sequences."""
     length = len(min(seqs, key=len))  # in case the strings are different lengths
     matrix = [[0 for x in range(4)] for y in range(length)]
     letters = {"A": 0, "C": 1, "G": 2, "T": 3}
@@ -30,7 +29,7 @@ def profile_matrix(seqs):
 
 
 def consensus_seq(profile):
-    """ Determine the consensus sequence from a given profile matrix. """
+    """Determine the consensus sequence from a given profile matrix."""
     consensus = ""
     letter = ["A", "C", "G", "T"]
 
@@ -42,7 +41,7 @@ def consensus_seq(profile):
 
 
 def format_profile(profile):
-    """ A generator that outputs the profile matrix in a readable format. """
+    """A generator that outputs the profile matrix in a readable format."""
     prefix = ["A", "C", "G", "T"]
 
     for i in range(4):

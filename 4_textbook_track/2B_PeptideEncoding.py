@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
-# Find substrings of a genome encoding a given amino acid sequence.
-# Given: A DNA string Text and an amino acid string Peptide.
-# Return: All substrings of Text encoding Peptide (if any such substrings exist).
+"""
+Find substrings of a genome encoding a given amino acid sequence.
+Given: A DNA string Text and an amino acid string Peptide.
+Return: All substrings of Text encoding Peptide (if any such substrings exist).
+"""
 
 
 def getCodonTable():

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 """
 Rosalind: Bioinformatics Stronghold
 Problem: Sorting by Reversals
@@ -9,9 +8,7 @@ Given: Two permutations π and γ, each of length 10.
 Return: The reversal distance drev(π,γ), followed by a collection of reversals
 sorting π into γ. If multiple collections of such reversals exist, you may
 return any one.
-"""
-
-"""
+ 
 Input:
 1 2 3 4 5 6 7 8 9 10
 1 8 9 3 2 7 6 5 4 10
@@ -37,7 +34,7 @@ def breakpoint(p):
 
 
 def printRound(p, a, b):
-    """ Optional: format and print the current reversal. """
+    """Optional: format and print the current reversal."""
     if 10 in p[a:b]:
         x = 1
     else:
