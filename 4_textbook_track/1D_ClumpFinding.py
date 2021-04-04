@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find patterns forming clumps in a string.
 # Given: A string Genome, and integers k, L, and t.

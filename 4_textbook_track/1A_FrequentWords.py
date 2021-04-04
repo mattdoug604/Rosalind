@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find the most frequent k-mers in a string.
 # Given: A DNA string 'Text' and an integer 'k'.

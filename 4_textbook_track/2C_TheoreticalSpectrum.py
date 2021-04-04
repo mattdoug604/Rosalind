@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Generate the theoretical spectrum of a cyclic peptide.
 # Given: An amino acid string Peptide.

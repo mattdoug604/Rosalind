@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 ## Find a median string.
 ## Given: An integer k and a collection of strings DNA.

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 # Given:  A string s of length at most 10000 letters.
 # Return: How many times any word occurred in string. Each letter case (upper or lower) in word matters. Lines in output can be in any order.
 

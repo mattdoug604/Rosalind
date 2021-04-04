@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find all occurrences of a pattern in a string.
 # Given: Strings 'Pattern' and 'Genome'.

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find the most frequent k-mers with mismatches in a string.
 # Given: A string genome as well as integers k and d.

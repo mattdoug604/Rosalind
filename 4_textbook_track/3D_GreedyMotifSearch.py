@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 '''
 Given: Integers k and t, followed by a collection of strings Dna.

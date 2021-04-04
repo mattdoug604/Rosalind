@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find substrings of a genome encoding a given amino acid sequence.
 # Given: A DNA string Text and an amino acid string Peptide.

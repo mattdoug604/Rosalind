@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Compute the number of peptides of given total mass.
 # Given: An integer m.

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find all approximate occurrences of a pattern in a string.
 # Given: Strings Pattern and Text along with an integer d.

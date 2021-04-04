@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find all (k, d)-motifs in a collection of strings.
 # Given: Integers k and d, followed by a collection of strings Dna.

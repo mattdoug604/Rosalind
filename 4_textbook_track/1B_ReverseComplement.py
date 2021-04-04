@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find the reverse complement of a DNA string.
 # Given: A DNA string 'Pattern'.

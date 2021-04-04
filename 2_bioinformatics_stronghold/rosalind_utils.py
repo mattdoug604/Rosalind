@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ''' 
 This file contains a collection of functions that I've been using frequently
 in the Rosalind problems.

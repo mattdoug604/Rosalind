@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Find a position in a genome minimizing the skew.
 # Given: A DNA string Genome.

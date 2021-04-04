@@ -1,4 +1,4 @@
-#!/usr/bin/R
+#!/usr/bin/env Rscript
 
 readFasta <- function(f) {
     # Parse a text file containing a single FASTA formatted sequence and return it as a character vector

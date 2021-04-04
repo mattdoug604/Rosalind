@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 ## Find a Profile-most probable k-mer in a string.
 ## Given: A string Text, an integer k, and a 4 * k matrix Profile.

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # Translate an RNA string into an amino acid string.
 # Given: An RNA string Pattern.

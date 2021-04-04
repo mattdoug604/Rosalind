@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 getSkew <- function(fasta) {
     
     ## ----- Get header ----- ##
