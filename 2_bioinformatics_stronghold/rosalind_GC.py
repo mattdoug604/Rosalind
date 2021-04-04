@@ -11,7 +11,7 @@ decimal answers unless otherwise stated; please see the note on absolute error
 below.
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def compute_gc(fastas):

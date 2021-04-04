@@ -13,7 +13,7 @@ than or equal to k. Each substring should be encoded by a pair containing its
 location in t followed by its length.
 """
 
-from rosalind_utils import print_matrix
+from utils import print_matrix
 
 
 def edit_distance(k, s, t):

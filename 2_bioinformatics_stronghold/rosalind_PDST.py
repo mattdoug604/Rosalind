@@ -26,7 +26,7 @@ EXAMPLE OUTPUT:
 0.10000 0.30000 0.20000 0.00000
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def calc_distance(s1, s2):

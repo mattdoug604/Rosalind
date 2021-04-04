@@ -19,7 +19,7 @@ EXAMPLE OUTPUT:
 AACTGG
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def build_matrix(s, t, m, n):

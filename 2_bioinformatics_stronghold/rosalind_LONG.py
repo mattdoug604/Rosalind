@@ -15,7 +15,7 @@ Return: A shortest superstring containing all the given strings (thus
 corresponding to a reconstructed chromosome).
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def match_seq(seq, seq_list):

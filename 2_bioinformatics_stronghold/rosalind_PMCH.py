@@ -12,7 +12,7 @@ bonding graph of s.
 
 from math import factorial
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def main():

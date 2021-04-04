@@ -11,7 +11,7 @@ multiple solutions exist, you may output any one of them). Consult the
 monoisotopic mass table.
 """
 
-from rosalind_utils import mass_to_aa
+from utils import mass_to_aa
 
 
 def build_peptide(l, peptide="", aa=0):

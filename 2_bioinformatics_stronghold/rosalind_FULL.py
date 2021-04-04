@@ -18,7 +18,7 @@ non-parent mass values of L.) If multiple solutions exist, you may output any
 one.
 """
 
-from rosalind_utils import mass_to_aa
+from utils import mass_to_aa
 
 
 def build_peptide(n, frag_dict, peptide="", aa=0):

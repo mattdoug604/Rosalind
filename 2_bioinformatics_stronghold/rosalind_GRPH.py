@@ -10,7 +10,7 @@ Return: The adjacency list corresponding to O3. You may return edges in any
 order.
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def overlap_seqs(sequences):

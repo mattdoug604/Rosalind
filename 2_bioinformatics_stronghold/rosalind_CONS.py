@@ -10,7 +10,7 @@ Return: A consensus string and profile matrix for the collection. (If several
 possible consensus strings exist, then you may return any one of them.)
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def profile_matrix(seqs):

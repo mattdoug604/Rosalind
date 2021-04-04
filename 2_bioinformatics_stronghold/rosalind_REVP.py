@@ -9,7 +9,7 @@ Return: The position and length of every reverse palindrome in the string having
 length between 4 and 12. You may return these pairs in any order.
 """
 
-from rosalind_utils import reverse_complement as rev_comp
+from utils import reverse_complement as rev_comp
 
 
 def locate_sites(f_dna):

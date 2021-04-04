@@ -10,7 +10,7 @@ Return: The maximum number of gap symbols that can appear in any maximum score
 alignment of s and t with score parameters satisfying m>0, d<0, and g<0.
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def global_align_max_gaps(s, t):

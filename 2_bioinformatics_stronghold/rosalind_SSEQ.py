@@ -9,7 +9,7 @@ Return: One collection of indices of s in which the symbols of t appear as a
 subsequence of s. If multiple solutions exist, you may return any one.
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def find_subsequence(s, t):

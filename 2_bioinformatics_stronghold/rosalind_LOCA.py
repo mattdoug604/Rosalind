@@ -25,7 +25,7 @@ MEANLYPRTEINSTRIN
 LEASANTLYEINSTEIN
 """
 
-from rosalind_utils import PAM250, match_score, parse_fasta
+from utils import PAM250, match_score, parse_fasta
 
 
 def alignment_score(s, t, scores, gap):

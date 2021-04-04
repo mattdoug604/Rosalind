@@ -11,7 +11,7 @@ of s. Strings can be returned in any order.
 
 import re
 
-from rosalind_utils import codon_table, parse_fasta, reverse_complement
+from utils import codon_table, parse_fasta, reverse_complement
 
 
 def raw_translate(seq):

@@ -13,7 +13,7 @@ defined above. Apply the mismatch score introduced in “Finding a Motif with
 Modifications”.
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def global_alignment(s, t):

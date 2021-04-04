@@ -15,7 +15,7 @@ output any such value if multiple solutions exist).
 
 from decimal import *
 
-from rosalind_utils import aa_mass
+from utils import aa_mass
 
 getcontext().prec = 8
 

@@ -10,7 +10,7 @@ Return: A protein string resulting from transcribing and translating the exons
 of s. (Note: Only one solution will exist for the dataset provided.)
 """
 
-from rosalind_utils import codon_table, parse_fasta
+from utils import codon_table, parse_fasta
 
 
 def translate(string):

@@ -16,7 +16,7 @@ EXAMPLE OUTPUT:
 6
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def count_bases(s, a, b):

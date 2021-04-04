@@ -20,7 +20,7 @@ EXAMPLE OUTPUT:
 WMQS
 """
 
-from rosalind_utils import mass_to_aa
+from utils import mass_to_aa
 
 
 def calc_protein(l):

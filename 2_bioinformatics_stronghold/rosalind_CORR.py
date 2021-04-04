@@ -44,8 +44,8 @@ GAGGA->GATGA
 TTTCC->TTTCA
 """
 
-from rosalind_utils import parse_fasta
-from rosalind_utils import reverse_complement as rev_comp
+from utils import parse_fasta
+from utils import reverse_complement as rev_comp
 
 """
 def rev_comp(string):

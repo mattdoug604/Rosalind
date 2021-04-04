@@ -28,7 +28,7 @@ LEAS
 MEAN
 """
 
-from rosalind_utils import BLOSUM62, match_score, parse_fasta
+from utils import BLOSUM62, match_score, parse_fasta
 
 
 def local_align_with_affine(s, t, scores, gap, gap_e):

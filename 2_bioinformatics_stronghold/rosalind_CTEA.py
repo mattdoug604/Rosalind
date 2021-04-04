@@ -19,7 +19,7 @@ EXAMPLE OUTPUT:
 4
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def count_alignments(s, t):

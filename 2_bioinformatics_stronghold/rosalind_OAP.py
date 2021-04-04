@@ -14,7 +14,7 @@ substitutions count -2, and there is a linear gap penalty of 2. If multiple
 optimal alignments exist, then you may return any one.
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def overlap_align(s, t):

@@ -23,7 +23,7 @@ CAGCA-CTTGGATTCTCGG
 ---CAGCGTGG--------
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def semiglobal_align(s, t):

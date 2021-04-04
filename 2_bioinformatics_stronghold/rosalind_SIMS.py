@@ -13,7 +13,7 @@ alignment of a substring of s against t. If multiple such alignments exist,
 then you may output any one.
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def fitting_alignment(s, t):

@@ -12,7 +12,7 @@ score matched symbols 0 (including matched gap symbols) and all mismatched
 symbols -1 (thus incorporating a linear gap penalty of 1).
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def alignment_score(s, t):

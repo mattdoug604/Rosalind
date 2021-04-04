@@ -10,7 +10,7 @@ Return: A longest common substring of the collection. (If multiple solutions
 exist, you may return any single solution.)
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def longest_motif(seq_list):

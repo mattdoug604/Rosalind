@@ -34,7 +34,7 @@ EXAMPLE OUTPUT:
 5
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def edit_dist(s, t):

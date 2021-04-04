@@ -21,7 +21,7 @@ PRETTY--
 PR-TTEIN
 """
 
-from rosalind_utils import parse_fasta
+from utils import parse_fasta
 
 
 def edit_dist_with_align(s, t):

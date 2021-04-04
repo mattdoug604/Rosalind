@@ -14,7 +14,7 @@ reverse complement.
 
 from itertools import chain
 
-from rosalind_utils import reverse_complement as rc
+from utils import reverse_complement as rc
 
 
 def cyclic_superstring(dna):

@@ -9,7 +9,7 @@ Given: An RNA string s corresponding to a strand of mRNA (of length at most
 Return: The protein string encoded by s.
 """
 
-from rosalind_utils import codon_table
+from utils import codon_table
 
 
 def translate(rna):

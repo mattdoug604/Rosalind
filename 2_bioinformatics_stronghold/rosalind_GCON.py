@@ -20,7 +20,7 @@ EXAMPLE OUTPUT:
 13
 """
 
-from rosalind_utils import BLOSUM62, match_score, parse_fasta
+from utils import BLOSUM62, match_score, parse_fasta
 
 
 def global_align(s, t, matrix, gap):

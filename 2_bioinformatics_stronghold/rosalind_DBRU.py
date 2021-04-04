@@ -13,7 +13,7 @@ to S ∪ Src.
 
 from collections import defaultdict
 
-from rosalind_utils import reverse_complement as rc
+from utils import reverse_complement as rc
 
 
 def de_bruijn(seq_list):
