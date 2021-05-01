@@ -23,9 +23,7 @@ def main():
     # Ok... this is kind of cheating since itertools.product() preserves the
     # lexicographical order when forming the strings.
     strings = ["".join(i) for i in product(alpha, repeat=n)]
-
-    with open("output/rosalind_lexf_out.txt", "w") as outfile:
-        outfile.write("\n".join(strings))
+    print(*strings, sep="\n")
 
 
 if __name__ == "__main__":

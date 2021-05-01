@@ -84,10 +84,7 @@ def alignment_score(s, t, scores, gap):
 def main():
     s, t = parse_fasta(INPUT_FILE)
     alignment = alignment_score(s, t, PAM250(), -5)
-
-    with open("output/rosalind_loca_out.txt", "w") as outfile:
-        outfile.write("\n".join(alignment))
-
+    print(*alignment, sep="\n")
     print("Maximum alignment score =", alignment[0])
 
 

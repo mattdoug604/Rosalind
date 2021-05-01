@@ -125,9 +125,8 @@ def main():
 
     corr = error_correct(strings)
 
-    with open("output/rosalind_corr_out.txt", "w") as outfile:
-        for i in corr:
-            outfile.write("->".join(i) + "\n")
+    for i in corr:
+        print("->".join(i))
 
 
 if __name__ == "__main__":

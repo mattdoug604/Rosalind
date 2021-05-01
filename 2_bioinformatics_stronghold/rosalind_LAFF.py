@@ -93,8 +93,7 @@ def main():
     s, t = parse_fasta(INPUT_FILE)
     alignment = local_align_with_affine(s, t, BLOSUM62(), -11, -1)
 
-    with open("output/rosalind_laff_out.txt", "w") as outfile:
-        outfile.write("\n".join(alignment))
+    print(*alignment, sep="\n")
 
     print("Maximum alignment score =", alignment[0])
 

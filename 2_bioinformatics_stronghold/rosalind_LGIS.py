@@ -52,9 +52,7 @@ def main():
 
     lgis = " ".join(map(str, longest_seq(n, perm, ">")))
     lgds = " ".join(map(str, longest_seq(n, perm, "<")))
-
-    with open("output/rosalind_lgis_out.txt", "w") as outfile:
-        outfile.write(lgis + "\n" + lgds)
+    print(lgis + "\n" + lgds)
 
 
 if __name__ == "__main__":

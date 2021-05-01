@@ -121,8 +121,7 @@ def main():
     s, t = parse_fasta(INPUT_FILE)
     alignment = global_align_with_affine(s, t, BLOSUM62(), -11, -1)
 
-    with open("output/rosalind_gaff_out.txt", "w") as f:
-        f.write("\n".join(alignment))
+    print(*alignment, sep="\n")
 
     print("Maximum alignment score =", alignment[0])
 

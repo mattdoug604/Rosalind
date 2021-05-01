@@ -69,8 +69,7 @@ def main():
 
     answer = char_table_from_newick(tree)
 
-    with open("output/rosalind_ctbl_out.txt", "w") as outfile:
-        outfile.write("\n".join(["".join(map(str, answer[i])) for i in range(len(answer))]))
+    print("\n".join(["".join(map(str, answer[i])) for i in range(len(answer))]))
 
 
 if __name__ == "__main__":

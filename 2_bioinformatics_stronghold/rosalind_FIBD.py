@@ -35,10 +35,6 @@ def main():
     with open(INPUT_FILE, "r") as infile:
         n, m = [int(i) for i in infile.read().strip().split(" ")]
 
-    with open("output/rosalind_fibd_out.txt", "w") as outfile:
-        answer = rabbits(n, m)
-        outfile.write(str(answer))
-
     print(answer)
 
 

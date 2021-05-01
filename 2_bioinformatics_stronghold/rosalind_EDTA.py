@@ -82,8 +82,7 @@ def main():
     s, t = parse_fasta(INPUT_FILE)
     aligned = edit_dist_with_align(s, t)
 
-    with open("output/rosalind_edta_out.txt", "w") as outfile:
-        outfile.write("\n".join(map(str, aligned)))
+    print(*aligned, sep="\n")
 
     print("Edit distance =", aligned[0])
 

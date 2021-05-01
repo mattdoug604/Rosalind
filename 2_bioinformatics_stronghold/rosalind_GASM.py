@@ -47,8 +47,7 @@ def main():
         dna = infile.read().strip().split("\n")
         dna = list(set(dna + [rc(i) for i in dna]))  # Add the reverse complement of each string.
 
-    with open("output/rosalind_gasm_out.txt", "w") as outfile:
-        outfile.write(cyclic_superstring(dna))
+    print(answer)
 
 
 if __name__ == "__main__":

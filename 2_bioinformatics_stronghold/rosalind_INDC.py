@@ -37,8 +37,7 @@ def main():
     prob = [log10(sum(prob[:i])) for i in range(2 * n, 0, -1)]
 
     # Output the answer.
-    with open("output/rosalind_indc_out.txt", "w") as outfile:
-        outfile.write(" ".join([str(i) for i in prob]))
+    print(*prob, sep=" ")
 
 
 if __name__ == "__main__":

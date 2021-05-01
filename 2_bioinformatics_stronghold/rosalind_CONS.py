@@ -60,10 +60,9 @@ def main():
     profile = profile_matrix(sequences)
     consensus = consensus_seq(profile)
 
-    with open("output/rosalind_cons_out.txt", "w") as outfile:
-        outfile.write(consensus + "\n")
-        for line in format_profile(profile):
-            outfile.write(line + "\n")
+    print(consensus)
+    for line in format_profile(profile):
+        print(line)
 
 
 if __name__ == "__main__":

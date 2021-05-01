@@ -75,12 +75,8 @@ def main():
     matrix = find_disjoint_motifs(s, patterns)
 
     # Write answer.
-    with open("output/rosalind_itwv_out.txt", "w") as outfile:
-        for i in matrix:
-            outfile.write(" ".join(map(str, i)) + "\n")
-
     for i in matrix:
-        print(" ".join(map(str, i)))
+        print(*i, sep=" ")
 
 
 if __name__ == "__main__":

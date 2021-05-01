@@ -29,9 +29,9 @@ def overlap_seqs(sequences):
 def main():
     dataset = parse_fasta(INPUT_FILE, no_id=False)
 
-    with open("output/rosalind_grph_out.txt", "w") as outfile:
-        for line in overlap_seqs(dataset):
-            outfile.write(line + "\n")
+    for line in overlap_seqs(dataset):
+        print(line)
+
 
 
 if __name__ == "__main__":

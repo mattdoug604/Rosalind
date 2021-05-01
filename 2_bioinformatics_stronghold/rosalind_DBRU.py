@@ -51,10 +51,9 @@ def main():
     answer = de_bruijn(s)
 
     # Output the answer as pairs of adjacencies.
-    with open("output/rosalind_dbru_out.txt", "w") as outfile:
-        for i in answer:
-            for j in answer[i]:
-                outfile.write("(" + i + ", " + j + ")\n")
+    for i in answer:
+        for j in answer[i]:
+            print("(" + i + ", " + j + ")")
 
 
 if __name__ == "__main__":

@@ -27,8 +27,7 @@ def main():
     answer = [n * k for k in p]
 
     # Output
-    with open("output/rosalind_ebin_out.txt", "w") as outfile:
-        outfile.write(" ".join(map(str, answer)))
+    print(*answer, sep=" ")
 
 
 if __name__ == "__main__":

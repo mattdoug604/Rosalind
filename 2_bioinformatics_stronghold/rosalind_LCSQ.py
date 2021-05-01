@@ -63,8 +63,7 @@ def main():
     s, t = parse_fasta(INPUT_FILE)
     seq = longest_sub(s, t)
 
-    with open("output/rosalind_lcsq_out.txt", "w") as outfile:
-        outfile.write(seq)
+    print(seq)
 
     print("The longest common subsequence is", len(seq), "bases long.")
 

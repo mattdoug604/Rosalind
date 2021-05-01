@@ -45,8 +45,8 @@ def failure_array(s):
 def main():
     s = parse_fasta(INPUT_FILE)
 
-    with open("output/rosalind_kmp_out.txt", "w") as outfile:
-        outfile.write(" ".join(map(str, failure_array(s))))
+    answer = failure_array(s)
+    print(*answer, sep=" ")
 
 
 if __name__ == "__main__":

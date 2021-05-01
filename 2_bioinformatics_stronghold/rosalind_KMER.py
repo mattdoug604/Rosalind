@@ -42,8 +42,8 @@ def main():
     with open(INPUT_FILE, "r") as infile:
         seq = "".join(infile.readlines()[1:]).replace("\n", "")
 
-    with open("output/rosalind_kmer_out.txt", "w") as outfile:
-        outfile.write(composition(seq))
+    answer = composition(seq)
+    print(answer)
 
 
 if __name__ == "__main__":

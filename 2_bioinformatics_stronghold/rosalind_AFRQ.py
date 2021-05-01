@@ -46,8 +46,7 @@ def main():
     prob = [probability(i) for i in a]
 
     # Output the answer.
-    with open("output/rosalind_afrq_out.txt", "w") as outfile:
-        outfile.write(" ".join([f"{i:.3f}" for i in prob]))
+    print(" ".join([f"{i:.3f}" for i in prob]))
 
 
 if __name__ == "__main__":

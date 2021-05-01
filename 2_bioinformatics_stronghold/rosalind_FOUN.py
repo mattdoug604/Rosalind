@@ -56,10 +56,8 @@ def main():
         a = list(map(int, infile.readline().strip().split(" ")))
 
     # Output the answer in matrix format.
-    with open("output/rosalind_foun_out.txt", "w") as outfile:
-        for line in fixation_prob(n, m, a):
-            outfile.write(" ".join(map(str, line)) + "\n")
+    print(*line, sep=" ")
 
 
 if __name__ == "__main__":
-    main()
+    main()s

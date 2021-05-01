@@ -40,9 +40,7 @@ def main():
         n = int(infile.readline())
 
     strings = generate_strings(alpha, n)
-
-    with open("output/rosalind_lexv_out.txt", "w") as outfile:
-        outfile.write("\n".join(strings))
+    print(*strings, sep="\n")
 
 
 if __name__ == "__main__":
